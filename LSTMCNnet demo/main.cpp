@@ -22,7 +22,7 @@ int conv2() {
     int targetsC = 1;
     double learningRate = 1;
     
-    std::string infiles[] = {"dummy2.txt","InternetTraff.txt","dailyMinimumTemperatures.txt"};
+    std::string infiles[] = {"seaLevelPressure.txt","InternetTraff.txt","dailyMinimumTemperatures.txt"};
     
     std::string inFile = infiles[2];
     
@@ -158,7 +158,7 @@ int conv() {
     int targetsC = 1;
     double learningRate = 1;
     
-    std::string infiles[] = {"dummy2.txt","InternetTraff.txt","dailyMinimumTemperatures.txt"};
+    std::string infiles[] = {"seaLevelPressure.txt","InternetTraff.txt","dailyMinimumTemperatures.txt"};
     
     std::string inFile = infiles[0];
     
@@ -315,7 +315,7 @@ int lstm() {
     ///////////// Data Sets //////////////////////////////
     
     std::string datasets[] = {
-        /* 0*/ "dummy2.txt",
+        /* 0*/ "seaLevelPressure.txt",
         /* 1*/ "InternetTraff.txt",
         /* 2*/ "monthlyReturnsOfValueweighted.txt",
         /* 3*/ "treeAlmagreMountainPiarLocat.txt",
@@ -329,11 +329,11 @@ int lstm() {
     };
     
     std::string datasets2[] = {
-        /* 0*/ "dummy2Anml.txt",
+        /* 0*/ "seaLevelPressureAnml.txt",
         /* 1*/ "dailyMinimumTemperaturesAnml.txt"
     };
     
-    std::string inFile = datasets[1];
+    std::string inFile = datasets[0];
     timeSeries = fileProc->read("datasets/univariate/input/"+inFile,1);
     timeSeries =  dataproc->process(timeSeries,1);
     
@@ -363,17 +363,26 @@ int lstm() {
   
     // Open the file to write the time series predictions
     std::ofstream out_file;
-    out_file.open("datasets/univariate/predictions/"+inFile,std::ofstream::out | std::ofstream::trunc);
+    out_file.open("datasets/univariate/predictions/LSTM/predict_"+inFile,std::ofstream::out | std::ofstream::trunc);
+    std::ofstream out_file2;
+    out_file2.open("datasets/univariate/predictions/LSTM/norm_"+inFile,std::ofstream::out | std::ofstream::trunc);
     
     std::vector<double> inVec;
     input = new std::vector<double>[1];
     double result;
     double expected;
-    //double MSE = 0;
+    double MSE = 0;
     
-    for (int i = 0; i < inputVecSize; i++) {
-        out_file<<dataproc->postProcess(timeSeries.at(i))<<"\n";
+    int numPredPoints = 1;
+    double predPoints[numPredPoints];
+    
+    for (int j = 0; j < numPredPoints; j++) {
+        predPoints[j] = 0;
     }
+    
+//    for (int i = 0; i < inputVecSize; i++) {
+//        out_file<<dataproc->postProcess(timeSeries.at(i))<<"\n";
+//    }
     
     std::cout << std::fixed;
     
@@ -384,6 +393,15 @@ int lstm() {
             inVec.push_back(timeSeries.at(i+j));
         }
         
+        for (int j = 0; j < numPredPoints; j++) {
+            
+            inVec = dataproc->process(inVec,0);
+            input[0] = inVec;
+
+            predPoints[j] += lstm.predict(input);
+            
+        }
+        
         inVec = dataproc->process(inVec,0);
         input[0] = inVec;
         
@@ -391,15 +409,20 @@ int lstm() {
         std::cout<<std::endl<<"result: "<<result<<std::endl;
         
         expected = timeSeries.at(i+inputVecSize+1);
-        //MSE += std::pow(expected-result,2);
+        MSE += std::pow(expected-result,2);
         
-        result = dataproc->postProcess(result);
-        out_file<<result-20000<<"\n";
+//        result = dataproc->postProcess(result);
+        out_file<<result<<"\n";
         std::cout<<"result processed: "<<result<<std::endl<<std::endl;
+        
+        out_file2<<timeSeries.at(i+inputVecSize)<<"\n";
     }
   
-    //MSE /= predictions;
-    //std::cout<<"Mean Squared Error: "<<MSE<<"\n";
+    out_file.close();
+    out_file2.close();
+    
+    MSE /= predictions;
+    std::cout<<"Mean Squared Error: "<<MSE<<"\n";
     std::cout << std::scientific;
     return 0;
 }
