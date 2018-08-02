@@ -1,0 +1,3054 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configurationDescriptor version="100">
+  <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
+    <logicalFolder name="HeaderFiles"
+                   displayName="Header Files"
+                   projectFiles="true">
+      <itemPath>CNNet/Activation.hpp</itemPath>
+      <itemPath>CNNet/CNN.hpp</itemPath>
+      <itemPath>Conv.h</itemPath>
+      <itemPath>CNNet/ConvolutionLayer.hpp</itemPath>
+      <itemPath>LSTMnet/DataProcessor.h</itemPath>
+      <itemPath>CNNet/FCLayer.hpp</itemPath>
+      <itemPath>LSTMnet/FileProcessor.h</itemPath>
+      <itemPath>LSTMCNnet.hpp</itemPath>
+      <itemPath>LSTMnet/LSTMNet.h</itemPath>
+      <itemPath>CNNet/PoolLayer.hpp</itemPath>
+    </logicalFolder>
+    <logicalFolder name="ResourceFiles"
+                   displayName="Resource Files"
+                   projectFiles="true">
+      <logicalFolder name="Eigen" displayName="Eigen" projectFiles="true">
+        <logicalFolder name="src" displayName="src" projectFiles="true">
+          <logicalFolder name="Cholesky" displayName="Cholesky" projectFiles="true">
+            <itemPath>CNNet/Eigen/src/Cholesky/LDLT.h</itemPath>
+            <itemPath>CNNet/Eigen/src/Cholesky/LLT.h</itemPath>
+            <itemPath>CNNet/Eigen/src/Cholesky/LLT_LAPACKE.h</itemPath>
+          </logicalFolder>
+          <logicalFolder name="CholmodSupport"
+                         displayName="CholmodSupport"
+                         projectFiles="true">
+            <itemPath>CNNet/Eigen/src/CholmodSupport/CholmodSupport.h</itemPath>
+          </logicalFolder>
+          <logicalFolder name="Core" displayName="Core" projectFiles="true">
+            <logicalFolder name="arch" displayName="arch" projectFiles="true">
+              <logicalFolder name="AltiVec" displayName="AltiVec" projectFiles="true">
+                <itemPath>CNNet/Eigen/src/Core/arch/AltiVec/Complex.h</itemPath>
+                <itemPath>CNNet/Eigen/src/Core/arch/AltiVec/MathFunctions.h</itemPath>
+                <itemPath>CNNet/Eigen/src/Core/arch/AltiVec/PacketMath.h</itemPath>
+              </logicalFolder>
+              <logicalFolder name="AVX" displayName="AVX" projectFiles="true">
+                <itemPath>CNNet/Eigen/src/Core/arch/AVX/Complex.h</itemPath>
+                <itemPath>CNNet/Eigen/src/Core/arch/AVX/MathFunctions.h</itemPath>
+                <itemPath>CNNet/Eigen/src/Core/arch/AVX/PacketMath.h</itemPath>
+                <itemPath>CNNet/Eigen/src/Core/arch/AVX/TypeCasting.h</itemPath>
+              </logicalFolder>
+              <logicalFolder name="AVX512" displayName="AVX512" projectFiles="true">
+                <itemPath>CNNet/Eigen/src/Core/arch/AVX512/MathFunctions.h</itemPath>
+                <itemPath>CNNet/Eigen/src/Core/arch/AVX512/PacketMath.h</itemPath>
+              </logicalFolder>
+              <logicalFolder name="CUDA" displayName="CUDA" projectFiles="true">
+                <itemPath>CNNet/Eigen/src/Core/arch/CUDA/Complex.h</itemPath>
+                <itemPath>CNNet/Eigen/src/Core/arch/CUDA/Half.h</itemPath>
+                <itemPath>CNNet/Eigen/src/Core/arch/CUDA/MathFunctions.h</itemPath>
+                <itemPath>CNNet/Eigen/src/Core/arch/CUDA/PacketMath.h</itemPath>
+                <itemPath>CNNet/Eigen/src/Core/arch/CUDA/PacketMathHalf.h</itemPath>
+                <itemPath>CNNet/Eigen/src/Core/arch/CUDA/TypeCasting.h</itemPath>
+              </logicalFolder>
+              <logicalFolder name="Default" displayName="Default" projectFiles="true">
+                <itemPath>CNNet/Eigen/src/Core/arch/Default/Settings.h</itemPath>
+              </logicalFolder>
+              <logicalFolder name="NEON" displayName="NEON" projectFiles="true">
+                <itemPath>CNNet/Eigen/src/Core/arch/NEON/Complex.h</itemPath>
+                <itemPath>CNNet/Eigen/src/Core/arch/NEON/MathFunctions.h</itemPath>
+                <itemPath>CNNet/Eigen/src/Core/arch/NEON/PacketMath.h</itemPath>
+              </logicalFolder>
+              <logicalFolder name="SSE" displayName="SSE" projectFiles="true">
+                <itemPath>CNNet/Eigen/src/Core/arch/SSE/Complex.h</itemPath>
+                <itemPath>CNNet/Eigen/src/Core/arch/SSE/MathFunctions.h</itemPath>
+                <itemPath>CNNet/Eigen/src/Core/arch/SSE/PacketMath.h</itemPath>
+                <itemPath>CNNet/Eigen/src/Core/arch/SSE/TypeCasting.h</itemPath>
+              </logicalFolder>
+              <logicalFolder name="ZVector" displayName="ZVector" projectFiles="true">
+                <itemPath>CNNet/Eigen/src/Core/arch/ZVector/Complex.h</itemPath>
+                <itemPath>CNNet/Eigen/src/Core/arch/ZVector/MathFunctions.h</itemPath>
+                <itemPath>CNNet/Eigen/src/Core/arch/ZVector/PacketMath.h</itemPath>
+              </logicalFolder>
+            </logicalFolder>
+            <logicalFolder name="functors" displayName="functors" projectFiles="true">
+              <itemPath>CNNet/Eigen/src/Core/functors/AssignmentFunctors.h</itemPath>
+              <itemPath>CNNet/Eigen/src/Core/functors/BinaryFunctors.h</itemPath>
+              <itemPath>CNNet/Eigen/src/Core/functors/NullaryFunctors.h</itemPath>
+              <itemPath>CNNet/Eigen/src/Core/functors/StlFunctors.h</itemPath>
+              <itemPath>CNNet/Eigen/src/Core/functors/TernaryFunctors.h</itemPath>
+              <itemPath>CNNet/Eigen/src/Core/functors/UnaryFunctors.h</itemPath>
+            </logicalFolder>
+            <logicalFolder name="products" displayName="products" projectFiles="true">
+              <itemPath>CNNet/Eigen/src/Core/products/GeneralBlockPanelKernel.h</itemPath>
+              <itemPath>CNNet/Eigen/src/Core/products/GeneralMatrixMatrix.h</itemPath>
+              <itemPath>CNNet/Eigen/src/Core/products/GeneralMatrixMatrixTriangular.h</itemPath>
+              <itemPath>CNNet/Eigen/src/Core/products/GeneralMatrixMatrixTriangular_BLAS.h</itemPath>
+              <itemPath>CNNet/Eigen/src/Core/products/GeneralMatrixMatrix_BLAS.h</itemPath>
+              <itemPath>CNNet/Eigen/src/Core/products/GeneralMatrixVector.h</itemPath>
+              <itemPath>CNNet/Eigen/src/Core/products/GeneralMatrixVector_BLAS.h</itemPath>
+              <itemPath>CNNet/Eigen/src/Core/products/Parallelizer.h</itemPath>
+              <itemPath>CNNet/Eigen/src/Core/products/SelfadjointMatrixMatrix.h</itemPath>
+              <itemPath>CNNet/Eigen/src/Core/products/SelfadjointMatrixMatrix_BLAS.h</itemPath>
+              <itemPath>CNNet/Eigen/src/Core/products/SelfadjointMatrixVector.h</itemPath>
+              <itemPath>CNNet/Eigen/src/Core/products/SelfadjointMatrixVector_BLAS.h</itemPath>
+              <itemPath>CNNet/Eigen/src/Core/products/SelfadjointProduct.h</itemPath>
+              <itemPath>CNNet/Eigen/src/Core/products/SelfadjointRank2Update.h</itemPath>
+              <itemPath>CNNet/Eigen/src/Core/products/TriangularMatrixMatrix.h</itemPath>
+              <itemPath>CNNet/Eigen/src/Core/products/TriangularMatrixMatrix_BLAS.h</itemPath>
+              <itemPath>CNNet/Eigen/src/Core/products/TriangularMatrixVector.h</itemPath>
+              <itemPath>CNNet/Eigen/src/Core/products/TriangularMatrixVector_BLAS.h</itemPath>
+              <itemPath>CNNet/Eigen/src/Core/products/TriangularSolverMatrix.h</itemPath>
+              <itemPath>CNNet/Eigen/src/Core/products/TriangularSolverMatrix_BLAS.h</itemPath>
+              <itemPath>CNNet/Eigen/src/Core/products/TriangularSolverVector.h</itemPath>
+            </logicalFolder>
+            <logicalFolder name="util" displayName="util" projectFiles="true">
+              <itemPath>CNNet/Eigen/src/Core/util/BlasUtil.h</itemPath>
+              <itemPath>CNNet/Eigen/src/Core/util/Constants.h</itemPath>
+              <itemPath>CNNet/Eigen/src/Core/util/DisableStupidWarnings.h</itemPath>
+              <itemPath>CNNet/Eigen/src/Core/util/ForwardDeclarations.h</itemPath>
+              <itemPath>CNNet/Eigen/src/Core/util/MKL_support.h</itemPath>
+              <itemPath>CNNet/Eigen/src/Core/util/Macros.h</itemPath>
+              <itemPath>CNNet/Eigen/src/Core/util/Memory.h</itemPath>
+              <itemPath>CNNet/Eigen/src/Core/util/Meta.h</itemPath>
+              <itemPath>CNNet/Eigen/src/Core/util/NonMPL2.h</itemPath>
+              <itemPath>CNNet/Eigen/src/Core/util/ReenableStupidWarnings.h</itemPath>
+              <itemPath>CNNet/Eigen/src/Core/util/StaticAssert.h</itemPath>
+              <itemPath>CNNet/Eigen/src/Core/util/XprHelper.h</itemPath>
+            </logicalFolder>
+            <itemPath>CNNet/Eigen/src/Core/Array.h</itemPath>
+            <itemPath>CNNet/Eigen/src/Core/ArrayBase.h</itemPath>
+            <itemPath>CNNet/Eigen/src/Core/ArrayWrapper.h</itemPath>
+            <itemPath>CNNet/Eigen/src/Core/Assign.h</itemPath>
+            <itemPath>CNNet/Eigen/src/Core/AssignEvaluator.h</itemPath>
+            <itemPath>CNNet/Eigen/src/Core/Assign_MKL.h</itemPath>
+            <itemPath>CNNet/Eigen/src/Core/BandMatrix.h</itemPath>
+            <itemPath>CNNet/Eigen/src/Core/Block.h</itemPath>
+            <itemPath>CNNet/Eigen/src/Core/BooleanRedux.h</itemPath>
+            <itemPath>CNNet/Eigen/src/Core/CommaInitializer.h</itemPath>
+            <itemPath>CNNet/Eigen/src/Core/ConditionEstimator.h</itemPath>
+            <itemPath>CNNet/Eigen/src/Core/CoreEvaluators.h</itemPath>
+            <itemPath>CNNet/Eigen/src/Core/CoreIterators.h</itemPath>
+            <itemPath>CNNet/Eigen/src/Core/CwiseBinaryOp.h</itemPath>
+            <itemPath>CNNet/Eigen/src/Core/CwiseNullaryOp.h</itemPath>
+            <itemPath>CNNet/Eigen/src/Core/CwiseTernaryOp.h</itemPath>
+            <itemPath>CNNet/Eigen/src/Core/CwiseUnaryOp.h</itemPath>
+            <itemPath>CNNet/Eigen/src/Core/CwiseUnaryView.h</itemPath>
+            <itemPath>CNNet/Eigen/src/Core/DenseBase.h</itemPath>
+            <itemPath>CNNet/Eigen/src/Core/DenseCoeffsBase.h</itemPath>
+            <itemPath>CNNet/Eigen/src/Core/DenseStorage.h</itemPath>
+            <itemPath>CNNet/Eigen/src/Core/Diagonal.h</itemPath>
+            <itemPath>CNNet/Eigen/src/Core/DiagonalMatrix.h</itemPath>
+            <itemPath>CNNet/Eigen/src/Core/DiagonalProduct.h</itemPath>
+            <itemPath>CNNet/Eigen/src/Core/Dot.h</itemPath>
+            <itemPath>CNNet/Eigen/src/Core/EigenBase.h</itemPath>
+            <itemPath>CNNet/Eigen/src/Core/ForceAlignedAccess.h</itemPath>
+            <itemPath>CNNet/Eigen/src/Core/Fuzzy.h</itemPath>
+            <itemPath>CNNet/Eigen/src/Core/GeneralProduct.h</itemPath>
+            <itemPath>CNNet/Eigen/src/Core/GenericPacketMath.h</itemPath>
+            <itemPath>CNNet/Eigen/src/Core/GlobalFunctions.h</itemPath>
+            <itemPath>CNNet/Eigen/src/Core/IO.h</itemPath>
+            <itemPath>CNNet/Eigen/src/Core/Inverse.h</itemPath>
+            <itemPath>CNNet/Eigen/src/Core/Map.h</itemPath>
+            <itemPath>CNNet/Eigen/src/Core/MapBase.h</itemPath>
+            <itemPath>CNNet/Eigen/src/Core/MathFunctions.h</itemPath>
+            <itemPath>CNNet/Eigen/src/Core/MathFunctionsImpl.h</itemPath>
+            <itemPath>CNNet/Eigen/src/Core/Matrix.h</itemPath>
+            <itemPath>CNNet/Eigen/src/Core/MatrixBase.h</itemPath>
+            <itemPath>CNNet/Eigen/src/Core/NestByValue.h</itemPath>
+            <itemPath>CNNet/Eigen/src/Core/NoAlias.h</itemPath>
+            <itemPath>CNNet/Eigen/src/Core/NumTraits.h</itemPath>
+            <itemPath>CNNet/Eigen/src/Core/PermutationMatrix.h</itemPath>
+            <itemPath>CNNet/Eigen/src/Core/PlainObjectBase.h</itemPath>
+            <itemPath>CNNet/Eigen/src/Core/Product.h</itemPath>
+            <itemPath>CNNet/Eigen/src/Core/ProductEvaluators.h</itemPath>
+            <itemPath>CNNet/Eigen/src/Core/Random.h</itemPath>
+            <itemPath>CNNet/Eigen/src/Core/Redux.h</itemPath>
+            <itemPath>CNNet/Eigen/src/Core/Ref.h</itemPath>
+            <itemPath>CNNet/Eigen/src/Core/Replicate.h</itemPath>
+            <itemPath>CNNet/Eigen/src/Core/ReturnByValue.h</itemPath>
+            <itemPath>CNNet/Eigen/src/Core/Reverse.h</itemPath>
+            <itemPath>CNNet/Eigen/src/Core/Select.h</itemPath>
+            <itemPath>CNNet/Eigen/src/Core/SelfAdjointView.h</itemPath>
+            <itemPath>CNNet/Eigen/src/Core/SelfCwiseBinaryOp.h</itemPath>
+            <itemPath>CNNet/Eigen/src/Core/Solve.h</itemPath>
+            <itemPath>CNNet/Eigen/src/Core/SolveTriangular.h</itemPath>
+            <itemPath>CNNet/Eigen/src/Core/SolverBase.h</itemPath>
+            <itemPath>CNNet/Eigen/src/Core/StableNorm.h</itemPath>
+            <itemPath>CNNet/Eigen/src/Core/Stride.h</itemPath>
+            <itemPath>CNNet/Eigen/src/Core/Swap.h</itemPath>
+            <itemPath>CNNet/Eigen/src/Core/Transpose.h</itemPath>
+            <itemPath>CNNet/Eigen/src/Core/Transpositions.h</itemPath>
+            <itemPath>CNNet/Eigen/src/Core/TriangularMatrix.h</itemPath>
+            <itemPath>CNNet/Eigen/src/Core/VectorBlock.h</itemPath>
+            <itemPath>CNNet/Eigen/src/Core/VectorwiseOp.h</itemPath>
+            <itemPath>CNNet/Eigen/src/Core/Visitor.h</itemPath>
+          </logicalFolder>
+          <logicalFolder name="Eigenvalues" displayName="Eigenvalues" projectFiles="true">
+            <itemPath>CNNet/Eigen/src/Eigenvalues/ComplexEigenSolver.h</itemPath>
+            <itemPath>CNNet/Eigen/src/Eigenvalues/ComplexSchur.h</itemPath>
+            <itemPath>CNNet/Eigen/src/Eigenvalues/ComplexSchur_LAPACKE.h</itemPath>
+            <itemPath>CNNet/Eigen/src/Eigenvalues/EigenSolver.h</itemPath>
+            <itemPath>CNNet/Eigen/src/Eigenvalues/GeneralizedEigenSolver.h</itemPath>
+            <itemPath>CNNet/Eigen/src/Eigenvalues/GeneralizedSelfAdjointEigenSolver.h</itemPath>
+            <itemPath>CNNet/Eigen/src/Eigenvalues/HessenbergDecomposition.h</itemPath>
+            <itemPath>CNNet/Eigen/src/Eigenvalues/MatrixBaseEigenvalues.h</itemPath>
+            <itemPath>CNNet/Eigen/src/Eigenvalues/RealQZ.h</itemPath>
+            <itemPath>CNNet/Eigen/src/Eigenvalues/RealSchur.h</itemPath>
+            <itemPath>CNNet/Eigen/src/Eigenvalues/RealSchur_LAPACKE.h</itemPath>
+            <itemPath>CNNet/Eigen/src/Eigenvalues/SelfAdjointEigenSolver.h</itemPath>
+            <itemPath>CNNet/Eigen/src/Eigenvalues/SelfAdjointEigenSolver_LAPACKE.h</itemPath>
+            <itemPath>CNNet/Eigen/src/Eigenvalues/Tridiagonalization.h</itemPath>
+          </logicalFolder>
+          <logicalFolder name="Geometry" displayName="Geometry" projectFiles="true">
+            <logicalFolder name="arch" displayName="arch" projectFiles="true">
+              <itemPath>CNNet/Eigen/src/Geometry/arch/Geometry_SSE.h</itemPath>
+            </logicalFolder>
+            <itemPath>CNNet/Eigen/src/Geometry/AlignedBox.h</itemPath>
+            <itemPath>CNNet/Eigen/src/Geometry/AngleAxis.h</itemPath>
+            <itemPath>CNNet/Eigen/src/Geometry/EulerAngles.h</itemPath>
+            <itemPath>CNNet/Eigen/src/Geometry/Homogeneous.h</itemPath>
+            <itemPath>CNNet/Eigen/src/Geometry/Hyperplane.h</itemPath>
+            <itemPath>CNNet/Eigen/src/Geometry/OrthoMethods.h</itemPath>
+            <itemPath>CNNet/Eigen/src/Geometry/ParametrizedLine.h</itemPath>
+            <itemPath>CNNet/Eigen/src/Geometry/Quaternion.h</itemPath>
+            <itemPath>CNNet/Eigen/src/Geometry/Rotation2D.h</itemPath>
+            <itemPath>CNNet/Eigen/src/Geometry/RotationBase.h</itemPath>
+            <itemPath>CNNet/Eigen/src/Geometry/Scaling.h</itemPath>
+            <itemPath>CNNet/Eigen/src/Geometry/Transform.h</itemPath>
+            <itemPath>CNNet/Eigen/src/Geometry/Translation.h</itemPath>
+            <itemPath>CNNet/Eigen/src/Geometry/Umeyama.h</itemPath>
+          </logicalFolder>
+          <logicalFolder name="Householder" displayName="Householder" projectFiles="true">
+            <itemPath>CNNet/Eigen/src/Householder/BlockHouseholder.h</itemPath>
+            <itemPath>CNNet/Eigen/src/Householder/Householder.h</itemPath>
+            <itemPath>CNNet/Eigen/src/Householder/HouseholderSequence.h</itemPath>
+          </logicalFolder>
+          <logicalFolder name="IterativeLinearSolvers"
+                         displayName="IterativeLinearSolvers"
+                         projectFiles="true">
+            <itemPath>CNNet/Eigen/src/IterativeLinearSolvers/BasicPreconditioners.h</itemPath>
+            <itemPath>CNNet/Eigen/src/IterativeLinearSolvers/BiCGSTAB.h</itemPath>
+            <itemPath>CNNet/Eigen/src/IterativeLinearSolvers/ConjugateGradient.h</itemPath>
+            <itemPath>CNNet/Eigen/src/IterativeLinearSolvers/IncompleteCholesky.h</itemPath>
+            <itemPath>CNNet/Eigen/src/IterativeLinearSolvers/IncompleteLUT.h</itemPath>
+            <itemPath>CNNet/Eigen/src/IterativeLinearSolvers/IterativeSolverBase.h</itemPath>
+            <itemPath>CNNet/Eigen/src/IterativeLinearSolvers/LeastSquareConjugateGradient.h</itemPath>
+            <itemPath>CNNet/Eigen/src/IterativeLinearSolvers/SolveWithGuess.h</itemPath>
+          </logicalFolder>
+          <logicalFolder name="Jacobi" displayName="Jacobi" projectFiles="true">
+            <itemPath>CNNet/Eigen/src/Jacobi/Jacobi.h</itemPath>
+          </logicalFolder>
+          <logicalFolder name="LU" displayName="LU" projectFiles="true">
+            <logicalFolder name="arch" displayName="arch" projectFiles="true">
+              <itemPath>CNNet/Eigen/src/LU/arch/Inverse_SSE.h</itemPath>
+            </logicalFolder>
+            <itemPath>CNNet/Eigen/src/LU/Determinant.h</itemPath>
+            <itemPath>CNNet/Eigen/src/LU/FullPivLU.h</itemPath>
+            <itemPath>CNNet/Eigen/src/LU/InverseImpl.h</itemPath>
+            <itemPath>CNNet/Eigen/src/LU/PartialPivLU.h</itemPath>
+            <itemPath>CNNet/Eigen/src/LU/PartialPivLU_LAPACKE.h</itemPath>
+          </logicalFolder>
+          <logicalFolder name="MetisSupport"
+                         displayName="MetisSupport"
+                         projectFiles="true">
+            <itemPath>CNNet/Eigen/src/MetisSupport/MetisSupport.h</itemPath>
+          </logicalFolder>
+          <logicalFolder name="misc" displayName="misc" projectFiles="true">
+            <itemPath>CNNet/Eigen/src/misc/Image.h</itemPath>
+            <itemPath>CNNet/Eigen/src/misc/Kernel.h</itemPath>
+            <itemPath>CNNet/Eigen/src/misc/RealSvd2x2.h</itemPath>
+            <itemPath>CNNet/Eigen/src/misc/blas.h</itemPath>
+            <itemPath>CNNet/Eigen/src/misc/lapack.h</itemPath>
+            <itemPath>CNNet/Eigen/src/misc/lapacke.h</itemPath>
+            <itemPath>CNNet/Eigen/src/misc/lapacke_mangling.h</itemPath>
+          </logicalFolder>
+          <logicalFolder name="OrderingMethods"
+                         displayName="OrderingMethods"
+                         projectFiles="true">
+            <itemPath>CNNet/Eigen/src/OrderingMethods/Amd.h</itemPath>
+            <itemPath>CNNet/Eigen/src/OrderingMethods/Eigen_Colamd.h</itemPath>
+            <itemPath>CNNet/Eigen/src/OrderingMethods/Ordering.h</itemPath>
+          </logicalFolder>
+          <logicalFolder name="PardisoSupport"
+                         displayName="PardisoSupport"
+                         projectFiles="true">
+            <itemPath>CNNet/Eigen/src/PardisoSupport/PardisoSupport.h</itemPath>
+          </logicalFolder>
+          <logicalFolder name="PaStiXSupport"
+                         displayName="PaStiXSupport"
+                         projectFiles="true">
+            <itemPath>CNNet/Eigen/src/PaStiXSupport/PaStiXSupport.h</itemPath>
+          </logicalFolder>
+          <logicalFolder name="plugins" displayName="plugins" projectFiles="true">
+            <itemPath>CNNet/Eigen/src/plugins/ArrayCwiseBinaryOps.h</itemPath>
+            <itemPath>CNNet/Eigen/src/plugins/ArrayCwiseUnaryOps.h</itemPath>
+            <itemPath>CNNet/Eigen/src/plugins/BlockMethods.h</itemPath>
+            <itemPath>CNNet/Eigen/src/plugins/CommonCwiseBinaryOps.h</itemPath>
+            <itemPath>CNNet/Eigen/src/plugins/CommonCwiseUnaryOps.h</itemPath>
+            <itemPath>CNNet/Eigen/src/plugins/MatrixCwiseBinaryOps.h</itemPath>
+            <itemPath>CNNet/Eigen/src/plugins/MatrixCwiseUnaryOps.h</itemPath>
+          </logicalFolder>
+          <logicalFolder name="QR" displayName="QR" projectFiles="true">
+            <itemPath>CNNet/Eigen/src/QR/ColPivHouseholderQR.h</itemPath>
+            <itemPath>CNNet/Eigen/src/QR/ColPivHouseholderQR_LAPACKE.h</itemPath>
+            <itemPath>CNNet/Eigen/src/QR/CompleteOrthogonalDecomposition.h</itemPath>
+            <itemPath>CNNet/Eigen/src/QR/FullPivHouseholderQR.h</itemPath>
+            <itemPath>CNNet/Eigen/src/QR/HouseholderQR.h</itemPath>
+            <itemPath>CNNet/Eigen/src/QR/HouseholderQR_LAPACKE.h</itemPath>
+          </logicalFolder>
+          <logicalFolder name="SparseCholesky"
+                         displayName="SparseCholesky"
+                         projectFiles="true">
+            <itemPath>CNNet/Eigen/src/SparseCholesky/SimplicialCholesky.h</itemPath>
+            <itemPath>CNNet/Eigen/src/SparseCholesky/SimplicialCholesky_impl.h</itemPath>
+          </logicalFolder>
+          <logicalFolder name="SparseCore" displayName="SparseCore" projectFiles="true">
+            <itemPath>CNNet/Eigen/src/SparseCore/AmbiVector.h</itemPath>
+            <itemPath>CNNet/Eigen/src/SparseCore/CompressedStorage.h</itemPath>
+            <itemPath>CNNet/Eigen/src/SparseCore/ConservativeSparseSparseProduct.h</itemPath>
+            <itemPath>CNNet/Eigen/src/SparseCore/MappedSparseMatrix.h</itemPath>
+            <itemPath>CNNet/Eigen/src/SparseCore/SparseAssign.h</itemPath>
+            <itemPath>CNNet/Eigen/src/SparseCore/SparseBlock.h</itemPath>
+            <itemPath>CNNet/Eigen/src/SparseCore/SparseColEtree.h</itemPath>
+            <itemPath>CNNet/Eigen/src/SparseCore/SparseCompressedBase.h</itemPath>
+            <itemPath>CNNet/Eigen/src/SparseCore/SparseCwiseBinaryOp.h</itemPath>
+            <itemPath>CNNet/Eigen/src/SparseCore/SparseCwiseUnaryOp.h</itemPath>
+            <itemPath>CNNet/Eigen/src/SparseCore/SparseDenseProduct.h</itemPath>
+            <itemPath>CNNet/Eigen/src/SparseCore/SparseDiagonalProduct.h</itemPath>
+            <itemPath>CNNet/Eigen/src/SparseCore/SparseDot.h</itemPath>
+            <itemPath>CNNet/Eigen/src/SparseCore/SparseFuzzy.h</itemPath>
+            <itemPath>CNNet/Eigen/src/SparseCore/SparseMap.h</itemPath>
+            <itemPath>CNNet/Eigen/src/SparseCore/SparseMatrix.h</itemPath>
+            <itemPath>CNNet/Eigen/src/SparseCore/SparseMatrixBase.h</itemPath>
+            <itemPath>CNNet/Eigen/src/SparseCore/SparsePermutation.h</itemPath>
+            <itemPath>CNNet/Eigen/src/SparseCore/SparseProduct.h</itemPath>
+            <itemPath>CNNet/Eigen/src/SparseCore/SparseRedux.h</itemPath>
+            <itemPath>CNNet/Eigen/src/SparseCore/SparseRef.h</itemPath>
+            <itemPath>CNNet/Eigen/src/SparseCore/SparseSelfAdjointView.h</itemPath>
+            <itemPath>CNNet/Eigen/src/SparseCore/SparseSolverBase.h</itemPath>
+            <itemPath>CNNet/Eigen/src/SparseCore/SparseSparseProductWithPruning.h</itemPath>
+            <itemPath>CNNet/Eigen/src/SparseCore/SparseTranspose.h</itemPath>
+            <itemPath>CNNet/Eigen/src/SparseCore/SparseTriangularView.h</itemPath>
+            <itemPath>CNNet/Eigen/src/SparseCore/SparseUtil.h</itemPath>
+            <itemPath>CNNet/Eigen/src/SparseCore/SparseVector.h</itemPath>
+            <itemPath>CNNet/Eigen/src/SparseCore/SparseView.h</itemPath>
+            <itemPath>CNNet/Eigen/src/SparseCore/TriangularSolver.h</itemPath>
+          </logicalFolder>
+          <logicalFolder name="SparseLU" displayName="SparseLU" projectFiles="true">
+            <itemPath>CNNet/Eigen/src/SparseLU/SparseLU.h</itemPath>
+            <itemPath>CNNet/Eigen/src/SparseLU/SparseLUImpl.h</itemPath>
+            <itemPath>CNNet/Eigen/src/SparseLU/SparseLU_Memory.h</itemPath>
+            <itemPath>CNNet/Eigen/src/SparseLU/SparseLU_Structs.h</itemPath>
+            <itemPath>CNNet/Eigen/src/SparseLU/SparseLU_SupernodalMatrix.h</itemPath>
+            <itemPath>CNNet/Eigen/src/SparseLU/SparseLU_Utils.h</itemPath>
+            <itemPath>CNNet/Eigen/src/SparseLU/SparseLU_column_bmod.h</itemPath>
+            <itemPath>CNNet/Eigen/src/SparseLU/SparseLU_column_dfs.h</itemPath>
+            <itemPath>CNNet/Eigen/src/SparseLU/SparseLU_copy_to_ucol.h</itemPath>
+            <itemPath>CNNet/Eigen/src/SparseLU/SparseLU_gemm_kernel.h</itemPath>
+            <itemPath>CNNet/Eigen/src/SparseLU/SparseLU_heap_relax_snode.h</itemPath>
+            <itemPath>CNNet/Eigen/src/SparseLU/SparseLU_kernel_bmod.h</itemPath>
+            <itemPath>CNNet/Eigen/src/SparseLU/SparseLU_panel_bmod.h</itemPath>
+            <itemPath>CNNet/Eigen/src/SparseLU/SparseLU_panel_dfs.h</itemPath>
+            <itemPath>CNNet/Eigen/src/SparseLU/SparseLU_pivotL.h</itemPath>
+            <itemPath>CNNet/Eigen/src/SparseLU/SparseLU_pruneL.h</itemPath>
+            <itemPath>CNNet/Eigen/src/SparseLU/SparseLU_relax_snode.h</itemPath>
+          </logicalFolder>
+          <logicalFolder name="SparseQR" displayName="SparseQR" projectFiles="true">
+            <itemPath>CNNet/Eigen/src/SparseQR/SparseQR.h</itemPath>
+          </logicalFolder>
+          <logicalFolder name="SPQRSupport" displayName="SPQRSupport" projectFiles="true">
+            <itemPath>CNNet/Eigen/src/SPQRSupport/SuiteSparseQRSupport.h</itemPath>
+          </logicalFolder>
+          <logicalFolder name="StlSupport" displayName="StlSupport" projectFiles="true">
+            <itemPath>CNNet/Eigen/src/StlSupport/StdDeque.h</itemPath>
+            <itemPath>CNNet/Eigen/src/StlSupport/StdList.h</itemPath>
+            <itemPath>CNNet/Eigen/src/StlSupport/StdVector.h</itemPath>
+            <itemPath>CNNet/Eigen/src/StlSupport/details.h</itemPath>
+          </logicalFolder>
+          <logicalFolder name="SuperLUSupport"
+                         displayName="SuperLUSupport"
+                         projectFiles="true">
+            <itemPath>CNNet/Eigen/src/SuperLUSupport/SuperLUSupport.h</itemPath>
+          </logicalFolder>
+          <logicalFolder name="SVD" displayName="SVD" projectFiles="true">
+            <itemPath>CNNet/Eigen/src/SVD/BDCSVD.h</itemPath>
+            <itemPath>CNNet/Eigen/src/SVD/JacobiSVD.h</itemPath>
+            <itemPath>CNNet/Eigen/src/SVD/JacobiSVD_LAPACKE.h</itemPath>
+            <itemPath>CNNet/Eigen/src/SVD/SVDBase.h</itemPath>
+            <itemPath>CNNet/Eigen/src/SVD/UpperBidiagonalization.h</itemPath>
+          </logicalFolder>
+          <logicalFolder name="UmfPackSupport"
+                         displayName="UmfPackSupport"
+                         projectFiles="true">
+            <itemPath>CNNet/Eigen/src/UmfPackSupport/UmfPackSupport.h</itemPath>
+          </logicalFolder>
+        </logicalFolder>
+        <itemPath>CNNet/Eigen/CMakeLists.txt</itemPath>
+        <itemPath>CNNet/Eigen/Cholesky</itemPath>
+        <itemPath>CNNet/Eigen/CholmodSupport</itemPath>
+        <itemPath>CNNet/Eigen/Core</itemPath>
+        <itemPath>CNNet/Eigen/Dense</itemPath>
+        <itemPath>CNNet/Eigen/Eigen</itemPath>
+        <itemPath>CNNet/Eigen/Eigenvalues</itemPath>
+        <itemPath>CNNet/Eigen/Geometry</itemPath>
+        <itemPath>CNNet/Eigen/Householder</itemPath>
+        <itemPath>CNNet/Eigen/IterativeLinearSolvers</itemPath>
+        <itemPath>CNNet/Eigen/Jacobi</itemPath>
+        <itemPath>CNNet/Eigen/LU</itemPath>
+        <itemPath>CNNet/Eigen/MetisSupport</itemPath>
+        <itemPath>CNNet/Eigen/OrderingMethods</itemPath>
+        <itemPath>CNNet/Eigen/PaStiXSupport</itemPath>
+        <itemPath>CNNet/Eigen/PardisoSupport</itemPath>
+        <itemPath>CNNet/Eigen/QR</itemPath>
+        <itemPath>CNNet/Eigen/QtAlignedMalloc</itemPath>
+        <itemPath>CNNet/Eigen/SPQRSupport</itemPath>
+        <itemPath>CNNet/Eigen/SVD</itemPath>
+        <itemPath>CNNet/Eigen/Sparse</itemPath>
+        <itemPath>CNNet/Eigen/SparseCholesky</itemPath>
+        <itemPath>CNNet/Eigen/SparseCore</itemPath>
+        <itemPath>CNNet/Eigen/SparseLU</itemPath>
+        <itemPath>CNNet/Eigen/SparseQR</itemPath>
+        <itemPath>CNNet/Eigen/StdDeque</itemPath>
+        <itemPath>CNNet/Eigen/StdList</itemPath>
+        <itemPath>CNNet/Eigen/StdVector</itemPath>
+        <itemPath>CNNet/Eigen/SuperLUSupport</itemPath>
+        <itemPath>CNNet/Eigen/UmfPackSupport</itemPath>
+      </logicalFolder>
+    </logicalFolder>
+    <logicalFolder name="SourceFiles"
+                   displayName="Source Files"
+                   projectFiles="true">
+      <itemPath>CNNet/Activation.cpp</itemPath>
+      <itemPath>CNNet/CNN.cpp</itemPath>
+      <itemPath>Conv.cpp</itemPath>
+      <itemPath>CNNet/ConvolutionLayer.cpp</itemPath>
+      <itemPath>LSTMnet/DataProcessor.cpp</itemPath>
+      <itemPath>CNNet/FCLayer.cpp</itemPath>
+      <itemPath>LSTMnet/FileProcessor.cpp</itemPath>
+      <itemPath>LSTMnet/LSTMNet.cpp</itemPath>
+      <itemPath>CNNet/PoolLayer.cpp</itemPath>
+    </logicalFolder>
+    <logicalFolder name="TestFiles"
+                   displayName="Test Files"
+                   projectFiles="false"
+                   kind="TEST_LOGICAL_FOLDER">
+    </logicalFolder>
+    <logicalFolder name="ExternalFiles"
+                   displayName="Important Files"
+                   projectFiles="false"
+                   kind="IMPORTANT_FILES_FOLDER">
+      <itemPath>Makefile</itemPath>
+    </logicalFolder>
+  </logicalFolder>
+  <projectmakefile>Makefile</projectmakefile>
+  <confs>
+    <conf name="Debug" type="2">
+      <toolsSet>
+        <compilerSet>default</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+        <cTool>
+          <standard>10</standard>
+        </cTool>
+        <ccTool>
+          <standard>11</standard>
+          <incDir>
+            <pElem>CNNet/Eigen</pElem>
+          </incDir>
+        </ccTool>
+      </compileType>
+      <item path="CNNet/Activation.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="CNNet/Activation.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/CNN.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="CNNet/CNN.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/ConvolutionLayer.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="CNNet/ConvolutionLayer.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/CMakeLists.txt" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/Cholesky" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/CholmodSupport" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/Core" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/Dense" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/Eigen" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/Eigenvalues" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/Geometry" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/Householder" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/IterativeLinearSolvers" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/Jacobi" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/LU" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/MetisSupport" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/OrderingMethods" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/PaStiXSupport" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/PardisoSupport" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/QR" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/QtAlignedMalloc" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/SPQRSupport" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/SVD" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/Sparse" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/SparseCholesky" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/SparseCore" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/SparseLU" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/SparseQR" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/StdDeque" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/StdList" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/StdVector" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/SuperLUSupport" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/UmfPackSupport" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Cholesky/LDLT.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Cholesky/LLT.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Cholesky/LLT_LAPACKE.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/CholmodSupport/CholmodSupport.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/Array.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/ArrayBase.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/ArrayWrapper.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/Assign.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/AssignEvaluator.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/Assign_MKL.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/BandMatrix.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/Block.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/BooleanRedux.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/CommaInitializer.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/ConditionEstimator.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/CoreEvaluators.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/CoreIterators.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/CwiseBinaryOp.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/CwiseNullaryOp.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/CwiseTernaryOp.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/CwiseUnaryOp.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/CwiseUnaryView.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/DenseBase.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/DenseCoeffsBase.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/DenseStorage.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/Diagonal.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/DiagonalMatrix.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/DiagonalProduct.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/Dot.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/EigenBase.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/ForceAlignedAccess.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/Fuzzy.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/GeneralProduct.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/GenericPacketMath.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/GlobalFunctions.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/IO.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/Inverse.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/Map.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/MapBase.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/MathFunctions.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/MathFunctionsImpl.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/Matrix.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/MatrixBase.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/NestByValue.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/NoAlias.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/NumTraits.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/PermutationMatrix.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/PlainObjectBase.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/Product.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/ProductEvaluators.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/Random.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/Redux.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/Ref.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/Replicate.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/ReturnByValue.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/Reverse.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/Select.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/SelfAdjointView.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/SelfCwiseBinaryOp.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/Solve.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/SolveTriangular.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/SolverBase.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/StableNorm.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/Stride.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/Swap.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/Transpose.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/Transpositions.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/TriangularMatrix.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/VectorBlock.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/VectorwiseOp.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/Visitor.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/arch/AVX/Complex.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/arch/AVX/MathFunctions.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/arch/AVX/PacketMath.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/arch/AVX/TypeCasting.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/arch/AVX512/MathFunctions.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/arch/AVX512/PacketMath.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/arch/AltiVec/Complex.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/arch/AltiVec/MathFunctions.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/arch/AltiVec/PacketMath.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/arch/CUDA/Complex.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/arch/CUDA/Half.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/arch/CUDA/MathFunctions.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/arch/CUDA/PacketMath.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/arch/CUDA/PacketMathHalf.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/arch/CUDA/TypeCasting.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/arch/Default/Settings.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/arch/NEON/Complex.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/arch/NEON/MathFunctions.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/arch/NEON/PacketMath.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/arch/SSE/Complex.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/arch/SSE/MathFunctions.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/arch/SSE/PacketMath.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/arch/SSE/TypeCasting.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/arch/ZVector/Complex.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/arch/ZVector/MathFunctions.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/arch/ZVector/PacketMath.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/functors/AssignmentFunctors.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/functors/BinaryFunctors.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/functors/NullaryFunctors.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/functors/StlFunctors.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/functors/TernaryFunctors.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/functors/UnaryFunctors.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/products/GeneralBlockPanelKernel.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/products/GeneralMatrixMatrix.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/products/GeneralMatrixMatrixTriangular.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/products/GeneralMatrixMatrixTriangular_BLAS.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/products/GeneralMatrixMatrix_BLAS.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/products/GeneralMatrixVector.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/products/GeneralMatrixVector_BLAS.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/products/Parallelizer.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/products/SelfadjointMatrixMatrix.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/products/SelfadjointMatrixMatrix_BLAS.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/products/SelfadjointMatrixVector.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/products/SelfadjointMatrixVector_BLAS.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/products/SelfadjointProduct.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/products/SelfadjointRank2Update.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/products/TriangularMatrixMatrix.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/products/TriangularMatrixMatrix_BLAS.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/products/TriangularMatrixVector.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/products/TriangularMatrixVector_BLAS.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/products/TriangularSolverMatrix.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/products/TriangularSolverMatrix_BLAS.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/products/TriangularSolverVector.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/util/BlasUtil.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/util/Constants.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/util/DisableStupidWarnings.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/util/ForwardDeclarations.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/util/MKL_support.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/util/Macros.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/util/Memory.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/util/Meta.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/util/NonMPL2.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/util/ReenableStupidWarnings.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/util/StaticAssert.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/util/XprHelper.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Eigenvalues/ComplexEigenSolver.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Eigenvalues/ComplexSchur.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Eigenvalues/ComplexSchur_LAPACKE.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Eigenvalues/EigenSolver.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Eigenvalues/GeneralizedEigenSolver.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Eigenvalues/GeneralizedSelfAdjointEigenSolver.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Eigenvalues/HessenbergDecomposition.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Eigenvalues/MatrixBaseEigenvalues.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Eigenvalues/RealQZ.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Eigenvalues/RealSchur.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Eigenvalues/RealSchur_LAPACKE.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Eigenvalues/SelfAdjointEigenSolver.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Eigenvalues/SelfAdjointEigenSolver_LAPACKE.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Eigenvalues/Tridiagonalization.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Geometry/AlignedBox.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Geometry/AngleAxis.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Geometry/EulerAngles.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Geometry/Homogeneous.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Geometry/Hyperplane.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Geometry/OrthoMethods.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Geometry/ParametrizedLine.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Geometry/Quaternion.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Geometry/Rotation2D.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Geometry/RotationBase.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Geometry/Scaling.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Geometry/Transform.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Geometry/Translation.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Geometry/Umeyama.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Geometry/arch/Geometry_SSE.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Householder/BlockHouseholder.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Householder/Householder.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Householder/HouseholderSequence.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/IterativeLinearSolvers/BasicPreconditioners.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/IterativeLinearSolvers/BiCGSTAB.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/IterativeLinearSolvers/ConjugateGradient.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/IterativeLinearSolvers/IncompleteCholesky.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/IterativeLinearSolvers/IncompleteLUT.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/IterativeLinearSolvers/IterativeSolverBase.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/IterativeLinearSolvers/LeastSquareConjugateGradient.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/IterativeLinearSolvers/SolveWithGuess.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Jacobi/Jacobi.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/LU/Determinant.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/LU/FullPivLU.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/LU/InverseImpl.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/LU/PartialPivLU.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/LU/PartialPivLU_LAPACKE.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/LU/arch/Inverse_SSE.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/MetisSupport/MetisSupport.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/OrderingMethods/Amd.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/OrderingMethods/Eigen_Colamd.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/OrderingMethods/Ordering.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/PaStiXSupport/PaStiXSupport.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/PardisoSupport/PardisoSupport.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/QR/ColPivHouseholderQR.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/QR/ColPivHouseholderQR_LAPACKE.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/QR/CompleteOrthogonalDecomposition.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/QR/FullPivHouseholderQR.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/QR/HouseholderQR.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/QR/HouseholderQR_LAPACKE.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/SPQRSupport/SuiteSparseQRSupport.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/SVD/BDCSVD.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/SVD/JacobiSVD.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/SVD/JacobiSVD_LAPACKE.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/SVD/SVDBase.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/SVD/UpperBidiagonalization.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/SparseCholesky/SimplicialCholesky.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/SparseCholesky/SimplicialCholesky_impl.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/SparseCore/AmbiVector.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/SparseCore/CompressedStorage.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/SparseCore/ConservativeSparseSparseProduct.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/SparseCore/MappedSparseMatrix.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/SparseCore/SparseAssign.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/SparseCore/SparseBlock.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/SparseCore/SparseColEtree.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/SparseCore/SparseCompressedBase.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/SparseCore/SparseCwiseBinaryOp.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/SparseCore/SparseCwiseUnaryOp.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/SparseCore/SparseDenseProduct.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/SparseCore/SparseDiagonalProduct.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/SparseCore/SparseDot.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/SparseCore/SparseFuzzy.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/SparseCore/SparseMap.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/SparseCore/SparseMatrix.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/SparseCore/SparseMatrixBase.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/SparseCore/SparsePermutation.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/SparseCore/SparseProduct.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/SparseCore/SparseRedux.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/SparseCore/SparseRef.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/SparseCore/SparseSelfAdjointView.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/SparseCore/SparseSolverBase.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/SparseCore/SparseSparseProductWithPruning.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/SparseCore/SparseTranspose.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/SparseCore/SparseTriangularView.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/SparseCore/SparseUtil.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/SparseCore/SparseVector.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/SparseCore/SparseView.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/SparseCore/TriangularSolver.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/SparseLU/SparseLU.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/SparseLU/SparseLUImpl.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/SparseLU/SparseLU_Memory.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/SparseLU/SparseLU_Structs.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/SparseLU/SparseLU_SupernodalMatrix.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/SparseLU/SparseLU_Utils.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/SparseLU/SparseLU_column_bmod.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/SparseLU/SparseLU_column_dfs.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/SparseLU/SparseLU_copy_to_ucol.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/SparseLU/SparseLU_gemm_kernel.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/SparseLU/SparseLU_heap_relax_snode.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/SparseLU/SparseLU_kernel_bmod.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/SparseLU/SparseLU_panel_bmod.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/SparseLU/SparseLU_panel_dfs.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/SparseLU/SparseLU_pivotL.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/SparseLU/SparseLU_pruneL.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/SparseLU/SparseLU_relax_snode.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/SparseQR/SparseQR.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/StlSupport/StdDeque.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/StlSupport/StdList.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/StlSupport/StdVector.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/StlSupport/details.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/SuperLUSupport/SuperLUSupport.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/UmfPackSupport/UmfPackSupport.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/misc/Image.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/misc/Kernel.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/misc/RealSvd2x2.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/misc/blas.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/misc/lapack.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/misc/lapacke.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/misc/lapacke_mangling.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/plugins/ArrayCwiseBinaryOps.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/plugins/ArrayCwiseUnaryOps.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/plugins/BlockMethods.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/plugins/CommonCwiseBinaryOps.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/plugins/CommonCwiseUnaryOps.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/plugins/MatrixCwiseBinaryOps.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/plugins/MatrixCwiseUnaryOps.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/FCLayer.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="CNNet/FCLayer.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/PoolLayer.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="CNNet/PoolLayer.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Conv.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Conv.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="LSTMCNnet.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="LSTMnet/DataProcessor.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="LSTMnet/DataProcessor.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="LSTMnet/FileProcessor.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="LSTMnet/FileProcessor.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="LSTMnet/LSTMNet.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="LSTMnet/LSTMNet.h" ex="false" tool="3" flavor2="0">
+      </item>
+    </conf>
+    <conf name="Release" type="2">
+      <toolsSet>
+        <compilerSet>default</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+        <cTool>
+          <developmentMode>5</developmentMode>
+        </cTool>
+        <ccTool>
+          <developmentMode>5</developmentMode>
+        </ccTool>
+        <fortranCompilerTool>
+          <developmentMode>5</developmentMode>
+        </fortranCompilerTool>
+        <asmTool>
+          <developmentMode>5</developmentMode>
+        </asmTool>
+      </compileType>
+      <item path="CNNet/Activation.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="CNNet/Activation.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/CNN.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="CNNet/CNN.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/ConvolutionLayer.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="CNNet/ConvolutionLayer.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/CMakeLists.txt" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/Cholesky" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/CholmodSupport" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/Core" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/Dense" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/Eigen" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/Eigenvalues" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/Geometry" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/Householder" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/IterativeLinearSolvers" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/Jacobi" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/LU" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/MetisSupport" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/OrderingMethods" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/PaStiXSupport" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/PardisoSupport" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/QR" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/QtAlignedMalloc" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/SPQRSupport" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/SVD" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/Sparse" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/SparseCholesky" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/SparseCore" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/SparseLU" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/SparseQR" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/StdDeque" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/StdList" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/StdVector" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/SuperLUSupport" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/UmfPackSupport" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Cholesky/LDLT.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Cholesky/LLT.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Cholesky/LLT_LAPACKE.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/CholmodSupport/CholmodSupport.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/Array.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/ArrayBase.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/ArrayWrapper.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/Assign.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/AssignEvaluator.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/Assign_MKL.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/BandMatrix.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/Block.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/BooleanRedux.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/CommaInitializer.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/ConditionEstimator.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/CoreEvaluators.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/CoreIterators.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/CwiseBinaryOp.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/CwiseNullaryOp.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/CwiseTernaryOp.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/CwiseUnaryOp.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/CwiseUnaryView.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/DenseBase.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/DenseCoeffsBase.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/DenseStorage.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/Diagonal.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/DiagonalMatrix.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/DiagonalProduct.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/Dot.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/EigenBase.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/ForceAlignedAccess.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/Fuzzy.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/GeneralProduct.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/GenericPacketMath.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/GlobalFunctions.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/IO.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/Inverse.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/Map.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/MapBase.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/MathFunctions.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/MathFunctionsImpl.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/Matrix.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/MatrixBase.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/NestByValue.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/NoAlias.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/NumTraits.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/PermutationMatrix.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/PlainObjectBase.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/Product.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/ProductEvaluators.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/Random.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/Redux.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/Ref.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/Replicate.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/ReturnByValue.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/Reverse.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/Select.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/SelfAdjointView.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/SelfCwiseBinaryOp.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/Solve.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/SolveTriangular.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/SolverBase.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/StableNorm.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/Stride.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/Swap.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/Transpose.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/Transpositions.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/TriangularMatrix.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/VectorBlock.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/VectorwiseOp.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/Visitor.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/arch/AVX/Complex.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/arch/AVX/MathFunctions.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/arch/AVX/PacketMath.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/arch/AVX/TypeCasting.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/arch/AVX512/MathFunctions.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/arch/AVX512/PacketMath.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/arch/AltiVec/Complex.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/arch/AltiVec/MathFunctions.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/arch/AltiVec/PacketMath.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/arch/CUDA/Complex.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/arch/CUDA/Half.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/arch/CUDA/MathFunctions.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/arch/CUDA/PacketMath.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/arch/CUDA/PacketMathHalf.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/arch/CUDA/TypeCasting.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/arch/Default/Settings.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/arch/NEON/Complex.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/arch/NEON/MathFunctions.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/arch/NEON/PacketMath.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/arch/SSE/Complex.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/arch/SSE/MathFunctions.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/arch/SSE/PacketMath.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/arch/SSE/TypeCasting.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/arch/ZVector/Complex.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/arch/ZVector/MathFunctions.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/arch/ZVector/PacketMath.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/functors/AssignmentFunctors.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/functors/BinaryFunctors.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/functors/NullaryFunctors.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/functors/StlFunctors.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/functors/TernaryFunctors.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/functors/UnaryFunctors.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/products/GeneralBlockPanelKernel.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/products/GeneralMatrixMatrix.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/products/GeneralMatrixMatrixTriangular.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/products/GeneralMatrixMatrixTriangular_BLAS.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/products/GeneralMatrixMatrix_BLAS.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/products/GeneralMatrixVector.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/products/GeneralMatrixVector_BLAS.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/products/Parallelizer.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/products/SelfadjointMatrixMatrix.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/products/SelfadjointMatrixMatrix_BLAS.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/products/SelfadjointMatrixVector.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/products/SelfadjointMatrixVector_BLAS.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/products/SelfadjointProduct.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/products/SelfadjointRank2Update.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/products/TriangularMatrixMatrix.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/products/TriangularMatrixMatrix_BLAS.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/products/TriangularMatrixVector.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/products/TriangularMatrixVector_BLAS.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/products/TriangularSolverMatrix.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/products/TriangularSolverMatrix_BLAS.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/products/TriangularSolverVector.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/util/BlasUtil.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/util/Constants.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/util/DisableStupidWarnings.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/util/ForwardDeclarations.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/util/MKL_support.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/util/Macros.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/util/Memory.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/util/Meta.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/util/NonMPL2.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/util/ReenableStupidWarnings.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/util/StaticAssert.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Core/util/XprHelper.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Eigenvalues/ComplexEigenSolver.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Eigenvalues/ComplexSchur.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Eigenvalues/ComplexSchur_LAPACKE.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Eigenvalues/EigenSolver.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Eigenvalues/GeneralizedEigenSolver.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Eigenvalues/GeneralizedSelfAdjointEigenSolver.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Eigenvalues/HessenbergDecomposition.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Eigenvalues/MatrixBaseEigenvalues.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Eigenvalues/RealQZ.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Eigenvalues/RealSchur.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Eigenvalues/RealSchur_LAPACKE.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Eigenvalues/SelfAdjointEigenSolver.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Eigenvalues/SelfAdjointEigenSolver_LAPACKE.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Eigenvalues/Tridiagonalization.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Geometry/AlignedBox.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Geometry/AngleAxis.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Geometry/EulerAngles.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Geometry/Homogeneous.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Geometry/Hyperplane.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Geometry/OrthoMethods.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Geometry/ParametrizedLine.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Geometry/Quaternion.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Geometry/Rotation2D.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Geometry/RotationBase.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Geometry/Scaling.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Geometry/Transform.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Geometry/Translation.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Geometry/Umeyama.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Geometry/arch/Geometry_SSE.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Householder/BlockHouseholder.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Householder/Householder.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Householder/HouseholderSequence.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/IterativeLinearSolvers/BasicPreconditioners.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/IterativeLinearSolvers/BiCGSTAB.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/IterativeLinearSolvers/ConjugateGradient.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/IterativeLinearSolvers/IncompleteCholesky.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/IterativeLinearSolvers/IncompleteLUT.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/IterativeLinearSolvers/IterativeSolverBase.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/IterativeLinearSolvers/LeastSquareConjugateGradient.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/IterativeLinearSolvers/SolveWithGuess.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/Jacobi/Jacobi.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/LU/Determinant.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/LU/FullPivLU.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/LU/InverseImpl.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/LU/PartialPivLU.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/LU/PartialPivLU_LAPACKE.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/LU/arch/Inverse_SSE.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/MetisSupport/MetisSupport.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/OrderingMethods/Amd.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/OrderingMethods/Eigen_Colamd.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/OrderingMethods/Ordering.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/PaStiXSupport/PaStiXSupport.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/PardisoSupport/PardisoSupport.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/QR/ColPivHouseholderQR.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/QR/ColPivHouseholderQR_LAPACKE.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/QR/CompleteOrthogonalDecomposition.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/QR/FullPivHouseholderQR.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/QR/HouseholderQR.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/QR/HouseholderQR_LAPACKE.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/SPQRSupport/SuiteSparseQRSupport.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/SVD/BDCSVD.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/SVD/JacobiSVD.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/SVD/JacobiSVD_LAPACKE.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/SVD/SVDBase.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/SVD/UpperBidiagonalization.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/SparseCholesky/SimplicialCholesky.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/SparseCholesky/SimplicialCholesky_impl.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/SparseCore/AmbiVector.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/SparseCore/CompressedStorage.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/SparseCore/ConservativeSparseSparseProduct.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/SparseCore/MappedSparseMatrix.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/SparseCore/SparseAssign.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/SparseCore/SparseBlock.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/SparseCore/SparseColEtree.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/SparseCore/SparseCompressedBase.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/SparseCore/SparseCwiseBinaryOp.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/SparseCore/SparseCwiseUnaryOp.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/SparseCore/SparseDenseProduct.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/SparseCore/SparseDiagonalProduct.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/SparseCore/SparseDot.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/SparseCore/SparseFuzzy.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/SparseCore/SparseMap.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/SparseCore/SparseMatrix.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/SparseCore/SparseMatrixBase.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/SparseCore/SparsePermutation.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/SparseCore/SparseProduct.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/SparseCore/SparseRedux.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/SparseCore/SparseRef.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/SparseCore/SparseSelfAdjointView.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/SparseCore/SparseSolverBase.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/SparseCore/SparseSparseProductWithPruning.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/SparseCore/SparseTranspose.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/SparseCore/SparseTriangularView.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/SparseCore/SparseUtil.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/SparseCore/SparseVector.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/SparseCore/SparseView.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/SparseCore/TriangularSolver.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/SparseLU/SparseLU.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/SparseLU/SparseLUImpl.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/SparseLU/SparseLU_Memory.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/SparseLU/SparseLU_Structs.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/SparseLU/SparseLU_SupernodalMatrix.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/SparseLU/SparseLU_Utils.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/SparseLU/SparseLU_column_bmod.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/SparseLU/SparseLU_column_dfs.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/SparseLU/SparseLU_copy_to_ucol.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/SparseLU/SparseLU_gemm_kernel.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/SparseLU/SparseLU_heap_relax_snode.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/SparseLU/SparseLU_kernel_bmod.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/SparseLU/SparseLU_panel_bmod.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/SparseLU/SparseLU_panel_dfs.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/SparseLU/SparseLU_pivotL.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/SparseLU/SparseLU_pruneL.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/SparseLU/SparseLU_relax_snode.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/SparseQR/SparseQR.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/StlSupport/StdDeque.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/StlSupport/StdList.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/StlSupport/StdVector.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/StlSupport/details.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/SuperLUSupport/SuperLUSupport.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/UmfPackSupport/UmfPackSupport.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/misc/Image.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/misc/Kernel.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/misc/RealSvd2x2.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/misc/blas.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/misc/lapack.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/misc/lapacke.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/misc/lapacke_mangling.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/plugins/ArrayCwiseBinaryOps.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/plugins/ArrayCwiseUnaryOps.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/plugins/BlockMethods.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/plugins/CommonCwiseBinaryOps.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/plugins/CommonCwiseUnaryOps.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/plugins/MatrixCwiseBinaryOps.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/Eigen/src/plugins/MatrixCwiseUnaryOps.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CNNet/FCLayer.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="CNNet/FCLayer.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CNNet/PoolLayer.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="CNNet/PoolLayer.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Conv.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Conv.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="LSTMCNnet.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="LSTMnet/DataProcessor.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="LSTMnet/DataProcessor.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="LSTMnet/FileProcessor.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="LSTMnet/FileProcessor.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="LSTMnet/LSTMNet.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="LSTMnet/LSTMNet.h" ex="false" tool="3" flavor2="0">
+      </item>
+    </conf>
+  </confs>
+</configurationDescriptor>
