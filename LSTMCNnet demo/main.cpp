@@ -285,10 +285,10 @@ int lstm() {
     
     int memCells = 5; // number of memory cells
     int trainDataSize = 300; // train data size
-    int inputVecSize = 100; // input vector size
-    int timeSteps = 100; // unfolded time steps
+    int inputVecSize = 60; // input vector size
+    int timeSteps = 60; // unfolded time steps
     float learningRate = 0.01;
-    int predictions = 3000; // prediction points
+    int predictions = 1300; // prediction points
     int iterations = 10; // training iterations with training data
     
     // Adding the time series in to a vector and preprocessing
@@ -335,7 +335,7 @@ int lstm() {
         /* 1*/ "dailyMinimumTemperaturesAnml.txt"
     };
     
-    std::string inFile = datasets[9];
+    std::string inFile = datasets[0];
     timeSeries2 = fileProc->read("datasets/univariate/input/"+inFile,1);
     timeSeries =  dataproc->process(timeSeries2,1);
     
@@ -375,7 +375,7 @@ int lstm() {
     double expected;
     double MSE = 0;
     
-    int numPredPoints = 1;
+    int numPredPoints = 3;
     double predPoints[numPredPoints];
     
     for (int j = 0; j < numPredPoints; j++) {
@@ -418,11 +418,13 @@ int lstm() {
         
         result = predPoints[((i+inputVecSize)%numPredPoints)]/(double)numPredPoints;
         predPoints[((i+inputVecSize)%numPredPoints)] = 0;
+        
+        // calculating the Mean Squared Error
+        expected = timeSeries.at(i+inputVecSize+1);
+        MSE += std::pow(expected-result,2);
+        
         result = dataproc->postProcess(result);
         out_file<<result<<"\n";
-        
-        expected = timeSeries2.at(i+inputVecSize+1);
-        MSE += std::pow(expected-result,2);
         out_file2<<timeSeries2.at(i+inputVecSize)<<"\n";
         
 //        inVec = dataproc->process(inVec,0);
