@@ -43,7 +43,8 @@ OBJECTFILES= \
 	${OBJECTDIR}/Conv.o \
 	${OBJECTDIR}/LSTMnet/DataProcessor.o \
 	${OBJECTDIR}/LSTMnet/FileProcessor.o \
-	${OBJECTDIR}/LSTMnet/LSTMNet.o
+	${OBJECTDIR}/LSTMnet/LSTMNet.o \
+	${OBJECTDIR}/PredictionModel.o
 
 
 # C Compiler Flags
@@ -114,6 +115,11 @@ ${OBJECTDIR}/LSTMnet/LSTMNet.o: LSTMnet/LSTMNet.cpp
 	${MKDIR} -p ${OBJECTDIR}/LSTMnet
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/LSTMnet/LSTMNet.o LSTMnet/LSTMNet.cpp
+
+${OBJECTDIR}/PredictionModel.o: PredictionModel.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/PredictionModel.o PredictionModel.cpp
 
 # Subprojects
 .build-subprojects:

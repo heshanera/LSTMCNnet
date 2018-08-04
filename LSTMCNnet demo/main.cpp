@@ -23,9 +23,13 @@ int conv2() {
     int targetsC = 1;
     double learningRate = 1;
     
-    std::string infiles[] = {"seaLevelPressure.txt","InternetTraff.txt","dailyMinimumTemperatures.txt"};
+    std::string infiles[] = {
+        "seaLevelPressure.txt",
+        "InternetTraff.txt",
+        "dailyMinimumTemperatures.txt"
+    };
     
-    std::string inFile = infiles[2];
+    std::string inFile = infiles[0];
     
     
     // network structure
@@ -673,9 +677,11 @@ int lstm2() {
  */
 int main(int argc, char** argv) {
     
+    // Uni
     //conv2();
     
-    lstm();
+    // Univariate LSTM predictions
+    //lstm();
     
     return 0;
 }
