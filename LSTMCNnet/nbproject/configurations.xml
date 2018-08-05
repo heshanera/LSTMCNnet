@@ -6,7 +6,6 @@
                    projectFiles="true">
       <itemPath>CNNet/Activation.hpp</itemPath>
       <itemPath>CNNet/CNN.hpp</itemPath>
-      <itemPath>Conv.h</itemPath>
       <itemPath>CNNet/ConvolutionLayer.hpp</itemPath>
       <itemPath>LSTMnet/DataProcessor.h</itemPath>
       <itemPath>CNNet/FCLayer.hpp</itemPath>
@@ -426,7 +425,6 @@
                    projectFiles="true">
       <itemPath>CNNet/Activation.cpp</itemPath>
       <itemPath>CNNet/CNN.cpp</itemPath>
-      <itemPath>Conv.cpp</itemPath>
       <itemPath>CNNet/ConvolutionLayer.cpp</itemPath>
       <itemPath>LSTMnet/DataProcessor.cpp</itemPath>
       <itemPath>CNNet/FCLayer.cpp</itemPath>
@@ -1730,10 +1728,6 @@
       </item>
       <item path="CNNet/PoolLayer.hpp" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="Conv.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="Conv.h" ex="false" tool="3" flavor2="0">
-      </item>
       <item path="LSTMCNnet.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="LSTMnet/DataProcessor.cpp" ex="false" tool="1" flavor2="0">
@@ -3036,10 +3030,6 @@
       <item path="CNNet/PoolLayer.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="CNNet/PoolLayer.hpp" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="Conv.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="Conv.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="LSTMCNnet.hpp" ex="false" tool="3" flavor2="0">
       </item>

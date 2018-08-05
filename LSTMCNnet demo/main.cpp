@@ -6,8 +6,9 @@
  */
 
 #include <iostream>
-#include <LSTMCNnet.hpp>
+#include <algorithm>
 #include <vector>
+#include <LSTMCNnet.hpp>
 
 /**
  * Time Series = { t, t+1, t+2, .... t+x} 
@@ -30,37 +31,25 @@ int conv2() {
     };
     
     std::string inFile = infiles[0];
-    
-    
+
     // network structure
-    
     std::tuple<int, int, int> dimensions = std::make_tuple(1,height,width);
     
     struct::ConvLayStruct CL1;
     CL1.filterSize = 2; // filter size: N x N
     CL1.filters = 1; // No of filters
     CL1.stride = 1;
-//    struct::ConvLayStruct CL2;
-//    CL2.filterSize = 4; // filter size: N x N
-//    CL2.filters = 3; // No of filters
-//    CL2.stride = 1;
     
     struct::PoolLayStruct PL1;
     PL1.poolH = 1; // pool size: N x N
     PL1.poolW = 2;
-//    struct::PoolLayStruct PL2;
-//    PL2.poolH = 2; // pool size: N x N
-//    PL2.poolW = 2;
     
     struct::FCLayStruct FCL1;
     FCL1.outputs = 60; // neurons in fully connected layer
-//    FCL1.classes = 4; // target classes
     struct::FCLayStruct FCL2;
     FCL2.outputs = 10; // neurons in fully connected layer
-//    FCL2.classes = 1; // target classes
     struct::FCLayStruct FCL3;
     FCL3.outputs = 1; // neurons in fully connected layer
-//    FCL3.classes = 1; // target classes
     
     char layerOrder[] = {/*'C','P',*/'C','P','F','F','F'};
     struct::ConvLayStruct CLs[] = {CL1/*,CL2*/};
@@ -87,8 +76,9 @@ int conv2() {
     FileProcessor fp;
     DataProcessor dp;
     std::vector<double> timeSeries;
-    timeSeries = fp.read("datasets/univariate/input/"+inFile,1);
-    timeSeries =  dp.process(timeSeries,1);
+    std::vector<double> timeSeries2;
+    timeSeries2 = fp.read("datasets/univariate/input/"+inFile,1);
+    timeSeries =  dp.process(timeSeries2,1);
         
     for (int i = 0; i < inputSize; i++) {
         // inputs
@@ -119,30 +109,112 @@ int conv2() {
     Eigen::MatrixXd prediction;
     // Open the file to write the time series predictions
     std::ofstream out_file;
-    out_file.open("datasets/univariate/predictions/"+inFile,std::ofstream::out | std::ofstream::trunc);
+    out_file.open("datasets/univariate/predictions/CNN/predict_"+inFile,std::ofstream::out | std::ofstream::trunc);
+    std::ofstream out_file2;
+    out_file2.open("datasets/univariate/predictions/CNN/expect_"+inFile,std::ofstream::out | std::ofstream::trunc);
+    
     Eigen::MatrixXd tstMatArr[1];
     double errorSq = 0, MSE;
     double expected;
     double val;
-    int predSize = 3000;//timeSeries.size() - matSize; // training size 500 points
-    for (int i = 0; i < predSize; i++) {
+    int predSize = 1000;//timeSeries.size() - matSize; // training size 500 points
+    
+    std::vector<double> inVec;
+    int inputVecSize = height*width;
+    
+    int numPredPoints = 3;
+    double predPoints[numPredPoints];
+    
+    for (int j = 0; j < numPredPoints; j++) {
+        predPoints[j] = 0;
+    }
+
+    // max and min training values
+    double trainMax = *std::max_element(timeSeries.begin(), timeSeries.begin()+(inputSize+(width*height)));
+    double trainMin = *std::min_element(timeSeries.begin(), timeSeries.begin()+(inputSize+(width*height)));
+    // max and min predicted values
+    double predictMax = std::numeric_limits<double>::min();
+    double predictMin = std::numeric_limits<double>::max();
+    
+    for (int i = 0; i < inputSize; i++) {
+        inVec.clear();
+        for (int j = 0; j < inputVecSize; j++) {
+            inVec.push_back(timeSeries2.at(i+j));
+        }
+        inVec = dp.process(inVec,0);
+        
         tstMatArr[0] = Eigen::MatrixXd::Zero(height,width);
         for (int a = 0; a < height; a++) {
             for (int b = 0; b < width; b++) {
-                tstMatArr[0](a,b) = timeSeries.at(i + ( a * width ) + b);
+                tstMatArr[0](a,b) = inVec.at(( a * width ) + b);
+            }
+        }
+
+        for (int j = 0; j < numPredPoints; j++) {      
+            prediction = cn.predict(tstMatArr);
+            inVec = std::vector<double>(inVec.begin(), inVec.begin()+inputVecSize-1);
+            inVec.push_back(prediction(0,0));
+            for (int a = 0; a < height; a++) {
+                for (int b = 0; b < width; b++) {
+                    tstMatArr[0](a,b) = inVec.at(( a * width ) + b);
+                }
+            }
+            predPoints[((i+inputVecSize+j)%numPredPoints)] += prediction(0,0);     
+        }
+        
+        if (i >= numPredPoints-1) {
+            prediction(0,0) = predPoints[((i+inputVecSize)%numPredPoints)]/(double)numPredPoints;
+            if (prediction(0,0) > predictMax) predictMax = prediction(0,0);
+            if (prediction(0,0) < predictMin) predictMin = prediction(0,0);
+        }
+        predPoints[((i+inputVecSize)%numPredPoints)] = 0;
+    }
+    
+    for (int i = inputSize; i < predSize; i++) {
+
+        inVec.clear();
+        for (int j = 0; j < inputVecSize; j++) {
+            inVec.push_back(timeSeries2.at(i+j));
+        }
+        inVec = dp.process(inVec,0);
+//        trainMax = *std::max_element(inVec.begin(), inVec.end());
+//        trainMin = *std::min_element(inVec.begin(), inVec.end());
+        
+        tstMatArr[0] = Eigen::MatrixXd::Zero(height,width);
+        for (int a = 0; a < height; a++) {
+            for (int b = 0; b < width; b++) {
+                tstMatArr[0](a,b) = inVec.at(( a * width ) + b);
             }
         }
         
-        prediction = cn.predict(tstMatArr);
-        std::cout<<prediction<<"\n"; 
-        expected = timeSeries.at(i + (width*height));
-        for (int i = 0; i < targetsC; i++) {
-            val = prediction(i,0);
-            errorSq += pow(val - expected,2);
-            out_file<<val<<"\n"; 
+//        prediction = cn.predict(tstMatArr);
+        for (int j = 0; j < numPredPoints; j++) {      
+            prediction = cn.predict(tstMatArr);
+            inVec = std::vector<double>(inVec.begin()+1, inVec.begin()+inputVecSize);
+            inVec.push_back(prediction(0,0));
+            for (int a = 0; a < height; a++) {
+                for (int b = 0; b < width; b++) {
+                    tstMatArr[0](a,b) = inVec.at(( a * width ) + b);
+                }
+            }
+            predPoints[((i+inputVecSize+j)%numPredPoints)] += prediction(0,0);     
         }
+        
+        prediction(0,0) = predPoints[((i+inputVecSize)%numPredPoints)]/(double)numPredPoints;
+        predPoints[((i+inputVecSize)%numPredPoints)] = 0;
+        
+        //std::cout<<prediction(0,0)<<"\n"; 
+        expected = timeSeries.at(i + (width*height));
+        val = prediction(0,0);
+        errorSq += pow(val - expected,2);
+        
+        // post process
+        val = (val - predictMin)*((trainMax - trainMin)/(predictMax - predictMin)) + trainMin;
+        
+        out_file<<dp.postProcess(val)<<"\n";
+        out_file2<<timeSeries2.at(i+inputVecSize)<<"\n";
     }
-    MSE = errorSq/predSize;
+    MSE = errorSq/(predSize-inputSize);
     std::cout<<"\nMean Squared Error: "<<MSE<<"\n\n";
     
     return 0;
@@ -415,7 +487,7 @@ int lstm() {
         input[0] = inVec;
         for (int j = 0; j < numPredPoints; j++) {          
             result = lstm.predict(input); 
-            input[0] = std::vector<double>(inVec.begin(), inVec.begin()+inputVecSize-2);
+            input[0] = std::vector<double>(inVec.begin()+1, inVec.begin()+inputVecSize);
             input[0].push_back(result);
             predPoints[((i+inputVecSize+j)%numPredPoints)] += result;     
         }
@@ -678,7 +750,7 @@ int lstm2() {
 int main(int argc, char** argv) {
     
     // Uni
-    //conv2();
+    conv2();
     
     // Univariate LSTM predictions
     //lstm();

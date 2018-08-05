@@ -40,7 +40,6 @@ OBJECTFILES= \
 	${OBJECTDIR}/CNNet/ConvolutionLayer.o \
 	${OBJECTDIR}/CNNet/FCLayer.o \
 	${OBJECTDIR}/CNNet/PoolLayer.o \
-	${OBJECTDIR}/Conv.o \
 	${OBJECTDIR}/LSTMnet/DataProcessor.o \
 	${OBJECTDIR}/LSTMnet/FileProcessor.o \
 	${OBJECTDIR}/LSTMnet/LSTMNet.o \
@@ -95,11 +94,6 @@ ${OBJECTDIR}/CNNet/PoolLayer.o: CNNet/PoolLayer.cpp
 	${MKDIR} -p ${OBJECTDIR}/CNNet
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -ICNNet/Eigen -std=c++14 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/CNNet/PoolLayer.o CNNet/PoolLayer.cpp
-
-${OBJECTDIR}/Conv.o: Conv.cpp
-	${MKDIR} -p ${OBJECTDIR}
-	${RM} "$@.d"
-	$(COMPILE.cc) -g -ICNNet/Eigen -std=c++14 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Conv.o Conv.cpp
 
 ${OBJECTDIR}/LSTMnet/DataProcessor.o: LSTMnet/DataProcessor.cpp
 	${MKDIR} -p ${OBJECTDIR}/LSTMnet

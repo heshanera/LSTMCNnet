@@ -7,12 +7,9 @@
 
 #include "PredictionModel.hpp"
 
-PredictionModel::PredictionModel() {
-}
+PredictionModel::PredictionModel() { }
 
-PredictionModel::PredictionModel(const PredictionModel& orig) {
-}
+PredictionModel::PredictionModel(const PredictionModel& orig) { }
 
-PredictionModel::~PredictionModel() {
-}
+PredictionModel::~PredictionModel() { }
 

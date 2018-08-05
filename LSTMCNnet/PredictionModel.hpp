@@ -8,6 +8,8 @@
 #ifndef PREDICTIONMODEL_HPP
 #define PREDICTIONMODEL_HPP
 
+#include <iostream>
+
 class PredictionModel {
 public:
     PredictionModel();
