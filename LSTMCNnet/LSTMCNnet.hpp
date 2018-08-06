@@ -8,11 +8,7 @@
 #ifndef LSTMCNNET_HPP
 #define LSTMCNNET_HPP
 
-#include "CNNet/CNN.hpp"
-#include "LSTMnet/LSTMNet.h"
-#include "LSTMnet/DataProcessor.h"
-#include "LSTMnet/FileProcessor.h"
-
+#include "PredictionModel.hpp"
 
 #endif /* LSTMCNNET_HPP */
 

@@ -1,7 +1,7 @@
 build/Debug/GNU-Linux/main.o: main.cpp ../LSTMCNnet/LSTMCNnet.hpp \
- ../LSTMCNnet/CNNet/CNN.hpp ../LSTMCNnet/CNNet/ConvolutionLayer.hpp \
- ../LSTMCNnet/CNNet/Eigen/Eigen ../LSTMCNnet/CNNet/Eigen/Dense \
- ../LSTMCNnet/CNNet/Eigen/Core \
+ ../LSTMCNnet/PredictionModel.hpp ../LSTMCNnet/CNNet/CNN.hpp \
+ ../LSTMCNnet/CNNet/ConvolutionLayer.hpp ../LSTMCNnet/CNNet/Eigen/Eigen \
+ ../LSTMCNnet/CNNet/Eigen/Dense ../LSTMCNnet/CNNet/Eigen/Core \
  ../LSTMCNnet/CNNet/Eigen/src/Core/util/DisableStupidWarnings.h \
  ../LSTMCNnet/CNNet/Eigen/src/Core/util/Macros.h \
  ../LSTMCNnet/CNNet/Eigen/src/Core/util/MKL_support.h \
@@ -252,6 +252,8 @@ build/Debug/GNU-Linux/main.o: main.cpp ../LSTMCNnet/LSTMCNnet.hpp \
  ../LSTMCNnet/LSTMnet/FileProcessor.h
 
 ../LSTMCNnet/LSTMCNnet.hpp:
+
+../LSTMCNnet/PredictionModel.hpp:
 
 ../LSTMCNnet/CNNet/CNN.hpp:
 

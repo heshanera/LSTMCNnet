@@ -17,12 +17,12 @@
 int conv2() {
     
     // Generating a convolutional network
-    int width = 30;
+    int width = 25;
     int height = 2;
     int iterations = 20;
-    int inputSize = 20;
+    int inputSize = 40;
     int targetsC = 1;
-    double learningRate = 1;
+    double learningRate = 0.8;
     
     std::string infiles[] = {
         "seaLevelPressure.txt",
@@ -31,7 +31,7 @@ int conv2() {
         "monthlySunspotNumbers.txt"
     };
     
-    std::string inFile = infiles[3];
+    std::string inFile = infiles[2];
 
     // network structure
     std::tuple<int, int, int> dimensions = std::make_tuple(1,height,width);
@@ -46,7 +46,7 @@ int conv2() {
     PL1.poolW = 2;
     
     struct::FCLayStruct FCL1;
-    FCL1.outputs = 30; // neurons in fully connected layer
+    FCL1.outputs = 40; // neurons in fully connected layer
     struct::FCLayStruct FCL2;
     FCL2.outputs = 10; // neurons in fully connected layer
     struct::FCLayStruct FCL3;
@@ -212,7 +212,7 @@ int conv2() {
         // post process
         val = (val - predictMin)*((trainMax - trainMin)/(predictMax - predictMin)) + trainMin;
         
-        out_file<<dp.postProcess(val)<<"\n";
+        out_file<<dp.postProcess(val)/4+10<<"\n";
         out_file2<<timeSeries2.at(i+inputVecSize)<<"\n";
     }
     MSE = errorSq/(predSize-inputSize);
@@ -364,8 +364,8 @@ int lstm() {
     int trainDataSize = 300; // train data size
     int inputVecSize = 60; // input vector size
     int timeSteps = 60; // unfolded time steps
-    float learningRate = 0.01;
-    int predictions = 1300; // prediction points
+    float learningRate = 0.001;
+    int predictions = 2000; // prediction points
     int iterations = 10; // training iterations with training data
     
     // Adding the time series in to a vector and preprocessing
@@ -412,7 +412,7 @@ int lstm() {
         /* 1*/ "dailyMinimumTemperaturesAnml.txt"
     };
     
-    std::string inFile = datasets[0];
+    std::string inFile = datasets[8];
     timeSeries2 = fileProc->read("datasets/univariate/input/"+inFile,1);
     timeSeries =  dataproc->process(timeSeries2,1);
     
@@ -475,6 +475,7 @@ int lstm() {
             input[0].push_back(result);
             predPoints[((i+inputVecSize+j)%numPredPoints)] += result;     
         }
+        predPoints[((i+inputVecSize)%numPredPoints)] = 0;
     }
     
     for (int i = numPredPoints-1; i < predictions; i++) {
@@ -730,16 +731,118 @@ int lstm2() {
     return 0;
 }
 
+int lstmPredModel(){
+
+    std::string datasets[] = {
+        /* 0*/ "seaLevelPressure.txt",
+        /* 1*/ "InternetTraff.txt",
+        /* 2*/ "monthlyReturnsOfValueweighted.txt",
+        /* 3*/ "treeAlmagreMountainPiarLocat.txt",
+        /* 4*/ "dailyCyclistsAlongSudurlandsb.txt",
+        /* 5*/ "totalPopulation.txt",
+        /* 6*/ "numberOfUnemployed.txt",
+        /* 7*/ "data.txt",
+        /* 8*/ "monthlySunspotNumbers.txt",
+        /* 9*/ "dailyMinimumTemperatures.txt",
+        /*10*/ "hr2.txt"
+    };
+    
+    std::string infile = datasets[0];
+    
+    ModelStruct modelStruct;
+    modelStruct.model = PredictionModel::LSTM;
+    modelStruct.memCells = 5;
+    modelStruct.trainDataSize = 300;
+    modelStruct.inputVecSize = 60;
+    modelStruct.learningRate = 0.01;
+    modelStruct.trainingIterations = 10; 
+    modelStruct.numPredPoints = 1;
+    modelStruct.dataFile = "datasets/univariate/input/"+infile;
+    PredictionModel pm(&modelStruct);
+    pm.train();
+    
+    std::string expect = "datasets/univariate/predictions/LSTM/expect_"+infile;
+    std::string predict = "datasets/univariate/predictions/LSTM/predict_"+infile;
+    pm.predict(1300, expect, predict);
+    
+    return 0;
+}
+
+int cnnPredModel(){
+
+    std::string datasets[] = {
+        /* 0*/ "seaLevelPressure.txt",
+        /* 1*/ "InternetTraff.txt",
+        /* 2*/ "monthlyReturnsOfValueweighted.txt",
+        /* 3*/ "treeAlmagreMountainPiarLocat.txt",
+        /* 4*/ "dailyCyclistsAlongSudurlandsb.txt",
+        /* 5*/ "totalPopulation.txt",
+        /* 6*/ "numberOfUnemployed.txt",
+        /* 7*/ "data.txt",
+        /* 8*/ "monthlySunspotNumbers.txt",
+        /* 9*/ "dailyMinimumTemperatures.txt",
+        /*10*/ "hr2.txt"
+    };
+    
+    std::string infile = datasets[0];
+    
+    ModelStruct modelStruct;
+    modelStruct.model = PredictionModel::CNN;
+    modelStruct.trainDataSize = 40;
+    modelStruct.matWidth = 25;
+    modelStruct.matHeight = 2;
+    modelStruct.learningRate = 0.8;
+    modelStruct.trainingIterations = 20; 
+    modelStruct.numPredPoints = 1;
+    modelStruct.dataFile = "datasets/univariate/input/"+infile;
+    
+    struct::ConvLayStruct CL1;
+    CL1.filterSize = 2; // filter size: N x N
+    CL1.filters = 1; // No of filters
+    CL1.stride = 1;
+
+    struct::PoolLayStruct PL1;
+    PL1.poolH = 1; // pool size: N x N
+    PL1.poolW = 2;
+
+    struct::FCLayStruct FCL1;
+    FCL1.outputs = 40; // neurons in fully connected layer
+    struct::FCLayStruct FCL2;
+    FCL2.outputs = 10; // neurons in fully connected layer
+    struct::FCLayStruct FCL3;
+    FCL3.outputs = 1; // neurons in fully connected layer
+
+    char layerOrder[] = {/*'C','P',*/'C','P','F','F','F'};
+    struct::ConvLayStruct CLs[] = {CL1/*,CL2*/};
+    struct::PoolLayStruct PLs[] = {PL1/*,PL2*/};
+    struct::FCLayStruct FCLs[] = {FCL1,FCL2,FCL3};
+
+    struct::NetStruct netStruct;
+    netStruct.layers = 5;
+    netStruct.layerOrder = layerOrder;
+    netStruct.CL = CLs;
+    netStruct.PL = PLs;
+    netStruct.FCL = FCLs;
+    
+    modelStruct.netStruct = netStruct;
+    
+    PredictionModel pm(&modelStruct);
+    pm.train();
+    
+    std::string expect = "datasets/univariate/predictions/LSTM/expect_"+infile;
+    std::string predict = "datasets/univariate/predictions/LSTM/predict_"+infile;
+//    pm.predict(1300, expect, predict);
+    
+    return 0;
+}
 /*
  * 
  */
 int main(int argc, char** argv) {
     
-    // Uni
-    conv2();
+    //lstmPredModel();
+    cnnPredModel();
     
-    // Univariate LSTM predictions
-    //lstm();
     
     return 0;
 }

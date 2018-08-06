@@ -21,6 +21,7 @@
 
 class LSTMNet {
 public:
+    LSTMNet();
     LSTMNet(int memCells,int inputVecSize);
     LSTMNet(const LSTMNet& orig);
     virtual ~LSTMNet();
