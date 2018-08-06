@@ -17,7 +17,7 @@
 int conv2() {
     
     // Generating a convolutional network
-    int width = 20;
+    int width = 30;
     int height = 2;
     int iterations = 20;
     int inputSize = 20;
@@ -27,10 +27,11 @@ int conv2() {
     std::string infiles[] = {
         "seaLevelPressure.txt",
         "InternetTraff.txt",
-        "dailyMinimumTemperatures.txt"
+        "dailyMinimumTemperatures.txt",
+        "monthlySunspotNumbers.txt"
     };
     
-    std::string inFile = infiles[0];
+    std::string inFile = infiles[3];
 
     // network structure
     std::tuple<int, int, int> dimensions = std::make_tuple(1,height,width);
@@ -45,7 +46,7 @@ int conv2() {
     PL1.poolW = 2;
     
     struct::FCLayStruct FCL1;
-    FCL1.outputs = 60; // neurons in fully connected layer
+    FCL1.outputs = 30; // neurons in fully connected layer
     struct::FCLayStruct FCL2;
     FCL2.outputs = 10; // neurons in fully connected layer
     struct::FCLayStruct FCL3;
@@ -117,7 +118,7 @@ int conv2() {
     double errorSq = 0, MSE;
     double expected;
     double val;
-    int predSize = 1000;//timeSeries.size() - matSize; // training size 500 points
+    int predSize = 2000;//timeSeries.size() - matSize; // training size 500 points
     
     std::vector<double> inVec;
     int inputVecSize = height*width;
@@ -503,21 +504,6 @@ int lstm() {
         out_file<<result<<"\n";
         out_file2<<timeSeries2.at(i+inputVecSize)<<"\n";
         
-//        inVec = dataproc->process(inVec,0);
-//        input[0] = inVec;
-        
-//        result = lstm.predict(input);
-//        std::cout<<std::endl<<"result: "<<result<<std::endl;
-        
-//        result = dataproc->postProcess(result);
-//        expected = timeSeries2.at(i+inputVecSize+1);
-//        MSE += std::pow(expected-result,2);
-        
-//        result = dataproc->postProcess(result);
-//        out_file<<result<<"\n";
-//        std::cout<<"result processed: "<<result<<std::endl<<std::endl;
-        
-//        out_file2<<timeSeries2.at(i+inputVecSize)<<"\n";
     }
   
     out_file.close();
