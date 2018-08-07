@@ -151,7 +151,7 @@ int CNN::backprop(Eigen::MatrixXd * input, Eigen::MatrixXd label) {
 //    std::cout<<forwardOut<<"\n";
 //    std::cout<<label<<"\n";
 //    std::cout<<outDeriv<<"\n";    
-    std::cout<<delta<<"\n\n";
+//    std::cout<<delta<<"\n\n";
     
     weights = netLayers.FCL[netLayers.numFCL-1].weights;
     output = netLayers.FCL[netLayers.numFCL-1].output;
@@ -574,7 +574,7 @@ int CNN::train(
             backprop(inputs[i],labels[i]);
         }    
     }
-    std::cout<<bpError<<"\n";
+//    std::cout<<bpError<<"\n";
     return 0;
 }
 

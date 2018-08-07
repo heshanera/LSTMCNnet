@@ -18,7 +18,7 @@ class ModelStruct;
 
 class PredictionModel {
 public:
-    enum Model { LSTM, CNN, LSTMCNN, CNNLSTM, LSTMCNNFC}; 
+    enum Model { LSTM, DNN, LSTMDNN, DNNLSTM, LSTMDNNFC}; 
 public:
     PredictionModel(ModelStruct * ModelStruct);
     virtual ~PredictionModel();
@@ -32,6 +32,7 @@ private:
     std::vector<double> timeSeries2;
 private:
     LSTMNet * lstm;
+    CNN * cnn;
 
 };
 
