@@ -31,6 +31,8 @@ private:
     std::vector<double> timeSeries;
     std::vector<double> timeSeries2;
 private:
+    int trainLSTM();
+    int trainCNN();
     LSTMNet * lstm;
     CNN * cnn;
 
@@ -41,7 +43,7 @@ public:
     PredictionModel::Model model; // model type
     int trainingIterations; // training iterations with training data
     int trainDataSize; // train data size
-    float learningRate; //learning rate
+    float learningRate; // learning rate
     // LSTM
     int memCells; // number of memory cells
     int inputVecSize; // input vector size

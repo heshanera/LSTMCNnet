@@ -758,7 +758,7 @@ int lstmPredModel(){
     modelStruct.trainingIterations = 10; 
     modelStruct.numPredPoints = 1;
     modelStruct.dataFile = "datasets/univariate/input/"+infile;
-    PredictionModel pm(&modelStruct);
+    LSTMPredictionModel pm(&modelStruct);
     pm.train();
     
     std::string expect = "datasets/univariate/predictions/LSTM/expect_"+infile;
@@ -787,7 +787,6 @@ int cnnPredModel(){
     std::string infile = datasets[0];
     
     ModelStruct modelStruct;
-    modelStruct.model = PredictionModel::DNN;
     modelStruct.trainDataSize = 20;
     modelStruct.matWidth = 20;
     modelStruct.matHeight = 2;
@@ -827,7 +826,7 @@ int cnnPredModel(){
     
 //    modelStruct.netStruct = netStruct;
     
-    PredictionModel pm(&modelStruct);
+    CNNPredictionModel pm(&modelStruct);
     pm.train();
     
     std::string expect = "datasets/univariate/predictions/CNN/expect_"+infile;
@@ -837,7 +836,7 @@ int cnnPredModel(){
     return 0;
 }
 
-int lstmdnnfc(){
+int lstmdnnfcPredModel(){
 
     std::string datasets[] = {
         /* 0*/ "seaLevelPressure.txt",
@@ -856,15 +855,19 @@ int lstmdnnfc(){
     std::string infile = datasets[0];
     
     ModelStruct modelStruct;
-    modelStruct.model = PredictionModel::DNN;
-    modelStruct.trainDataSize = 20;
+    modelStruct.model = PredictionModel::LSTMDNNFC;
+    modelStruct.trainDataSize = 300;
+    modelStruct.trainingIterations = 20; 
+    modelStruct.learningRate = 0.1;
+    modelStruct.numPredPoints = 1;
+    modelStruct.dataFile = "datasets/univariate/input/"+infile;
+    // LSTM
+    modelStruct.memCells = 5;
+    modelStruct.inputVecSize = 60;
+    // CNN
     modelStruct.matWidth = 20;
     modelStruct.matHeight = 2;
-    modelStruct.trainingIterations = 20; 
-    modelStruct.learningRate = 1;
-    modelStruct.numPredPoints = 1;
     modelStruct.targetC = 1;
-    modelStruct.dataFile = "datasets/univariate/input/"+infile;
     
     struct::ConvLayStruct CL1;
     CL1.filterSize = 2; // filter size: N x N
@@ -894,8 +897,6 @@ int lstmdnnfc(){
     modelStruct.netStruct.PL = PLs;
     modelStruct.netStruct.FCL = FCLs;
     
-//    modelStruct.netStruct = netStruct;
-    
     PredictionModel pm(&modelStruct);
     pm.train();
     
@@ -913,8 +914,8 @@ int lstmdnnfc(){
 int main(int argc, char** argv) {
     
     //lstmPredModel();
-    //cnnPredModel();
-    lstmdnnfc();
+    cnnPredModel();
+    //lstmdnnfcPredModel();
     
     return 0;
 }

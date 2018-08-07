@@ -35,11 +35,13 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
+	${OBJECTDIR}/CNNPredictionModel.o \
 	${OBJECTDIR}/CNNet/Activation.o \
 	${OBJECTDIR}/CNNet/CNN.o \
 	${OBJECTDIR}/CNNet/ConvolutionLayer.o \
 	${OBJECTDIR}/CNNet/FCLayer.o \
 	${OBJECTDIR}/CNNet/PoolLayer.o \
+	${OBJECTDIR}/LSTMPredictionModel.o \
 	${OBJECTDIR}/LSTMnet/DataProcessor.o \
 	${OBJECTDIR}/LSTMnet/FileProcessor.o \
 	${OBJECTDIR}/LSTMnet/LSTMNet.o \
@@ -70,6 +72,11 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libLSTMCNnet.${CND_DLIB_EXT}: ${OBJEC
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libLSTMCNnet.${CND_DLIB_EXT} ${OBJECTFILES} ${LDLIBSOPTIONS} -shared -fPIC
 
+${OBJECTDIR}/CNNPredictionModel.o: CNNPredictionModel.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/CNNPredictionModel.o CNNPredictionModel.cpp
+
 ${OBJECTDIR}/CNNet/Activation.o: CNNet/Activation.cpp
 	${MKDIR} -p ${OBJECTDIR}/CNNet
 	${RM} "$@.d"
@@ -94,6 +101,11 @@ ${OBJECTDIR}/CNNet/PoolLayer.o: CNNet/PoolLayer.cpp
 	${MKDIR} -p ${OBJECTDIR}/CNNet
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/CNNet/PoolLayer.o CNNet/PoolLayer.cpp
+
+${OBJECTDIR}/LSTMPredictionModel.o: LSTMPredictionModel.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/LSTMPredictionModel.o LSTMPredictionModel.cpp
 
 ${OBJECTDIR}/LSTMnet/DataProcessor.o: LSTMnet/DataProcessor.cpp
 	${MKDIR} -p ${OBJECTDIR}/LSTMnet

@@ -1,7 +1,10 @@
 build/Debug/GNU-Linux/main.o: main.cpp ../LSTMCNnet/LSTMCNnet.hpp \
- ../LSTMCNnet/PredictionModel.hpp ../LSTMCNnet/CNNet/CNN.hpp \
- ../LSTMCNnet/CNNet/ConvolutionLayer.hpp ../LSTMCNnet/CNNet/Eigen/Eigen \
- ../LSTMCNnet/CNNet/Eigen/Dense ../LSTMCNnet/CNNet/Eigen/Core \
+ ../LSTMCNnet/LSTMPredictionModel.hpp ../LSTMCNnet/LSTMnet/LSTMNet.h \
+ ../LSTMCNnet/LSTMnet/DataProcessor.h \
+ ../LSTMCNnet/LSTMnet/FileProcessor.h ../LSTMCNnet/PredictionModel.hpp \
+ ../LSTMCNnet/CNNet/CNN.hpp ../LSTMCNnet/CNNet/ConvolutionLayer.hpp \
+ ../LSTMCNnet/CNNet/Eigen/Eigen ../LSTMCNnet/CNNet/Eigen/Dense \
+ ../LSTMCNnet/CNNet/Eigen/Core \
  ../LSTMCNnet/CNNet/Eigen/src/Core/util/DisableStupidWarnings.h \
  ../LSTMCNnet/CNNet/Eigen/src/Core/util/Macros.h \
  ../LSTMCNnet/CNNet/Eigen/src/Core/util/MKL_support.h \
@@ -247,11 +250,17 @@ build/Debug/GNU-Linux/main.o: main.cpp ../LSTMCNnet/LSTMCNnet.hpp \
  ../LSTMCNnet/CNNet/Eigen/src/IterativeLinearSolvers/IncompleteLUT.h \
  ../LSTMCNnet/CNNet/Eigen/src/IterativeLinearSolvers/IncompleteCholesky.h \
  ../LSTMCNnet/CNNet/Activation.hpp ../LSTMCNnet/CNNet/PoolLayer.hpp \
- ../LSTMCNnet/CNNet/FCLayer.hpp ../LSTMCNnet/LSTMnet/LSTMNet.h \
- ../LSTMCNnet/LSTMnet/DataProcessor.h \
- ../LSTMCNnet/LSTMnet/FileProcessor.h
+ ../LSTMCNnet/CNNet/FCLayer.hpp ../LSTMCNnet/CNNPredictionModel.hpp
 
 ../LSTMCNnet/LSTMCNnet.hpp:
+
+../LSTMCNnet/LSTMPredictionModel.hpp:
+
+../LSTMCNnet/LSTMnet/LSTMNet.h:
+
+../LSTMCNnet/LSTMnet/DataProcessor.h:
+
+../LSTMCNnet/LSTMnet/FileProcessor.h:
 
 ../LSTMCNnet/PredictionModel.hpp:
 
@@ -765,8 +774,4 @@ build/Debug/GNU-Linux/main.o: main.cpp ../LSTMCNnet/LSTMCNnet.hpp \
 
 ../LSTMCNnet/CNNet/FCLayer.hpp:
 
-../LSTMCNnet/LSTMnet/LSTMNet.h:
-
-../LSTMCNnet/LSTMnet/DataProcessor.h:
-
-../LSTMCNnet/LSTMnet/FileProcessor.h:
+../LSTMCNnet/CNNPredictionModel.hpp:

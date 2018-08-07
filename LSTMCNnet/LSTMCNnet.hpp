@@ -8,7 +8,8 @@
 #ifndef LSTMCNNET_HPP
 #define LSTMCNNET_HPP
 
-#include "PredictionModel.hpp"
+#include "LSTMPredictionModel.hpp"
+#include "CNNPredictionModel.hpp"
 
 #endif /* LSTMCNNET_HPP */
 
