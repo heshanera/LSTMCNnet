@@ -747,22 +747,21 @@ int lstmPredModel(){
         /*10*/ "hr2.txt"
     };
     
-    std::string infile = datasets[0];
+    std::string fileName = datasets[0];
     
     ModelStruct modelStruct;
-    modelStruct.model = PredictionModel::LSTM;
     modelStruct.memCells = 5;
     modelStruct.trainDataSize = 300;
     modelStruct.inputVecSize = 60;
     modelStruct.learningRate = 0.01;
     modelStruct.trainingIterations = 10; 
     modelStruct.numPredPoints = 1;
-    modelStruct.dataFile = "datasets/univariate/input/"+infile;
+    modelStruct.dataFile = "datasets/univariate/input/"+fileName;
     LSTMPredictionModel pm(&modelStruct);
     pm.train();
     
-    std::string expect = "datasets/univariate/predictions/LSTM/expect_"+infile;
-    std::string predict = "datasets/univariate/predictions/LSTM/predict_"+infile;
+    std::string expect = "datasets/univariate/predictions/LSTM/expect_"+fileName;
+    std::string predict = "datasets/univariate/predictions/LSTM/predict_"+fileName;
     pm.predict(1300, expect, predict);
     
     return 0;
@@ -791,7 +790,7 @@ int cnnPredModel(){
     modelStruct.matWidth = 20;
     modelStruct.matHeight = 2;
     modelStruct.trainingIterations = 20; 
-    modelStruct.learningRate = 1;
+    modelStruct.learningRate = 0.8;
     modelStruct.numPredPoints = 1;
     modelStruct.targetC = 1;
     modelStruct.dataFile = "datasets/univariate/input/"+infile;
@@ -832,7 +831,7 @@ int cnnPredModel(){
     std::string expect = "datasets/univariate/predictions/CNN/expect_"+infile;
     std::string predict = "datasets/univariate/predictions/CNN/predict_"+infile;
     pm.predict(1000, expect, predict);
-    
+        
     return 0;
 }
 
@@ -855,7 +854,6 @@ int lstmdnnfcPredModel(){
     std::string infile = datasets[0];
     
     ModelStruct modelStruct;
-    modelStruct.model = PredictionModel::LSTMDNNFC;
     modelStruct.trainDataSize = 300;
     modelStruct.trainingIterations = 20; 
     modelStruct.learningRate = 0.1;
@@ -865,7 +863,7 @@ int lstmdnnfcPredModel(){
     modelStruct.memCells = 5;
     modelStruct.inputVecSize = 60;
     // CNN
-    modelStruct.matWidth = 20;
+    modelStruct.matWidth = 30;
     modelStruct.matHeight = 2;
     modelStruct.targetC = 1;
     
@@ -897,25 +895,27 @@ int lstmdnnfcPredModel(){
     modelStruct.netStruct.PL = PLs;
     modelStruct.netStruct.FCL = FCLs;
     
-    PredictionModel pm(&modelStruct);
+    LSTMCNNFCPredictionModel pm(&modelStruct);
     pm.train();
     
     std::string expect = "datasets/univariate/predictions/LSTMDNNFC/expect_"+infile;
     std::string predict = "datasets/univariate/predictions/LSTMDNNFC/predict_"+infile;
-    pm.predict(1000, expect, predict);
+//    pm.predict(1000, expect, predict);
     
     return 0;
     
-    return 0;
 }
+
 /*
  * 
  */
 int main(int argc, char** argv) {
     
     //lstmPredModel();
-    cnnPredModel();
-    //lstmdnnfcPredModel();
+    //cnnPredModel();
+    
+    
+    lstmdnnfcPredModel();
     
     return 0;
 }

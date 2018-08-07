@@ -23,7 +23,7 @@ int CNNPredictionModel::train() {
     int width = modelStruct->matWidth;
     int height = modelStruct->matHeight;
     int iterations = modelStruct->trainingIterations;
-    int inputSize = modelStruct->trainDataSize;
+    int trainDataSize = modelStruct->trainDataSize;
     int targetsC = modelStruct->targetC;
     double learningRate = modelStruct->learningRate;
 
@@ -35,17 +35,17 @@ int CNNPredictionModel::train() {
     Eigen::MatrixXd * inLblArr;
     Eigen::MatrixXd inMat;
     Eigen::MatrixXd inLbl;
-    inMatArr = new Eigen::MatrixXd * [inputSize];
-    inLblArr = new Eigen::MatrixXd[inputSize];
+    inMatArr = new Eigen::MatrixXd * [trainDataSize];
+    inLblArr = new Eigen::MatrixXd[trainDataSize];
 
     dataproc = new DataProcessor();
     fileProc = new FileProcessor();
-
+    
     // Reading the file
     timeSeries2 = fileProc->read(modelStruct->dataFile,1);
     timeSeries =  dataproc->process(timeSeries2,1);
 
-    for (int i = 0; i < inputSize; i++) {
+    for (int i = 0; i < trainDataSize; i++) {
         // inputs
         inMatArr[i] = new Eigen::MatrixXd[1]; // image depth
         inMat = Eigen::MatrixXd(height,width);
@@ -67,7 +67,7 @@ int CNNPredictionModel::train() {
     // Generating the network
     this->cnn = new CNN(dimensions, modelStruct->netStruct);
     // Training the network
-    cnn->train(inMatArr, inLblArr, inputSize, iterations, learningRate);
+    cnn->train(inMatArr, inLblArr, trainDataSize, iterations, learningRate);
     
     return 0;
 }
@@ -102,7 +102,6 @@ int CNNPredictionModel::predict(int points, std::string expect, std::string pred
         predPoints[j] = 0;
     }
 
-    std::cout << std::fixed;
 
     // max and min training values
     double trainMax = *std::max_element(timeSeries.begin(), timeSeries.begin()+(inputSize+(width*height)));
@@ -187,7 +186,6 @@ int CNNPredictionModel::predict(int points, std::string expect, std::string pred
     }
     MSE = errorSq/(predSize-inputSize);
     std::cout<<"\nMean Squared Error: "<<MSE<<"\n\n"; 
-    std::cout << std::scientific;
     
     return 0;
 }

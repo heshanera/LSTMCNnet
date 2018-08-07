@@ -14,36 +14,23 @@
 #include "LSTMnet/DataProcessor.h"
 #include "LSTMnet/FileProcessor.h"
 
-class ModelStruct;
+//class ModelStruct;
 
 class PredictionModel {
 public:
-    enum Model { LSTM, DNN, LSTMDNN, DNNLSTM, LSTMDNNFC}; 
-public:
-    PredictionModel(ModelStruct * ModelStruct);
+    PredictionModel();
+    PredictionModel(const PredictionModel& orig);
     virtual ~PredictionModel();
-    int train();
-    int predict(int points, std::string expect, std::string predict);
 private:
-    FileProcessor * fileProc;
-    DataProcessor * dataproc;
-    ModelStruct * modelStruct;
-    std::vector<double> timeSeries;
-    std::vector<double> timeSeries2;
-private:
-    int trainLSTM();
-    int trainCNN();
-    LSTMNet * lstm;
-    CNN * cnn;
-
 };
 
 class ModelStruct {
 public:
-    PredictionModel::Model model; // model type
+    virtual ~ModelStruct();
+public:
     int trainingIterations; // training iterations with training data
     int trainDataSize; // train data size
-    float learningRate; // learning rate
+    double learningRate; // learning rate
     // LSTM
     int memCells; // number of memory cells
     int inputVecSize; // input vector size
@@ -55,8 +42,6 @@ public:
     int matHeight;
     int targetC;
     struct::NetStruct netStruct;
-    
-
 };
 
 

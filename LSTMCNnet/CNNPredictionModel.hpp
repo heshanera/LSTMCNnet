@@ -9,7 +9,7 @@
 #define CNNPREDICTIONMODEL_HPP
 
 #include <iostream>
-#include "LSTMnet/LSTMNet.h"
+#include "CNNet/CNN.hpp"
 #include "LSTMnet/DataProcessor.h"
 #include "LSTMnet/FileProcessor.h"
 #include "PredictionModel.hpp"

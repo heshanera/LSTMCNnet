@@ -23,7 +23,7 @@ int LSTMPredictionModel::train() {
     int trainDataSize = modelStruct->trainDataSize; // train data size
     int inputVecSize = modelStruct->inputVecSize; // input vector size
     int timeSteps = modelStruct->inputVecSize; // unfolded time steps
-    float learningRate = modelStruct->learningRate;
+    double learningRate = modelStruct->learningRate;
     int iterations = modelStruct->trainingIterations; // training iterations with training data
 
     // Adding the time series in to a vector and preprocessing
@@ -85,8 +85,6 @@ int LSTMPredictionModel::predict(int points, std::string expect, std::string pre
         predPoints[j] = 0;
     }
 
-    std::cout << std::fixed;
-
     for (int i = 0; i < numPredPoints-1; i++) {
         inVec.clear();
         for (int j = 0; j < inputVecSize; j++) {
@@ -137,7 +135,6 @@ int LSTMPredictionModel::predict(int points, std::string expect, std::string pre
 
     MSE /= points;
     std::cout<<"Mean Squared Error: "<<MSE<<"\n";
-    std::cout << std::scientific;
     
     return 0;
 }

@@ -11,6 +11,7 @@
       <itemPath>LSTMnet/DataProcessor.h</itemPath>
       <itemPath>CNNet/FCLayer.hpp</itemPath>
       <itemPath>LSTMnet/FileProcessor.h</itemPath>
+      <itemPath>LSTMCNNFCPredictionModel.hpp</itemPath>
       <itemPath>LSTMCNnet.hpp</itemPath>
       <itemPath>LSTMnet/LSTMNet.h</itemPath>
       <itemPath>LSTMPredictionModel.hpp</itemPath>
@@ -432,6 +433,7 @@
       <itemPath>LSTMnet/DataProcessor.cpp</itemPath>
       <itemPath>CNNet/FCLayer.cpp</itemPath>
       <itemPath>LSTMnet/FileProcessor.cpp</itemPath>
+      <itemPath>LSTMCNNFCPredictionModel.cpp</itemPath>
       <itemPath>LSTMnet/LSTMNet.cpp</itemPath>
       <itemPath>LSTMPredictionModel.cpp</itemPath>
       <itemPath>CNNet/PoolLayer.cpp</itemPath>
@@ -1735,6 +1737,10 @@
       <item path="CNNet/PoolLayer.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="CNNet/PoolLayer.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="LSTMCNNFCPredictionModel.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="LSTMCNNFCPredictionModel.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="LSTMCNnet.hpp" ex="false" tool="3" flavor2="0">
       </item>
@@ -3046,6 +3052,10 @@
       <item path="CNNet/PoolLayer.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="CNNet/PoolLayer.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="LSTMCNNFCPredictionModel.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="LSTMCNNFCPredictionModel.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="LSTMCNnet.hpp" ex="false" tool="3" flavor2="0">
       </item>
