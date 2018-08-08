@@ -747,22 +747,22 @@ int lstmPredModel(){
         /*10*/ "hr2.txt"
     };
     
-    std::string fileName = datasets[0];
+    std::string fileName = datasets[9];
     
     ModelStruct modelStruct;
     modelStruct.memCells = 5;
-    modelStruct.trainDataSize = 300;
+    modelStruct.trainDataSize = 600;
     modelStruct.inputVecSize = 60;
-    modelStruct.learningRate = 0.01;
-    modelStruct.trainingIterations = 10; 
-    modelStruct.numPredPoints = 1;
+    modelStruct.learningRate = 0.00005;
+    modelStruct.trainingIterations = 14; 
+    modelStruct.numPredPoints = 3;
     modelStruct.dataFile = "datasets/univariate/input/"+fileName;
     LSTMPredictionModel pm(&modelStruct);
     pm.train();
     
     std::string expect = "datasets/univariate/predictions/LSTM/expect_"+fileName;
     std::string predict = "datasets/univariate/predictions/LSTM/predict_"+fileName;
-    pm.predict(1300, expect, predict);
+    pm.predict(3000, expect, predict);
     
     return 0;
 }
@@ -783,17 +783,17 @@ int cnnPredModel(){
         /*10*/ "hr2.txt"
     };
     
-    std::string infile = datasets[0];
+    std::string fileName = datasets[8];
     
     ModelStruct modelStruct;
-    modelStruct.trainDataSize = 20;
-    modelStruct.matWidth = 20;
+    modelStruct.trainDataSize = 60;
+    modelStruct.matWidth = 40;
     modelStruct.matHeight = 2;
     modelStruct.trainingIterations = 20; 
-    modelStruct.learningRate = 0.8;
-    modelStruct.numPredPoints = 1;
+    modelStruct.learningRate = 1;
+    modelStruct.numPredPoints = 3;
     modelStruct.targetC = 1;
-    modelStruct.dataFile = "datasets/univariate/input/"+infile;
+    modelStruct.dataFile = "datasets/univariate/input/"+fileName;
     
     struct::ConvLayStruct CL1;
     CL1.filterSize = 2; // filter size: N x N
@@ -805,9 +805,9 @@ int cnnPredModel(){
     PL1.poolW = 2;
 
     struct::FCLayStruct FCL1;
-    FCL1.outputs = 60; // neurons in fully connected layer
+    FCL1.outputs = 40; // neurons in fully connected layer
     struct::FCLayStruct FCL2;
-    FCL2.outputs = 10; // neurons in fully connected layer
+    FCL2.outputs = 20; // neurons in fully connected layer
     struct::FCLayStruct FCL3;
     FCL3.outputs = 1; // neurons in fully connected layer
 
@@ -825,9 +825,9 @@ int cnnPredModel(){
     CNNPredictionModel pm(&modelStruct);
     pm.train();
     
-    std::string expect = "datasets/univariate/predictions/CNN/expect_"+infile;
-    std::string predict = "datasets/univariate/predictions/CNN/predict_"+infile;
-    pm.predict(1000, expect, predict);
+    std::string expect = "datasets/univariate/predictions/CNN/expect_"+fileName;
+    std::string predict = "datasets/univariate/predictions/CNN/predict_"+fileName;
+    pm.predict(2000, expect, predict);
         
     return 0;
 }
@@ -851,9 +851,9 @@ int lstmdnnfcPredModel(){
     std::string fileName = datasets[9];
     
     ModelStruct modelStruct;
-    modelStruct.trainDataSize = 300;
-    modelStruct.learningRate = 0.1;
-    modelStruct.trainingIterations = 10; 
+    modelStruct.trainDataSize = 600;
+    modelStruct.learningRate = 0.0005;
+    modelStruct.trainingIterations = 15; 
     modelStruct.numPredPoints = 1;
     modelStruct.dataFile = "datasets/univariate/input/"+fileName;
     
@@ -861,7 +861,7 @@ int lstmdnnfcPredModel(){
     modelStruct.memCells = 5;
     
     // CNN parameters
-    modelStruct.matWidth = 25;
+    modelStruct.matWidth = 30;
     modelStruct.matHeight = 2;
     modelStruct.targetC = 1;
     
@@ -875,9 +875,9 @@ int lstmdnnfcPredModel(){
     PL1.poolW = 2;
 
     struct::FCLayStruct FCL1;
-    FCL1.outputs = 60; // neurons in fully connected layer
+    FCL1.outputs = 40; // neurons in fully connected layer
     struct::FCLayStruct FCL2;
-    FCL2.outputs = 10; // neurons in fully connec ted layer
+    FCL2.outputs = 20; // neurons in fully connec ted layer
     struct::FCLayStruct FCL3;
     FCL3.outputs = 1; // neurons in fully connected layer
 
@@ -897,7 +897,7 @@ int lstmdnnfcPredModel(){
     
     std::string expect = "datasets/univariate/predictions/LSTMCNNFC/expect_"+fileName;
     std::string predict = "datasets/univariate/predictions/LSTMCNNFC/predict_"+fileName;
-    pm.predict(2000, expect, predict);
+    pm.predict(3000, expect, predict);
     
     return 0;
     
@@ -908,11 +908,11 @@ int lstmdnnfcPredModel(){
  */
 int main(int argc, char** argv) {
     
-    //lstmPredModel();
+    lstmPredModel();
     //cnnPredModel();
     
     
-    lstmdnnfcPredModel();
+    //lstmdnnfcPredModel();
     
     return 0;
 }

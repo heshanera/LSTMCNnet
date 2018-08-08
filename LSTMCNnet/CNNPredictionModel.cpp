@@ -171,15 +171,15 @@ int CNNPredictionModel::predict(int points, std::string expect, std::string pred
         }
 
         prediction(0,0) = predPoints[((i+inputVecSize)%numPredPoints)]/(double)numPredPoints;
-        predPoints[((i+inputVecSize)%numPredPoints)] = 0;
-
-        //std::cout<<prediction(0,0)<<"\n"; 
-        expected = timeSeries.at(i + (width*height));
-        val = prediction(0,0);
-        errorSq += pow(val - expected,2);
-
+        predPoints[((i+inputVecSize)%numPredPoints)] = 0; 
+        
         // post process
+        val = prediction(0,0);
         val = (val - predictMin)*((trainMax - trainMin)/(predictMax - predictMin)) + trainMin;
+        
+        // calculating the error
+        expected = timeSeries.at(i + (width*height));
+        errorSq += pow(val - expected,2);
 
         out_file<<dataproc->postProcess(val)<<"\n";
         out_file2<<timeSeries2.at(i+inputVecSize)<<"\n";

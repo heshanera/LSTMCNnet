@@ -41,6 +41,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/CNNet/ConvolutionLayer.o \
 	${OBJECTDIR}/CNNet/FCLayer.o \
 	${OBJECTDIR}/CNNet/PoolLayer.o \
+	${OBJECTDIR}/LSTMCNN.o \
 	${OBJECTDIR}/LSTMCNNFCPredictionModel.o \
 	${OBJECTDIR}/LSTMPredictionModel.o \
 	${OBJECTDIR}/LSTMnet/DataProcessor.o \
@@ -102,6 +103,11 @@ ${OBJECTDIR}/CNNet/PoolLayer.o: CNNet/PoolLayer.cpp
 	${MKDIR} -p ${OBJECTDIR}/CNNet
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/CNNet/PoolLayer.o CNNet/PoolLayer.cpp
+
+${OBJECTDIR}/LSTMCNN.o: LSTMCNN.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/LSTMCNN.o LSTMCNN.cpp
 
 ${OBJECTDIR}/LSTMCNNFCPredictionModel.o: LSTMCNNFCPredictionModel.cpp
 	${MKDIR} -p ${OBJECTDIR}
