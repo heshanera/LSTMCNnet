@@ -41,8 +41,8 @@ OBJECTFILES= \
 	${OBJECTDIR}/CNNet/ConvolutionLayer.o \
 	${OBJECTDIR}/CNNet/FCLayer.o \
 	${OBJECTDIR}/CNNet/PoolLayer.o \
-	${OBJECTDIR}/LSTMCNN.o \
 	${OBJECTDIR}/LSTMCNNFCPredictionModel.o \
+	${OBJECTDIR}/LSTMCNNPredictionModel.o \
 	${OBJECTDIR}/LSTMPredictionModel.o \
 	${OBJECTDIR}/LSTMnet/DataProcessor.o \
 	${OBJECTDIR}/LSTMnet/FileProcessor.o \
@@ -104,15 +104,15 @@ ${OBJECTDIR}/CNNet/PoolLayer.o: CNNet/PoolLayer.cpp
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -ICNNet/Eigen -std=c++14 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/CNNet/PoolLayer.o CNNet/PoolLayer.cpp
 
-${OBJECTDIR}/LSTMCNN.o: LSTMCNN.cpp
-	${MKDIR} -p ${OBJECTDIR}
-	${RM} "$@.d"
-	$(COMPILE.cc) -g -ICNNet/Eigen -std=c++14 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/LSTMCNN.o LSTMCNN.cpp
-
 ${OBJECTDIR}/LSTMCNNFCPredictionModel.o: LSTMCNNFCPredictionModel.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -ICNNet/Eigen -std=c++14 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/LSTMCNNFCPredictionModel.o LSTMCNNFCPredictionModel.cpp
+
+${OBJECTDIR}/LSTMCNNPredictionModel.o: LSTMCNNPredictionModel.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -ICNNet/Eigen -std=c++14 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/LSTMCNNPredictionModel.o LSTMCNNPredictionModel.cpp
 
 ${OBJECTDIR}/LSTMPredictionModel.o: LSTMPredictionModel.cpp
 	${MKDIR} -p ${OBJECTDIR}

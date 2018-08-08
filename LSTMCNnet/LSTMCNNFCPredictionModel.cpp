@@ -19,7 +19,6 @@ LSTMCNNFCPredictionModel::~LSTMCNNFCPredictionModel() { }
 
 int LSTMCNNFCPredictionModel::train() {
 
-    
     int trainDataSize = modelStruct->trainDataSize; // train data size
     double learningRate = modelStruct->learningRate;
     int iterations = modelStruct->trainingIterations; // training iterations with training data
@@ -100,19 +99,7 @@ int LSTMCNNFCPredictionModel::train() {
     this->cnn = new CNN(dimensions, modelStruct->netStruct);
     // Training the network
     cnn->train(inMatArr, inLblArr, trainDataSize, iterations, learningRate);
-    
-//    input = new std::vector<double>[1];
-//    inputVec.clear();
-//    for (int i = 0; i < 60; i++) {
-//        inputVec.push_back(0.2);
-//        inputVec.push_back(0.3);
-//        inputVec.push_back(0.4);
-//        inputVec.push_back(0.6);
-//        inputVec.push_back(0.8);
-//    }    
-//    input[0] = inputVec;
-//    std::cout<<lstm->predict(input)<<"\n";
-    
+
     return 0;
 }
 

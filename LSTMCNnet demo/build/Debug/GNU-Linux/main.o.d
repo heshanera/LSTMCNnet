@@ -251,7 +251,8 @@ build/Debug/GNU-Linux/main.o: main.cpp ../LSTMCNnet/LSTMCNnet.hpp \
  ../LSTMCNnet/CNNet/Eigen/src/IterativeLinearSolvers/IncompleteCholesky.h \
  ../LSTMCNnet/CNNet/Activation.hpp ../LSTMCNnet/CNNet/PoolLayer.hpp \
  ../LSTMCNnet/CNNet/FCLayer.hpp ../LSTMCNnet/CNNPredictionModel.hpp \
- ../LSTMCNnet/LSTMCNNFCPredictionModel.hpp
+ ../LSTMCNnet/LSTMCNNFCPredictionModel.hpp \
+ ../LSTMCNnet/LSTMCNNPredictionModel.hpp
 
 ../LSTMCNnet/LSTMCNnet.hpp:
 
@@ -778,3 +779,5 @@ build/Debug/GNU-Linux/main.o: main.cpp ../LSTMCNnet/LSTMCNnet.hpp \
 ../LSTMCNnet/CNNPredictionModel.hpp:
 
 ../LSTMCNnet/LSTMCNNFCPredictionModel.hpp:
+
+../LSTMCNnet/LSTMCNNPredictionModel.hpp:
