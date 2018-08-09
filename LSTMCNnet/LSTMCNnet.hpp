@@ -12,6 +12,7 @@
 #include "CNNPredictionModel.hpp"
 #include "LSTMCNNFCPredictionModel.hpp"
 #include "LSTMCNNPredictionModel.hpp"
+#include "CNNLSTMPredictionModel.hpp"
 
 #endif /* LSTMCNNET_HPP */
 

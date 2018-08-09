@@ -992,6 +992,84 @@ int lstmcnnPredModel(){
     
 }
 
+/**
+ * prediction model from LSTM and CNN
+ * both networks are trained from the same data set
+ * when predicting the the original time series is given to the CNN
+ * input for the LSTM is generated using the outputs of CNN
+ * output from the LSTM is the final prediction
+ */
+int cnnlstmPredModel(){
+
+    std::string datasets[] = {
+        /* 0*/ "seaLevelPressure.txt",
+        /* 1*/ "InternetTraff.txt",
+        /* 2*/ "monthlyReturnsOfValueweighted.txt",
+        /* 3*/ "treeAlmagreMountainPiarLocat.txt",
+        /* 4*/ "dailyCyclistsAlongSudurlandsb.txt",
+        /* 5*/ "totalPopulation.txt",
+        /* 6*/ "numberOfUnemployed.txt",
+        /* 7*/ "data.txt",
+        /* 8*/ "monthlySunspotNumbers.txt",
+        /* 9*/ "dailyMinimumTemperatures.txt",
+        /*10*/ "hr2.txt"
+    };
+    
+    std::string fileName = datasets[9];
+    
+    ModelStruct modelStruct;
+    modelStruct.trainDataSize = 600;
+    modelStruct.learningRate = 0.0001;
+    modelStruct.trainingIterations = 8; 
+    modelStruct.numPredPoints = 1;
+    modelStruct.dataFile = "datasets/univariate/input/"+fileName;
+    
+    // LSTM parameters
+    modelStruct.memCells = 6;
+    
+    // CNN parameters
+    modelStruct.matWidth = 30;
+    modelStruct.matHeight = 2;
+    modelStruct.targetC = 1;
+    
+    struct::ConvLayStruct CL1;
+    CL1.filterSize = 2; // filter size: N x N
+    CL1.filters = 1; // No of filters
+    CL1.stride = 1;
+
+    struct::PoolLayStruct PL1;
+    PL1.poolH = 1; // pool size: N x N
+    PL1.poolW = 2;
+
+    struct::FCLayStruct FCL1;
+    FCL1.outputs = 80; // neurons in fully connected layer
+    struct::FCLayStruct FCL2;
+    FCL2.outputs = 10; // neurons in fully connec ted layer
+    struct::FCLayStruct FCL3;
+    FCL3.outputs = 1; // neurons in fully connected layer
+
+    char layerOrder[] = {/*'C','P',*/'C','P','F','F','F'};
+    struct::ConvLayStruct CLs[] = {CL1/*,CL2*/};
+    struct::PoolLayStruct PLs[] = {PL1/*,PL2*/};
+    struct::FCLayStruct FCLs[] = {FCL1,FCL2,FCL3};
+
+    modelStruct.netStruct.layers = 5;
+    modelStruct.netStruct.layerOrder = layerOrder;
+    modelStruct.netStruct.CL = CLs;
+    modelStruct.netStruct.PL = PLs;
+    modelStruct.netStruct.FCL = FCLs;
+    
+    CNNLSTMPredictionModel pm(&modelStruct);
+    pm.train();
+    
+    std::string expect = "datasets/univariate/predictions/CNNLSTM/expect_"+fileName;
+    std::string predict = "datasets/univariate/predictions/CNNLSTM/predict_"+fileName;
+    pm.predict(3000, expect, predict);
+    
+    return 0;
+    
+}
+
 /*
  * 
  */
@@ -1001,6 +1079,7 @@ int main(int argc, char** argv) {
     //cnnPredModel();
     //lstmcnnfcPredModel();
     //lstmcnnPredModel();
+    cnnlstmPredModel();
     
     return 0;
 }

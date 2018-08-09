@@ -6,7 +6,7 @@
                    projectFiles="true">
       <itemPath>CNNet/Activation.hpp</itemPath>
       <itemPath>CNNet/CNN.hpp</itemPath>
-      <itemPath>CNNLSTM.hpp</itemPath>
+      <itemPath>CNNLSTMPredictionModel.hpp</itemPath>
       <itemPath>CNNPredictionModel.hpp</itemPath>
       <itemPath>CNNet/ConvolutionLayer.hpp</itemPath>
       <itemPath>LSTMnet/DataProcessor.h</itemPath>
@@ -430,7 +430,7 @@
                    projectFiles="true">
       <itemPath>CNNet/Activation.cpp</itemPath>
       <itemPath>CNNet/CNN.cpp</itemPath>
-      <itemPath>CNNLSTM.cpp</itemPath>
+      <itemPath>CNNLSTMPredictionModel.cpp</itemPath>
       <itemPath>CNNPredictionModel.cpp</itemPath>
       <itemPath>CNNet/ConvolutionLayer.cpp</itemPath>
       <itemPath>LSTMnet/DataProcessor.cpp</itemPath>
@@ -474,9 +474,9 @@
           </incDir>
         </ccTool>
       </compileType>
-      <item path="CNNLSTM.cpp" ex="false" tool="1" flavor2="0">
+      <item path="CNNLSTMPredictionModel.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="CNNLSTM.hpp" ex="false" tool="3" flavor2="0">
+      <item path="CNNLSTMPredictionModel.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="CNNPredictionModel.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -1797,9 +1797,9 @@
           <developmentMode>5</developmentMode>
         </asmTool>
       </compileType>
-      <item path="CNNLSTM.cpp" ex="false" tool="1" flavor2="0">
+      <item path="CNNLSTMPredictionModel.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="CNNLSTM.hpp" ex="false" tool="3" flavor2="0">
+      <item path="CNNLSTMPredictionModel.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="CNNPredictionModel.cpp" ex="false" tool="1" flavor2="0">
       </item>

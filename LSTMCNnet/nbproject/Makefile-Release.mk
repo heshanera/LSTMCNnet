@@ -35,7 +35,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
-	${OBJECTDIR}/CNNLSTM.o \
+	${OBJECTDIR}/CNNLSTMPredictionModel.o \
 	${OBJECTDIR}/CNNPredictionModel.o \
 	${OBJECTDIR}/CNNet/Activation.o \
 	${OBJECTDIR}/CNNet/CNN.o \
@@ -75,10 +75,10 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libLSTMCNnet.${CND_DLIB_EXT}: ${OBJEC
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libLSTMCNnet.${CND_DLIB_EXT} ${OBJECTFILES} ${LDLIBSOPTIONS} -shared -fPIC
 
-${OBJECTDIR}/CNNLSTM.o: CNNLSTM.cpp
+${OBJECTDIR}/CNNLSTMPredictionModel.o: CNNLSTMPredictionModel.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/CNNLSTM.o CNNLSTM.cpp
+	$(COMPILE.cc) -O2 -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/CNNLSTMPredictionModel.o CNNLSTMPredictionModel.cpp
 
 ${OBJECTDIR}/CNNPredictionModel.o: CNNPredictionModel.cpp
 	${MKDIR} -p ${OBJECTDIR}
