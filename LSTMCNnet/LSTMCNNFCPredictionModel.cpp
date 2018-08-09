@@ -265,8 +265,6 @@ int LSTMCNNFCPredictionModel::predict(int points, std::string expect, std::strin
     MSE = errorSq/(predSize-inputSize);
     std::cout<<"\nMean Squared Error: "<<MSE<<"\n\n"; 
     
-    
-    
     return 0;
 }
 

@@ -15,8 +15,7 @@ LSTMCNNPredictionModel::LSTMCNNPredictionModel(ModelStruct * modelStruct) {
 
 LSTMCNNPredictionModel::LSTMCNNPredictionModel(const LSTMCNNPredictionModel& orig) { }
 
-LSTMCNNPredictionModel::~LSTMCNNPredictionModel() {
-}
+LSTMCNNPredictionModel::~LSTMCNNPredictionModel() { }
 
 int LSTMCNNPredictionModel::train() {
 
@@ -101,23 +100,175 @@ int LSTMCNNPredictionModel::train() {
     // Training the network
     cnn->train(inMatArr, inLblArr, trainDataSize, iterations, learningRate);
     
-    input = new std::vector<double>[1];
-    inputVec.clear();
-    for (int i = 0; i < 60; i++) {
-        inputVec.push_back(0.2);
-        inputVec.push_back(0.3);
-        inputVec.push_back(0.4);
-        inputVec.push_back(0.6);
-        inputVec.push_back(0.8);
-    }    
-    input[0] = inputVec;
-    std::cout<<lstm->predict(input)<<"\n";
-    
     return 0;
 }
 
 int LSTMCNNPredictionModel::predict(int points, std::string expect, std::string predict) {
 
+    double errorSq = 0, MSE, expected, val;
+    int predSize = points;
+    
+    // LSTM parameters
+    double result;
+    
+    // CNN parameters
+    int height = modelStruct->matHeight;
+    int width = modelStruct->matWidth;
+    Eigen::MatrixXd tstMatArr[1];
+    
+    int inputVecSize = height*width; // input vector size
+    int trainDataSize = modelStruct->trainDataSize; 
+    int numPredPoints = modelStruct->numPredPoints;
+
+    // Predictions
+    Eigen::MatrixXd prediction;
+    // Open the file to write the time series predictions
+    std::ofstream out_file;
+    out_file.open(predict,std::ofstream::out | std::ofstream::trunc);
+    std::ofstream out_file2;
+    out_file2.open(expect,std::ofstream::out | std::ofstream::trunc);
+    
+    // CNN Inputs
+    std::vector<double> cnnInVec;
+    cnnInVec.clear();
+    
+    // LSTM Inputs
+    std::vector<double> inVec;
+    std::vector<double> * input;
+    input = new std::vector<double>[1];
+    
+    double predPoints[numPredPoints];
+    double lstmPredPoints[numPredPoints];
+
+    for (int j = 0; j < numPredPoints; j++) {
+        predPoints[j] = 0;
+        lstmPredPoints[j] = 0;
+    }
+
+    // creating the input for the CNN using lSTM predictions
+    for (int i = 0; i < inputVecSize; i++) {
+        inVec.clear();
+        // filling the input vector using time series data
+        for (int j = 0; j < inputVecSize; j++) {
+            inVec.push_back(timeSeries2.at(i+j));
+        }
+        inVec = dataproc->process(inVec,0);
+    
+        // LSTM network predictions for the trained data set
+        input[0] = inVec;
+        result = lstm->predict(input);
+        cnnInVec.push_back(result);
+    }
+    
+    
+    // max and min training values [ CNN ]
+    double trainMax = *std::max_element(timeSeries.begin(), timeSeries.begin()+(trainDataSize+(width*height)));
+    double trainMin = *std::min_element(timeSeries.begin(), timeSeries.begin()+(trainDataSize+(width*height)));
+    // max and min predicted values [ CNN ]
+    double predictMax = std::numeric_limits<double>::min();
+    double predictMin = std::numeric_limits<double>::max();
+
+    for (int i = inputVecSize; i < trainDataSize; i++) {
+        inVec.clear();
+        // filling the input vector using time series data
+        for (int j = 0; j < inputVecSize; j++) {
+            inVec.push_back(timeSeries2.at(i+j));
+        }
+        inVec = dataproc->process(inVec,0);
+    
+        // CNN predictions for the trained data set
+        tstMatArr[0] = Eigen::MatrixXd::Zero(height,width);
+        for (int a = 0; a < height; a++) {
+            for (int b = 0; b < width; b++) {
+                tstMatArr[0](a,b) = cnnInVec.at(( a * width ) + b);
+            }
+        }
+
+        for (int j = 0; j < numPredPoints; j++) {      
+            prediction = cnn->predict(tstMatArr);
+            cnnInVec = std::vector<double>(cnnInVec.begin()+1, cnnInVec.begin()+inputVecSize);
+            cnnInVec.push_back(prediction(0,0));
+            for (int a = 0; a < height; a++) {
+                for (int b = 0; b < width; b++) {
+                    tstMatArr[0](a,b) = cnnInVec.at(( a * width ) + b);
+                }
+            }
+            predPoints[((i+inputVecSize+j)%numPredPoints)] += prediction(0,0);     
+        }
+
+        if (i >= numPredPoints-1) {
+            prediction(0,0) = predPoints[((i+inputVecSize)%numPredPoints)]/(double)numPredPoints;
+            if (prediction(0,0) > predictMax) predictMax = prediction(0,0);
+            if (prediction(0,0) < predictMin) predictMin = prediction(0,0);
+        }
+        predPoints[((i+inputVecSize)%numPredPoints)] = 0;
+        
+        // LSTM network predictions for the trained data set
+        input[0] = inVec;
+        result = lstm->predict(input); 
+        cnnInVec = std::vector<double>(cnnInVec.begin()+1, cnnInVec.begin()+inputVecSize);
+        cnnInVec.push_back(result);
+        
+    }
+
+    for (int i = trainDataSize; i < predSize; i++) {
+
+        inVec.clear();
+        for (int j = 0; j < inputVecSize; j++) {
+            inVec.push_back(timeSeries2.at(i+j));
+        }
+        inVec = dataproc->process(inVec,0);
+        
+        // Filling the matrix for the CNN input
+        tstMatArr[0] = Eigen::MatrixXd::Zero(height,width);
+        for (int a = 0; a < height; a++) {
+            for (int b = 0; b < width; b++) {
+                tstMatArr[0](a,b) = cnnInVec.at(( a * width ) + b);
+            }
+        }
+        
+        // CNN predictions
+        for (int j = 0; j < numPredPoints; j++) {      
+            prediction = cnn->predict(tstMatArr);
+            cnnInVec = std::vector<double>(cnnInVec.begin()+1, cnnInVec.begin()+inputVecSize);
+            cnnInVec.push_back(prediction(0,0));
+            for (int a = 0; a < height; a++) {
+                for (int b = 0; b < width; b++) {
+                    tstMatArr[0](a,b) = cnnInVec.at(( a * width ) + b);
+                }
+            }
+            predPoints[((i+inputVecSize+j)%numPredPoints)] += prediction(0,0);     
+        }
+        prediction(0,0) = predPoints[((i+inputVecSize)%numPredPoints)]/(double)numPredPoints;
+        predPoints[((i+inputVecSize)%numPredPoints)] = 0;
+        
+        // post process CNN prediction
+        val = prediction(0,0);
+        val = (val - predictMin)*((trainMax - trainMin)/(predictMax - predictMin)) + trainMin;
+         
+        // calculating the Mean Squared Error
+        expected = timeSeries.at(i+inputVecSize+1);
+        errorSq += std::pow(expected-val,2);
+        val = dataproc->postProcess(val);
+        
+        // writing the 
+        out_file<<val<<"\n";
+        out_file2<<timeSeries2.at(i+inputVecSize)<<"\n";
+
+        // LSTM predictions
+        input[0] = inVec;
+        result = lstm->predict(input); 
+        cnnInVec = std::vector<double>(cnnInVec.begin()+1, cnnInVec.begin()+inputVecSize);
+        cnnInVec.push_back(result);
+        
+    }
+    
+    out_file.close();
+    out_file2.close();
+    
+    MSE = errorSq/(predSize-trainDataSize);
+    std::cout<<"\nMean Squared Error: "<<MSE<<"\n\n"; 
+    
     return 0;
 }
 

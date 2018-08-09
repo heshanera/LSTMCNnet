@@ -848,7 +848,7 @@ int lstmcnnfcPredModel(){
         /*10*/ "hr2.txt"
     };
     
-    std::string fileName = datasets[9];
+    std::string fileName = datasets[0];
     
     ModelStruct modelStruct;
     modelStruct.trainDataSize = 600;
@@ -919,7 +919,7 @@ int lstmcnnPredModel(){
         /*10*/ "hr2.txt"
     };
     
-    std::string fileName = datasets[9];
+    std::string fileName = datasets[0];
     
     ModelStruct modelStruct;
     modelStruct.trainDataSize = 300;
@@ -966,8 +966,8 @@ int lstmcnnPredModel(){
     LSTMCNNPredictionModel pm(&modelStruct);
     pm.train();
     
-    std::string expect = "datasets/univariate/predictions/LSTMCNNFC/expect_"+fileName;
-    std::string predict = "datasets/univariate/predictions/LSTMCNNFC/predict_"+fileName;
+    std::string expect = "datasets/univariate/predictions/LSTMCNN/expect_"+fileName;
+    std::string predict = "datasets/univariate/predictions/LSTMCNN/predict_"+fileName;
     pm.predict(1000, expect, predict);
     
     return 0;
