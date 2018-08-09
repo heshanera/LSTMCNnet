@@ -122,7 +122,7 @@ int LSTMPredictionModel::predict(int points, std::string expect, std::string pre
         predPoints[((i+inputVecSize)%numPredPoints)] = 0;
 
         // calculating the Mean Squared Error
-        expected = timeSeries.at(i+inputVecSize+1);
+        expected = timeSeries.at(i+inputVecSize);
         MSE += std::pow(expected-result,2);
         result = dataproc->postProcess(result);
         out_file<<result<<"\n";

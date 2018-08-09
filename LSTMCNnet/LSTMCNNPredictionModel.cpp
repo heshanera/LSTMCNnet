@@ -196,7 +196,7 @@ int LSTMCNNPredictionModel::predict(int points, std::string expect, std::string 
             predPoints[((i+inputVecSize+j)%numPredPoints)] += prediction(0,0);     
         }
 
-        if (i >= numPredPoints-1) {
+        if (i >= numPredPoints-1+inputVecSize) {
             prediction(0,0) = predPoints[((i+inputVecSize)%numPredPoints)]/(double)numPredPoints;
             if (prediction(0,0) > predictMax) predictMax = prediction(0,0);
             if (prediction(0,0) < predictMin) predictMin = prediction(0,0);
@@ -247,14 +247,14 @@ int LSTMCNNPredictionModel::predict(int points, std::string expect, std::string 
         val = (val - predictMin)*((trainMax - trainMin)/(predictMax - predictMin)) + trainMin;
          
         // calculating the Mean Squared Error
-        expected = timeSeries.at(i+inputVecSize+1);
+        expected = timeSeries.at(i+inputVecSize-1);
         errorSq += std::pow(expected-val,2);
         val = dataproc->postProcess(val);
         
         // writing the 
         out_file<<val<<"\n";
-        out_file2<<timeSeries2.at(i+inputVecSize)<<"\n";
-
+        out_file2<<timeSeries2.at(i+inputVecSize-1)<<"\n";
+        
         // LSTM predictions
         input[0] = inVec;
         result = lstm->predict(input); 

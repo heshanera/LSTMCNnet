@@ -249,7 +249,7 @@ int LSTMCNNFCPredictionModel::predict(int points, std::string expect, std::strin
         val = (result + val)/2;
          
         // calculating the Mean Squared Error
-        expected = timeSeries.at(i+inputVecSize+1);
+        expected = timeSeries.at(i+inputVecSize);
         errorSq += std::pow(expected-val,2);
         result = dataproc->postProcess(result);
         
