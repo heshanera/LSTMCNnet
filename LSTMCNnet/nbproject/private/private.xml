@@ -7,9 +7,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/home/heshan/Projects/NetBeansProjects/LSTMCNnet/LSTMCNnet/DTW.hpp</file>
             <file>file:/home/heshan/Projects/NetBeansProjects/LSTMCNnet/LSTMCNnet/CNNLSTMPredictionModel.cpp</file>
+            <file>file:/home/heshan/Projects/NetBeansProjects/LSTMCNnet/LSTMCNnet/DTW.cpp</file>
             <file>file:/home/heshan/Projects/NetBeansProjects/LSTMCNnet/LSTMCNnet/LSTMCNNFCPredictionModel.cpp</file>
             <file>file:/home/heshan/Projects/NetBeansProjects/LSTMCNnet/LSTMCNnet/CNNLSTMPredictionModel.hpp</file>
+            <file>file:/home/heshan/Projects/NetBeansProjects/LSTMCNnet/LSTMCNnet/LSTMCNnet.hpp</file>
         </group>
     </open-files>
 </project-private>

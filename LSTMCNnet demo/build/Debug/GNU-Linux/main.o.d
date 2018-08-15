@@ -253,7 +253,8 @@ build/Debug/GNU-Linux/main.o: main.cpp ../LSTMCNnet/LSTMCNnet.hpp \
  ../LSTMCNnet/CNNet/FCLayer.hpp ../LSTMCNnet/CNNPredictionModel.hpp \
  ../LSTMCNnet/LSTMCNNFCPredictionModel.hpp \
  ../LSTMCNnet/LSTMCNNPredictionModel.hpp \
- ../LSTMCNnet/CNNLSTMPredictionModel.hpp
+ ../LSTMCNnet/CNNLSTMPredictionModel.hpp ../LSTMCNnet/DTW.hpp \
+ ../LSTMCNnet/CNNet/Eigen/Dense
 
 ../LSTMCNnet/LSTMCNnet.hpp:
 
@@ -784,3 +785,7 @@ build/Debug/GNU-Linux/main.o: main.cpp ../LSTMCNnet/LSTMCNnet.hpp \
 ../LSTMCNnet/LSTMCNNPredictionModel.hpp:
 
 ../LSTMCNnet/CNNLSTMPredictionModel.hpp:
+
+../LSTMCNnet/DTW.hpp:
+
+../LSTMCNnet/CNNet/Eigen/Dense:
