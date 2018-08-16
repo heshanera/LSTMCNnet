@@ -72,6 +72,20 @@ int CNNPredictionModel::train() {
     return 0;
 }
 
+int CNNPredictionModel::initPredData(std::string file) {
+
+    std::vector<double> predDatatimeSeries;
+    predDatatimeSeries = fileProc->read(file,1);
+    int inputVecSize = modelStruct->matHeight*modelStruct->matWidth;
+    timeSeries2 = std::vector<double>(
+            timeSeries2.begin(), 
+            timeSeries2.begin() + modelStruct->trainDataSize + inputVecSize
+    );
+    timeSeries2.insert( timeSeries2.end(), predDatatimeSeries.begin(), predDatatimeSeries.end() );
+    return 0;
+}
+
+
 int CNNPredictionModel::predict(int points, std::string expect, std::string predict) {
 
     int width = modelStruct->matWidth;

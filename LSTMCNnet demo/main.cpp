@@ -1124,14 +1124,14 @@ int cnnPredAnom(){
         /*10*/ "hr2.txt"
     };
     
-    std::string fileName = datasets[0];
+    std::string fileName = datasets[9];
     
     ModelStruct modelStruct;
-    modelStruct.trainDataSize = 60;
-    modelStruct.matWidth = 40;
+    modelStruct.trainDataSize = 200;
+    modelStruct.matWidth = 60;
     modelStruct.matHeight = 2;
     modelStruct.trainingIterations = 20; 
-    modelStruct.learningRate = 1;
+    modelStruct.learningRate = 0.01;
     modelStruct.numPredPoints = 3;
     modelStruct.targetC = 1;
     modelStruct.dataFile = "datasets/univariate/input/"+fileName;
@@ -1146,9 +1146,9 @@ int cnnPredAnom(){
     PL1.poolW = 2;
 
     struct::FCLayStruct FCL1;
-    FCL1.outputs = 40; // neurons in fully connected layer
+    FCL1.outputs = 20; // neurons in fully connected layer
     struct::FCLayStruct FCL2;
-    FCL2.outputs = 20; // neurons in fully connected layer
+    FCL2.outputs = 10; // neurons in fully connected layer
     struct::FCLayStruct FCL3;
     FCL3.outputs = 1; // neurons in fully connected layer
 
@@ -1170,7 +1170,7 @@ int cnnPredAnom(){
     
     std::string expect = "datasets/univariate/predictions/CNN/expect_"+fileName;
     std::string predict = "datasets/univariate/predictions/CNN/predict_"+fileName;
-    pm.predict(2000, expect, predict);
+    pm.predict(2500, expect, predict);
         
     return 0;
 }
@@ -1261,7 +1261,7 @@ int main(int argc, char** argv) {
     
     // multiple prediction with known anomalies ///////////////////////////////
     //lstmPredAnom();
-    cnnPredAnom();
+    //cnnPredAnom();
     //lstmcnnfcPredAnom();
     
     return 0;
