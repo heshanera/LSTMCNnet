@@ -103,6 +103,19 @@ int LSTMCNNFCPredictionModel::train() {
     return 0;
 }
 
+int LSTMCNNFCPredictionModel::initPredData(std::string file) {
+
+    std::vector<double> predDatatimeSeries;
+    predDatatimeSeries = fileProc->read(file,1);
+    timeSeries2 = std::vector<double>(
+            timeSeries2.begin(), 
+            timeSeries2.begin() + modelStruct->trainDataSize + modelStruct->inputVecSize
+    );
+    timeSeries2.insert( timeSeries2.end(), predDatatimeSeries.begin(), predDatatimeSeries.end() );
+    return 0;
+}
+
+
 int LSTMCNNFCPredictionModel::predict(int points, std::string expect, std::string predict) {
     
     double errorSq = 0, MSE, expected, val;
