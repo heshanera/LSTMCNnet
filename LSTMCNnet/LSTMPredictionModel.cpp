@@ -61,6 +61,19 @@ int LSTMPredictionModel::train() {
     return 0;
 }
 
+int LSTMPredictionModel::initPredData(std::string file) {
+
+    std::vector<double> predDatatimeSeries;
+    predDatatimeSeries = fileProc->read(file,1);
+    timeSeries2 = std::vector<double>(
+            timeSeries2.begin(), 
+            timeSeries2.begin() + modelStruct->trainDataSize + modelStruct->inputVecSize
+    );
+    timeSeries2.insert( timeSeries2.end(), predDatatimeSeries.begin(), predDatatimeSeries.end() );
+    return 0;
+}
+
+
 int LSTMPredictionModel::predict(int points, std::string expect, std::string predict) {
 
     int inputVecSize = modelStruct->inputVecSize; // input vector size
@@ -85,7 +98,7 @@ int LSTMPredictionModel::predict(int points, std::string expect, std::string pre
         predPoints[j] = 0;
     }
 
-    for (int i = 0; i < numPredPoints-1; i++) {
+    for (int i = 0; i < numPredPoints; i++) {
         inVec.clear();
         for (int j = 0; j < inputVecSize; j++) {
             inVec.push_back(timeSeries2.at(i+j));
@@ -95,14 +108,14 @@ int LSTMPredictionModel::predict(int points, std::string expect, std::string pre
         input[0] = inVec;
         for (int j = 0; j < numPredPoints; j++) {          
             result = lstm->predict(input); 
-            input[0] = std::vector<double>(inVec.begin(), inVec.begin()+inputVecSize-2);
+            input[0] = std::vector<double>(inVec.begin()+1, inVec.begin()+inputVecSize);
             input[0].push_back(result);
             predPoints[((i+inputVecSize+j)%numPredPoints)] += result;     
         }
         predPoints[((i+inputVecSize)%numPredPoints)] = 0;
     }
 
-    for (int i = numPredPoints-1; i < points; i++) {
+    for (int i = numPredPoints; i < points; i++) {
 
         inVec.clear();
         for (int j = 0; j < inputVecSize; j++) {

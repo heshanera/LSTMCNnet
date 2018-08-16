@@ -22,6 +22,7 @@ public:
     virtual ~LSTMPredictionModel();
     
     int train();
+    int initPredData(std::string file);
     int predict(int points, std::string expect, std::string predict);
 private:
     LSTMNet * lstm;

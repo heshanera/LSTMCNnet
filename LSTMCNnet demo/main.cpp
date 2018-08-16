@@ -1070,6 +1070,184 @@ int lstmcnnfcPredModel(){
     
 }
 
+int lstmPredAnom(){
+
+    std::string datasets[] = {
+        /* 0*/ "seaLevelPressure.txt",
+        /* 1*/ "InternetTraff.txt",
+        /* 2*/ "monthlyReturnsOfValueweighted.txt",
+        /* 3*/ "treeAlmagreMountainPiarLocat.txt",
+        /* 4*/ "dailyCyclistsAlongSudurlandsb.txt",
+        /* 5*/ "totalPopulation.txt",
+        /* 6*/ "numberOfUnemployed.txt",
+        /* 7*/ "data.txt",
+        /* 8*/ "monthlySunspotNumbers.txt",
+        /* 9*/ "dailyMinimumTemperatures.txt",
+        /*10*/ "hr2.txt"
+    };
+    
+    std::string fileName = datasets[9];
+    
+    ModelStruct modelStruct;
+    modelStruct.memCells = 6;
+    modelStruct.trainDataSize = 600;
+    modelStruct.inputVecSize = 120;
+    modelStruct.learningRate = 0.00001;
+    modelStruct.trainingIterations = 10; 
+    modelStruct.numPredPoints = 1;
+    modelStruct.dataFile = "datasets/univariate/input/"+fileName;
+    LSTMPredictionModel pm(&modelStruct);
+    pm.train();
+    
+    pm.initPredData("datasets/univariate/anomalyInputs/"+fileName);
+    
+    std::string expect = "datasets/univariate/predictions/LSTM/expect_"+fileName;
+    std::string predict = "datasets/univariate/predictions/LSTM/predict_"+fileName;
+    pm.predict(3500, expect, predict);
+    
+    return 0;
+}
+
+int cnnPredAnom(){
+
+    std::string datasets[] = {
+        /* 0*/ "seaLevelPressure.txt",
+        /* 1*/ "InternetTraff.txt",
+        /* 2*/ "monthlyReturnsOfValueweighted.txt",
+        /* 3*/ "treeAlmagreMountainPiarLocat.txt",
+        /* 4*/ "dailyCyclistsAlongSudurlandsb.txt",
+        /* 5*/ "totalPopulation.txt",
+        /* 6*/ "numberOfUnemployed.txt",
+        /* 7*/ "data.txt",
+        /* 8*/ "monthlySunspotNumbers.txt",
+        /* 9*/ "dailyMinimumTemperatures.txt",
+        /*10*/ "hr2.txt"
+    };
+    
+    std::string fileName = datasets[0];
+    
+    ModelStruct modelStruct;
+    modelStruct.trainDataSize = 60;
+    modelStruct.matWidth = 40;
+    modelStruct.matHeight = 2;
+    modelStruct.trainingIterations = 20; 
+    modelStruct.learningRate = 1;
+    modelStruct.numPredPoints = 3;
+    modelStruct.targetC = 1;
+    modelStruct.dataFile = "datasets/univariate/input/"+fileName;
+    
+    struct::ConvLayStruct CL1;
+    CL1.filterSize = 2; // filter size: N x N
+    CL1.filters = 1; // No of filters
+    CL1.stride = 1;
+
+    struct::PoolLayStruct PL1;
+    PL1.poolH = 1; // pool size: N x N
+    PL1.poolW = 2;
+
+    struct::FCLayStruct FCL1;
+    FCL1.outputs = 40; // neurons in fully connected layer
+    struct::FCLayStruct FCL2;
+    FCL2.outputs = 20; // neurons in fully connected layer
+    struct::FCLayStruct FCL3;
+    FCL3.outputs = 1; // neurons in fully connected layer
+
+    char layerOrder[] = {/*'C','P',*/'C','P','F','F','F'};
+    struct::ConvLayStruct CLs[] = {CL1/*,CL2*/};
+    struct::PoolLayStruct PLs[] = {PL1/*,PL2*/};
+    struct::FCLayStruct FCLs[] = {FCL1,FCL2,FCL3};
+
+    modelStruct.netStruct.layers = 5;
+    modelStruct.netStruct.layerOrder = layerOrder;
+    modelStruct.netStruct.CL = CLs;
+    modelStruct.netStruct.PL = PLs;
+    modelStruct.netStruct.FCL = FCLs;
+    
+    CNNPredictionModel pm(&modelStruct);
+    pm.train();
+    
+    pm.initPredData("datasets/univariate/anomalyInputs/"+fileName);
+    
+    std::string expect = "datasets/univariate/predictions/CNN/expect_"+fileName;
+    std::string predict = "datasets/univariate/predictions/CNN/predict_"+fileName;
+    pm.predict(2000, expect, predict);
+        
+    return 0;
+}
+
+int lstmcnnfcPredAnom(){
+
+    std::string datasets[] = {
+        /* 0*/ "seaLevelPressure.txt",
+        /* 1*/ "InternetTraff.txt",
+        /* 2*/ "monthlyReturnsOfValueweighted.txt",
+        /* 3*/ "treeAlmagreMountainPiarLocat.txt",
+        /* 4*/ "dailyCyclistsAlongSudurlandsb.txt",
+        /* 5*/ "totalPopulation.txt",
+        /* 6*/ "numberOfUnemployed.txt",
+        /* 7*/ "data.txt",
+        /* 8*/ "monthlySunspotNumbers.txt",
+        /* 9*/ "dailyMinimumTemperatures.txt",
+        /*10*/ "hr2.txt"
+    };
+    
+    std::string fileName = datasets[9];
+    
+    ModelStruct modelStruct;
+    modelStruct.trainDataSize = 600;
+    modelStruct.learningRate = 0.01;
+    modelStruct.trainingIterations = 8; 
+    modelStruct.numPredPoints = 1;
+    modelStruct.dataFile = "datasets/univariate/input/"+fileName;
+    
+    // LSTM parameters
+    modelStruct.memCells = 4;
+    
+    // CNN parameters
+    modelStruct.matWidth = 60;
+    modelStruct.matHeight = 2;
+    modelStruct.targetC = 1;
+    
+    struct::ConvLayStruct CL1;
+    CL1.filterSize = 1; // filter size: N x N
+    CL1.filters = 1; // No of filters
+    CL1.stride = 1;
+
+    struct::PoolLayStruct PL1;
+    PL1.poolH = 1; // pool size: N x N
+    PL1.poolW = 2;
+
+    struct::FCLayStruct FCL1;
+    FCL1.outputs = 40; // neurons in fully connected layer
+    struct::FCLayStruct FCL2;
+    FCL2.outputs = 10; // neurons in fully connected layer
+    struct::FCLayStruct FCL3;
+    FCL3.outputs = 1; // neurons in fully connected layer
+
+    char layerOrder[] = {/*'C','P',*/'C','P','F','F','F'};
+    struct::ConvLayStruct CLs[] = {CL1/*,CL2*/};
+    struct::PoolLayStruct PLs[] = {PL1/*,PL2*/};
+    struct::FCLayStruct FCLs[] = {FCL1,FCL2,FCL3};
+
+    modelStruct.netStruct.layers = 5;
+    modelStruct.netStruct.layerOrder = layerOrder;
+    modelStruct.netStruct.CL = CLs;
+    modelStruct.netStruct.PL = PLs;
+    modelStruct.netStruct.FCL = FCLs;
+    
+    LSTMCNNFCPredictionModel pm(&modelStruct);
+    pm.train();
+    
+    pm.initPredData("datasets/univariate/anomalyInputs/"+fileName);
+    
+    std::string expect = "datasets/univariate/predictions/LSTMCNNFC/expect_"+fileName;
+    std::string predict = "datasets/univariate/predictions/LSTMCNNFC/predict_"+fileName;
+    pm.predict(3500, expect, predict);
+    
+    return 0;
+    
+}
+
 /*
  * 
  */
@@ -1079,8 +1257,12 @@ int main(int argc, char** argv) {
     //cnnPredModel();
     //lstmcnnPredModel();
     //cnnlstmPredModel();
+    //lstmcnnfcPredModel();
     
-    lstmcnnfcPredModel();
+    // multiple prediction with known anomalies ///////////////////////////////
+    //lstmPredAnom();
+    cnnPredAnom();
+    //lstmcnnfcPredAnom();
     
     return 0;
 }
