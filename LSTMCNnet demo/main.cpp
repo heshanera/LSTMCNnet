@@ -1070,6 +1070,9 @@ int lstmcnnfcPredModel(){
     
 }
 
+
+
+
 int lstmPredAnom(){
 
     std::string datasets[] = {
@@ -1103,7 +1106,7 @@ int lstmPredAnom(){
     
     std::string expect = "datasets/univariate/predictions/LSTM/expect_"+fileName;
     std::string predict = "datasets/univariate/predictions/LSTM/predict_"+fileName;
-    pm.predict(3500, expect, predict);
+    pm.predict(3500, expect, predict, 10);
     
     return 0;
 }
@@ -1254,13 +1257,13 @@ int lstmcnnfcPredAnom(){
 int main(int argc, char** argv) {
     
     //lstmPredModel();
-    cnnPredModel();
+    //cnnPredModel();
     //lstmcnnPredModel();
     //cnnlstmPredModel();
     //lstmcnnfcPredModel();
     
     // multiple prediction with known anomalies ///////////////////////////////
-    //lstmPredAnom();
+    lstmPredAnom();
     //cnnPredAnom();
     //lstmcnnfcPredAnom();
     

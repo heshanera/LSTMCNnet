@@ -13,6 +13,7 @@
 #include "LSTMnet/DataProcessor.h"
 #include "LSTMnet/FileProcessor.h"
 #include "PredictionModel.hpp"
+#include "DTW.hpp"
 
 class LSTMPredictionModel {
 public:
@@ -24,6 +25,7 @@ public:
     int train();
     int initPredData(std::string file);
     int predict(int points, std::string expect, std::string predict);
+    int predict(int points, std::string expect, std::string predict, int simVecSize);
 private:
     LSTMNet * lstm;
     ModelStruct * modelStruct;
@@ -31,7 +33,7 @@ private:
     DataProcessor * dataproc;
     std::vector<double> timeSeries;
     std::vector<double> timeSeries2;
-
+    
 };
 
 #endif /* LSTMPREDICTIONMODEL_HPP */

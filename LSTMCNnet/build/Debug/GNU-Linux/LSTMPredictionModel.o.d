@@ -201,7 +201,8 @@ build/Debug/GNU-Linux/LSTMPredictionModel.o: LSTMPredictionModel.cpp \
  CNNet/Eigen/src/IterativeLinearSolvers/BiCGSTAB.h \
  CNNet/Eigen/src/IterativeLinearSolvers/IncompleteLUT.h \
  CNNet/Eigen/src/IterativeLinearSolvers/IncompleteCholesky.h \
- CNNet/Activation.hpp CNNet/PoolLayer.hpp CNNet/FCLayer.hpp
+ CNNet/Activation.hpp CNNet/PoolLayer.hpp CNNet/FCLayer.hpp DTW.hpp \
+ CNNet/Eigen/Dense
 
 LSTMPredictionModel.hpp:
 
@@ -722,3 +723,7 @@ CNNet/Activation.hpp:
 CNNet/PoolLayer.hpp:
 
 CNNet/FCLayer.hpp:
+
+DTW.hpp:
+
+CNNet/Eigen/Dense:

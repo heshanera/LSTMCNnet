@@ -73,9 +73,8 @@ int LSTMPredictionModel::initPredData(std::string file) {
     return 0;
 }
 
-
 int LSTMPredictionModel::predict(int points, std::string expect, std::string predict) {
-
+    
     int inputVecSize = modelStruct->inputVecSize; // input vector size
             
     // Open the file to write the time series predictions
@@ -138,6 +137,106 @@ int LSTMPredictionModel::predict(int points, std::string expect, std::string pre
         expected = timeSeries.at(i+inputVecSize);
         MSE += std::pow(expected-result,2);
         result = dataproc->postProcess(result);
+        out_file<<result<<"\n";
+        out_file2<<timeSeries2.at(i+inputVecSize)<<"\n";
+
+    }
+
+    out_file.close();
+    out_file2.close();
+
+    MSE /= points;
+    std::cout<<"Mean Squared Error: "<<MSE<<"\n";
+    
+    return 0;
+}
+
+int LSTMPredictionModel::predict(int points, std::string expect, std::string predict, int simVecSize) {
+
+    Eigen::VectorXd expectedVec = Eigen::VectorXd::Zero(simVecSize);
+    Eigen::VectorXd predictedVec = Eigen::VectorXd::Zero(simVecSize);
+    int subVSize = simVecSize-1;
+    double similarity;
+    
+    int inputVecSize = modelStruct->inputVecSize; // input vector size
+            
+    // Open the file to write the time series predictions
+    std::ofstream out_file;
+    out_file.open(predict,std::ofstream::out | std::ofstream::trunc);
+    std::ofstream out_file2;
+    out_file2.open(expect,std::ofstream::out | std::ofstream::trunc);
+
+    std::vector<double> * input;
+    std::vector<double> inVec;
+    input = new std::vector<double>[1];
+    double result;
+    double expected;
+    double MSE = 0;
+
+    int numPredPoints = modelStruct->numPredPoints;
+    double predPoints[numPredPoints];
+
+    for (int j = 0; j < numPredPoints; j++) {
+        predPoints[j] = 0;
+    }
+
+    for (int i = 0; i < numPredPoints; i++) {
+        inVec.clear();
+        for (int j = 0; j < inputVecSize; j++) {
+            inVec.push_back(timeSeries2.at(i+j));
+        }
+
+        inVec = dataproc->process(inVec,0);
+        input[0] = inVec;
+        for (int j = 0; j < numPredPoints; j++) {          
+            result = lstm->predict(input); 
+            input[0] = std::vector<double>(inVec.begin()+1, inVec.begin()+inputVecSize);
+            input[0].push_back(result);
+            predPoints[((i+inputVecSize+j)%numPredPoints)] += result;     
+        }
+        predPoints[((i+inputVecSize)%numPredPoints)] = 0;
+    }
+
+    for (int i = numPredPoints; i < points; i++) {
+
+        inVec.clear();
+        for (int j = 0; j < inputVecSize; j++) {
+            inVec.push_back(timeSeries2.at(i+j));
+        }
+
+        inVec = dataproc->process(inVec,0);
+        input[0] = inVec;
+        for (int j = 0; j < numPredPoints; j++) {          
+            result = lstm->predict(input); 
+            input[0] = std::vector<double>(inVec.begin()+1, inVec.begin()+inputVecSize);
+            input[0].push_back(result);
+            predPoints[((i+inputVecSize+j)%numPredPoints)] += result;     
+        }
+
+        result = predPoints[((i+inputVecSize)%numPredPoints)]/(double)numPredPoints;
+        predPoints[((i+inputVecSize)%numPredPoints)] = 0;
+
+        // calculating the Mean Squared Error
+        expected = timeSeries.at(i+inputVecSize);
+        MSE += std::pow(expected-result,2);
+        result = dataproc->postProcess(result);
+        
+        // filling the values to compare the similarity
+        predictedVec = predictedVec.head(subVSize);
+        Eigen::VectorXd predictedVec(10);
+        predictedVec(9) = result;
+        
+        expectedVec = expectedVec.head(subVSize);
+        Eigen::VectorXd expectedVec(10);
+        expectedVec(9) = timeSeries2.at(i+inputVecSize);
+        
+        // Extracting the similarity
+        similarity = DTW::getSimilarity(expectedVec,predictedVec);
+        if (similarity > 18) { 
+            
+            std::cout<<similarity<<": "<<(i+inputVecSize)<<"\n";
+        }
+        
         out_file<<result<<"\n";
         out_file2<<timeSeries2.at(i+inputVecSize)<<"\n";
 

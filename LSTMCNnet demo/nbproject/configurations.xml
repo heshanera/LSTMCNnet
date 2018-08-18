@@ -39,7 +39,6 @@
           <standard>10</standard>
         </cTool>
         <ccTool>
-          <standard>11</standard>
           <incDir>
             <pElem>../LSTMCNnet</pElem>
             <pElem>../LSTMCNnet/CNNet/Eigen</pElem>
