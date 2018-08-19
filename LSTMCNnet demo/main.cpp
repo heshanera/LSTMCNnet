@@ -1095,7 +1095,7 @@ int lstmPredAnom(){
     modelStruct.memCells = 6;
     modelStruct.trainDataSize = 600;
     modelStruct.inputVecSize = 120;
-    modelStruct.learningRate = 0.00001;
+    modelStruct.learningRate = 0.002;
     modelStruct.trainingIterations = 10; 
     modelStruct.numPredPoints = 1;
     modelStruct.dataFile = "datasets/univariate/input/"+fileName;
@@ -1106,7 +1106,9 @@ int lstmPredAnom(){
     
     std::string expect = "datasets/univariate/predictions/LSTM/expect_"+fileName;
     std::string predict = "datasets/univariate/predictions/LSTM/predict_"+fileName;
-    pm.predict(3500, expect, predict, 10);
+    
+//    pm.predict(3500, expect, predict);
+    pm.predict(3500, expect, predict, 10, 20);
     
     return 0;
 }
