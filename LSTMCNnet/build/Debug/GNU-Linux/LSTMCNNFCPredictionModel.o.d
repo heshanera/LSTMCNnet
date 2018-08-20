@@ -1,6 +1,6 @@
 build/Debug/GNU-Linux/LSTMCNNFCPredictionModel.o: \
  LSTMCNNFCPredictionModel.cpp LSTMCNNFCPredictionModel.hpp \
- LSTMnet/LSTMNet.h CNNet/CNN.hpp CNNet/ConvolutionLayer.hpp \
+ PredictionModel.hpp CNNet/CNN.hpp CNNet/ConvolutionLayer.hpp \
  CNNet/Eigen/Eigen CNNet/Eigen/Dense CNNet/Eigen/Core \
  CNNet/Eigen/src/Core/util/DisableStupidWarnings.h \
  CNNet/Eigen/src/Core/util/Macros.h \
@@ -202,11 +202,12 @@ build/Debug/GNU-Linux/LSTMCNNFCPredictionModel.o: \
  CNNet/Eigen/src/IterativeLinearSolvers/IncompleteLUT.h \
  CNNet/Eigen/src/IterativeLinearSolvers/IncompleteCholesky.h \
  CNNet/Activation.hpp CNNet/PoolLayer.hpp CNNet/FCLayer.hpp \
- LSTMnet/DataProcessor.h LSTMnet/FileProcessor.h PredictionModel.hpp
+ LSTMnet/LSTMNet.h LSTMnet/DataProcessor.h LSTMnet/FileProcessor.h \
+ DTW.hpp CNNet/Eigen/Dense
 
 LSTMCNNFCPredictionModel.hpp:
 
-LSTMnet/LSTMNet.h:
+PredictionModel.hpp:
 
 CNNet/CNN.hpp:
 
@@ -718,8 +719,12 @@ CNNet/PoolLayer.hpp:
 
 CNNet/FCLayer.hpp:
 
+LSTMnet/LSTMNet.h:
+
 LSTMnet/DataProcessor.h:
 
 LSTMnet/FileProcessor.h:
 
-PredictionModel.hpp:
+DTW.hpp:
+
+CNNet/Eigen/Dense:

@@ -8,11 +8,6 @@
 #ifndef LSTMCNNFCPREDICTIONMODEL_HPP
 #define LSTMCNNFCPREDICTIONMODEL_HPP
 
-#include <iostream>
-#include "LSTMnet/LSTMNet.h"
-#include "CNNet/CNN.hpp"
-#include "LSTMnet/DataProcessor.h"
-#include "LSTMnet/FileProcessor.h"
 #include "PredictionModel.hpp"
 
 class LSTMCNNFCPredictionModel {
@@ -25,6 +20,7 @@ public:
     int train();
     int initPredData(std::string file);
     int predict(int points, std::string expect, std::string predict);
+    int predict(int points, std::string expect, std::string predict, int simVecSize, double marker, double simMargin = 0);
 private:
     LSTMNet * lstm;
     CNN * cnn;

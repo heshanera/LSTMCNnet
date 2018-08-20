@@ -8,12 +8,7 @@
 #ifndef CNNPREDICTIONMODEL_HPP
 #define CNNPREDICTIONMODEL_HPP
 
-#include <iostream>
-#include "CNNet/CNN.hpp"
-#include "LSTMnet/DataProcessor.h"
-#include "LSTMnet/FileProcessor.h"
 #include "PredictionModel.hpp"
-#include "DTW.hpp"
 
 class CNNPredictionModel {
 public:

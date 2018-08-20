@@ -1176,7 +1176,7 @@ int cnnPredAnom(){
     std::string expect = "datasets/univariate/predictions/CNN/expect_"+fileName;
     std::string predict = "datasets/univariate/predictions/CNN/predict_"+fileName;
 //    pm.predict(1100, expect, predict);
-    pm.predict(1100, expect, predict,5 , 50000, 420000);
+    pm.predict(1100, expect, predict, 5, 50000, 420000);
     
     return 0;
 }
@@ -1197,20 +1197,20 @@ int lstmcnnfcPredAnom(){
         /*10*/ "hr2.txt"
     };
     
-    std::string fileName = datasets[9];
+    std::string fileName = datasets[1];
     
     ModelStruct modelStruct;
-    modelStruct.trainDataSize = 600;
+    modelStruct.trainDataSize = 300;
     modelStruct.learningRate = 0.01;
-    modelStruct.trainingIterations = 8; 
+    modelStruct.trainingIterations = 15; 
     modelStruct.numPredPoints = 1;
     modelStruct.dataFile = "datasets/univariate/input/"+fileName;
     
     // LSTM parameters
-    modelStruct.memCells = 4;
+    modelStruct.memCells = 6;
     
     // CNN parameters
-    modelStruct.matWidth = 60;
+    modelStruct.matWidth = 30;
     modelStruct.matHeight = 2;
     modelStruct.targetC = 1;
     
@@ -1248,7 +1248,8 @@ int lstmcnnfcPredAnom(){
     
     std::string expect = "datasets/univariate/predictions/LSTMCNNFC/expect_"+fileName;
     std::string predict = "datasets/univariate/predictions/LSTMCNNFC/predict_"+fileName;
-    pm.predict(3500, expect, predict);
+//    pm.predict(1300, expect, predict);
+    pm.predict(1300, expect, predict, 5, 50000, 430000);
     
     return 0;
     

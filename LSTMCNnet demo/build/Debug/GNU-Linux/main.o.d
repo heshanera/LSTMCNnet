@@ -1,7 +1,5 @@
 build/Debug/GNU-Linux/main.o: main.cpp ../LSTMCNnet/LSTMCNnet.hpp \
- ../LSTMCNnet/LSTMPredictionModel.hpp ../LSTMCNnet/LSTMnet/LSTMNet.h \
- ../LSTMCNnet/LSTMnet/DataProcessor.h \
- ../LSTMCNnet/LSTMnet/FileProcessor.h ../LSTMCNnet/PredictionModel.hpp \
+ ../LSTMCNnet/LSTMPredictionModel.hpp ../LSTMCNnet/PredictionModel.hpp \
  ../LSTMCNnet/CNNet/CNN.hpp ../LSTMCNnet/CNNet/ConvolutionLayer.hpp \
  ../LSTMCNnet/CNNet/Eigen/Eigen ../LSTMCNnet/CNNet/Eigen/Dense \
  ../LSTMCNnet/CNNet/Eigen/Core \
@@ -250,7 +248,9 @@ build/Debug/GNU-Linux/main.o: main.cpp ../LSTMCNnet/LSTMCNnet.hpp \
  ../LSTMCNnet/CNNet/Eigen/src/IterativeLinearSolvers/IncompleteLUT.h \
  ../LSTMCNnet/CNNet/Eigen/src/IterativeLinearSolvers/IncompleteCholesky.h \
  ../LSTMCNnet/CNNet/Activation.hpp ../LSTMCNnet/CNNet/PoolLayer.hpp \
- ../LSTMCNnet/CNNet/FCLayer.hpp ../LSTMCNnet/DTW.hpp \
+ ../LSTMCNnet/CNNet/FCLayer.hpp ../LSTMCNnet/LSTMnet/LSTMNet.h \
+ ../LSTMCNnet/LSTMnet/DataProcessor.h \
+ ../LSTMCNnet/LSTMnet/FileProcessor.h ../LSTMCNnet/DTW.hpp \
  ../LSTMCNnet/CNNet/Eigen/Dense ../LSTMCNnet/CNNPredictionModel.hpp \
  ../LSTMCNnet/LSTMCNNFCPredictionModel.hpp \
  ../LSTMCNnet/LSTMCNNPredictionModel.hpp \
@@ -259,12 +259,6 @@ build/Debug/GNU-Linux/main.o: main.cpp ../LSTMCNnet/LSTMCNnet.hpp \
 ../LSTMCNnet/LSTMCNnet.hpp:
 
 ../LSTMCNnet/LSTMPredictionModel.hpp:
-
-../LSTMCNnet/LSTMnet/LSTMNet.h:
-
-../LSTMCNnet/LSTMnet/DataProcessor.h:
-
-../LSTMCNnet/LSTMnet/FileProcessor.h:
 
 ../LSTMCNnet/PredictionModel.hpp:
 
@@ -777,6 +771,12 @@ build/Debug/GNU-Linux/main.o: main.cpp ../LSTMCNnet/LSTMCNnet.hpp \
 ../LSTMCNnet/CNNet/PoolLayer.hpp:
 
 ../LSTMCNnet/CNNet/FCLayer.hpp:
+
+../LSTMCNnet/LSTMnet/LSTMNet.h:
+
+../LSTMCNnet/LSTMnet/DataProcessor.h:
+
+../LSTMCNnet/LSTMnet/FileProcessor.h:
 
 ../LSTMCNnet/DTW.hpp:
 

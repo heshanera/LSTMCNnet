@@ -8,12 +8,7 @@
 #ifndef LSTMPREDICTIONMODEL_HPP
 #define LSTMPREDICTIONMODEL_HPP
 
-#include <iostream>
-#include "LSTMnet/LSTMNet.h"
-#include "LSTMnet/DataProcessor.h"
-#include "LSTMnet/FileProcessor.h"
 #include "PredictionModel.hpp"
-#include "DTW.hpp"
 
 class LSTMPredictionModel {
 public:

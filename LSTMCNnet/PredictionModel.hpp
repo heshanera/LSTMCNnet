@@ -13,6 +13,7 @@
 #include "LSTMnet/LSTMNet.h"
 #include "LSTMnet/DataProcessor.h"
 #include "LSTMnet/FileProcessor.h"
+#include "DTW.hpp"
 
 //class ModelStruct;
 
