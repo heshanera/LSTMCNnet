@@ -13,6 +13,7 @@
 #include "LSTMnet/DataProcessor.h"
 #include "LSTMnet/FileProcessor.h"
 #include "PredictionModel.hpp"
+#include "DTW.hpp"
 
 class CNNPredictionModel {
 public:
@@ -24,6 +25,7 @@ public:
     int train();
     int initPredData(std::string file);
     int predict(int points, std::string expect, std::string predict);
+    int predict(int points, std::string expect, std::string predict, int simVecSize, double marker, double simMargin = 0);
 private:
     CNN * cnn;
     ModelStruct * modelStruct;

@@ -1089,13 +1089,13 @@ int lstmPredAnom(){
         /*10*/ "hr2.txt"
     };
     
-    std::string fileName = datasets[9];
+    std::string fileName = datasets[1];
     
     ModelStruct modelStruct;
     modelStruct.memCells = 6;
-    modelStruct.trainDataSize = 600;
-    modelStruct.inputVecSize = 120;
-    modelStruct.learningRate = 0.002;
+    modelStruct.trainDataSize = 300;
+    modelStruct.inputVecSize = 60;
+    modelStruct.learningRate = 0.001;
     modelStruct.trainingIterations = 10; 
     modelStruct.numPredPoints = 1;
     modelStruct.dataFile = "datasets/univariate/input/"+fileName;
@@ -1107,8 +1107,8 @@ int lstmPredAnom(){
     std::string expect = "datasets/univariate/predictions/LSTM/expect_"+fileName;
     std::string predict = "datasets/univariate/predictions/LSTM/predict_"+fileName;
     
-//    pm.predict(3500, expect, predict);
-    pm.predict(3500, expect, predict, 10, 20);
+//    pm.predict(1300, expect, predict);
+    pm.predict(1300, expect, predict, 5, 50000);
     
     return 0;
 }
@@ -1129,15 +1129,15 @@ int cnnPredAnom(){
         /*10*/ "hr2.txt"
     };
     
-    std::string fileName = datasets[9];
+    std::string fileName = datasets[1];
     
     ModelStruct modelStruct;
-    modelStruct.trainDataSize = 200;
-    modelStruct.matWidth = 60;
+    modelStruct.trainDataSize = 60;
+    modelStruct.matWidth = 20;
     modelStruct.matHeight = 2;
     modelStruct.trainingIterations = 20; 
-    modelStruct.learningRate = 0.01;
-    modelStruct.numPredPoints = 3;
+    modelStruct.learningRate = 0.001;
+    modelStruct.numPredPoints = 1;
     modelStruct.targetC = 1;
     modelStruct.dataFile = "datasets/univariate/input/"+fileName;
     
@@ -1151,9 +1151,9 @@ int cnnPredAnom(){
     PL1.poolW = 2;
 
     struct::FCLayStruct FCL1;
-    FCL1.outputs = 20; // neurons in fully connected layer
+    FCL1.outputs = 60; // neurons in fully connected layer
     struct::FCLayStruct FCL2;
-    FCL2.outputs = 10; // neurons in fully connected layer
+    FCL2.outputs = 20; // neurons in fully connected layer
     struct::FCLayStruct FCL3;
     FCL3.outputs = 1; // neurons in fully connected layer
 
@@ -1175,8 +1175,9 @@ int cnnPredAnom(){
     
     std::string expect = "datasets/univariate/predictions/CNN/expect_"+fileName;
     std::string predict = "datasets/univariate/predictions/CNN/predict_"+fileName;
-    pm.predict(2500, expect, predict);
-        
+//    pm.predict(1100, expect, predict);
+    pm.predict(1100, expect, predict,5 , 50000, 420000);
+    
     return 0;
 }
 
@@ -1265,9 +1266,9 @@ int main(int argc, char** argv) {
     //lstmcnnfcPredModel();
     
     // multiple prediction with known anomalies ///////////////////////////////
-    lstmPredAnom();
+    //lstmPredAnom();
     //cnnPredAnom();
-    //lstmcnnfcPredAnom();
+    lstmcnnfcPredAnom();
     
     return 0;
 }

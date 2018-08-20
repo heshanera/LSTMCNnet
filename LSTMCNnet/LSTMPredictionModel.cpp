@@ -152,13 +152,13 @@ int LSTMPredictionModel::predict(int points, std::string expect, std::string pre
     return 0;
 }
 
-int LSTMPredictionModel::predict(int points, std::string expect, std::string predict, int simVecSize, double marker) {
+int LSTMPredictionModel::predict(int points, std::string expect, std::string predict, int simVecSize, double marker, double simMargin) {
 
     Eigen::VectorXd expectedVec = Eigen::VectorXd::Zero(simVecSize);
     Eigen::VectorXd predictedVec = Eigen::VectorXd::Zero(simVecSize);
     int subVSize = simVecSize-1;
     double similarity;
-    double meanSim = 0;
+    double maxSim = 0;
     
     int inputVecSize = modelStruct->inputVecSize; // input vector size
     int trainDataSize = modelStruct->trainDataSize; // train data size
@@ -200,18 +200,18 @@ int LSTMPredictionModel::predict(int points, std::string expect, std::string pre
         predPoints[((i+inputVecSize)%numPredPoints)] = 0;
         
         // filling the values to compare the similarity
-        predictedVec = predictedVec.head(subVSize);
-        Eigen::VectorXd predictedVec(10);
-        predictedVec(9) = result;
-        
-        expectedVec = expectedVec.head(subVSize);
-        Eigen::VectorXd expectedVec(10);
-        expectedVec(9) = timeSeries.at(i+inputVecSize);
-        
+        for (int j = 0; j < subVSize; j++) {
+            expectedVec(j) = expectedVec(j+1);
+            predictedVec(j) = predictedVec(j+1);
+        }
+        predictedVec(subVSize) = dataproc->postProcess(result);
+        expectedVec(subVSize) = timeSeries2.at(i+inputVecSize);        
         similarity = DTW::getSimilarity(expectedVec,predictedVec); 
-        if ( meanSim < similarity) meanSim = similarity;
+        if ( maxSim < similarity) maxSim = similarity;
         
     }
+    
+    if ( simMargin != 0) maxSim = simMargin;
 
     for (int i = trainDataSize; i < points; i++) {
 
@@ -232,24 +232,27 @@ int LSTMPredictionModel::predict(int points, std::string expect, std::string pre
         result = predPoints[((i+inputVecSize)%numPredPoints)]/(double)numPredPoints;
         predPoints[((i+inputVecSize)%numPredPoints)] = 0;
 
-        // filling the values to compare the similarity
-        predictedVec = predictedVec.head(subVSize);
-        Eigen::VectorXd predictedVec(10);
-        predictedVec(9) = result;
         
-        expectedVec = expectedVec.head(subVSize);
-        Eigen::VectorXd expectedVec(10);
-        expectedVec(9) = timeSeries.at(i+inputVecSize);
         
         // calculating the Mean Squared Error
         expected = timeSeries.at(i+inputVecSize);
         MSE += std::pow(expected-result,2);
         result = dataproc->postProcess(result);
         
+        
+        // filling the values to compare the similarity
+        for (int j = 0; j < subVSize; j++) {
+            expectedVec(j) = expectedVec(j+1);
+            predictedVec(j) = predictedVec(j+1);
+        }
+        predictedVec(subVSize) = result;
+        expectedVec(subVSize) = timeSeries2.at(i+inputVecSize);
+        
+        
         // Extracting the similarity
         similarity = DTW::getSimilarity(expectedVec,predictedVec);
         
-        if (similarity > meanSim) { 
+        if (similarity > maxSim) { 
             out_file<<marker<<"\n";
         } else {
             out_file<<"\n";

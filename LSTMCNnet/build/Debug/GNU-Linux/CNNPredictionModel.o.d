@@ -202,7 +202,7 @@ build/Debug/GNU-Linux/CNNPredictionModel.o: CNNPredictionModel.cpp \
  CNNet/Eigen/src/IterativeLinearSolvers/IncompleteCholesky.h \
  CNNet/Activation.hpp CNNet/PoolLayer.hpp CNNet/FCLayer.hpp \
  LSTMnet/DataProcessor.h LSTMnet/FileProcessor.h PredictionModel.hpp \
- LSTMnet/LSTMNet.h
+ LSTMnet/LSTMNet.h DTW.hpp CNNet/Eigen/Dense
 
 CNNPredictionModel.hpp:
 
@@ -723,3 +723,7 @@ LSTMnet/FileProcessor.h:
 PredictionModel.hpp:
 
 LSTMnet/LSTMNet.h:
+
+DTW.hpp:
+
+CNNet/Eigen/Dense:

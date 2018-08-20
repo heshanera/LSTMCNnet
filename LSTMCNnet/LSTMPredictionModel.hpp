@@ -25,7 +25,7 @@ public:
     int train();
     int initPredData(std::string file);
     int predict(int points, std::string expect, std::string predict);
-    int predict(int points, std::string expect, std::string predict, int simVecSize, double marker);
+    int predict(int points, std::string expect, std::string predict, int simVecSize, double marker, double simMargin = 0);
 private:
     LSTMNet * lstm;
     ModelStruct * modelStruct;
