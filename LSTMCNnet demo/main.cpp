@@ -1251,7 +1251,8 @@ int lstmcnnfcPredAnom(){
 //    pm.predict(3300, expect, predict);
 //    pm.predict(3300, expect, predict, 5, 15,100);
     
-    pm.predictNorm(3300, expect, predict);
+//    pm.predictNorm(3300, expect, predict);
+    pm.predictNorm(3300, expect, predict, 5, 15,360);
     
     return 0;
     

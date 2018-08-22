@@ -21,7 +21,8 @@ public:
     int initPredData(std::string file);
     int predict(int points, std::string expect, std::string predict);
     int predict(int points, std::string expect, std::string predict, int simVecSize, double marker, double simMargin = 0);
-    int predictNorm(int points, std::string expect, std::string predict, int simVecSize = 0, double marker = 0, double simMargin = 0);
+    int predictNorm(int points, std::string expect, std::string predict);
+    int predictNorm(int points, std::string expect, std::string predict, int simVecSize, double marker, double simMargin = 0);
 private:
     LSTMNet * lstm;
     CNN * cnn;
