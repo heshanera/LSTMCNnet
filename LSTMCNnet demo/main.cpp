@@ -1197,12 +1197,12 @@ int lstmcnnfcPredAnom(){
         /*10*/ "hr2.txt"
     };
     
-    std::string fileName = datasets[1];
+    std::string fileName = datasets[9];
     
     ModelStruct modelStruct;
-    modelStruct.trainDataSize = 300;
-    modelStruct.learningRate = 0.01;
-    modelStruct.trainingIterations = 15; 
+    modelStruct.trainDataSize = 600;
+    modelStruct.learningRate = 0.001;
+    modelStruct.trainingIterations = 10; 
     modelStruct.numPredPoints = 1;
     modelStruct.dataFile = "datasets/univariate/input/"+fileName;
     
@@ -1210,12 +1210,12 @@ int lstmcnnfcPredAnom(){
     modelStruct.memCells = 6;
     
     // CNN parameters
-    modelStruct.matWidth = 30;
+    modelStruct.matWidth = 60;
     modelStruct.matHeight = 2;
     modelStruct.targetC = 1;
     
     struct::ConvLayStruct CL1;
-    CL1.filterSize = 1; // filter size: N x N
+    CL1.filterSize = 2; // filter size: N x N
     CL1.filters = 1; // No of filters
     CL1.stride = 1;
 
@@ -1224,9 +1224,9 @@ int lstmcnnfcPredAnom(){
     PL1.poolW = 2;
 
     struct::FCLayStruct FCL1;
-    FCL1.outputs = 40; // neurons in fully connected layer
+    FCL1.outputs = 80; // neurons in fully connected layer
     struct::FCLayStruct FCL2;
-    FCL2.outputs = 10; // neurons in fully connected layer
+    FCL2.outputs = 40; // neurons in fully connected layer
     struct::FCLayStruct FCL3;
     FCL3.outputs = 1; // neurons in fully connected layer
 
@@ -1248,8 +1248,10 @@ int lstmcnnfcPredAnom(){
     
     std::string expect = "datasets/univariate/predictions/LSTMCNNFC/expect_"+fileName;
     std::string predict = "datasets/univariate/predictions/LSTMCNNFC/predict_"+fileName;
-//    pm.predict(1300, expect, predict);
-    pm.predict(1300, expect, predict, 5, 50000, 430000);
+//    pm.predict(3300, expect, predict);
+//    pm.predict(3300, expect, predict, 5, 15,100);
+    
+    pm.predictNorm(3300, expect, predict);
     
     return 0;
     
