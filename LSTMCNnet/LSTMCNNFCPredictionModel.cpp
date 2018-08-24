@@ -260,11 +260,12 @@ int LSTMCNNFCPredictionModel::predict(int points, std::string expect, std::strin
         
         // combining the results LSTM and CNN
         val = (result + val)/2;
+//        val = (result*0.1 + val*0.9);
          
         // calculating the Mean Squared Error
         expected = timeSeries.at(i+inputVecSize);
         errorSq += std::pow(expected-val,2);
-        result = dataproc->postProcess(result);
+        result = dataproc->postProcess(val);
         
         // writing the predictions
         out_file<<result<<"\n";
@@ -443,11 +444,12 @@ int LSTMCNNFCPredictionModel::predict(int points, std::string expect, std::strin
         
         // combining the results LSTM and CNN
         val = (result + val)/2;
+//        val = (result*0.1 + val*0.9);
          
         // calculating the Mean Squared Error
         expected = timeSeries.at(i+inputVecSize);
         errorSq += std::pow(expected-val,2);
-        result = dataproc->postProcess(result);
+        result = dataproc->postProcess(val);
         
         // filling the values to compare the similarity
         for (int j = 0; j < subVSize; j++) {
@@ -635,7 +637,7 @@ int LSTMCNNFCPredictionModel::predictNorm(int points, std::string expect, std::s
         // calculating the Mean Squared Error
         expected = timeSeries.at(i+inputVecSize);
         errorSq += std::pow(expected-val,2);
-        result = dataproc->postProcess(result);
+        result = dataproc->postProcess(val);
         
         // writing the predictions
         out_file<<result<<"\n";
@@ -828,7 +830,7 @@ int LSTMCNNFCPredictionModel::predictNorm(int points, std::string expect, std::s
         // calculating the Mean Squared Error
         expected = timeSeries.at(i+inputVecSize);
         errorSq += std::pow(expected-val,2);
-        result = dataproc->postProcess(result);
+        result = dataproc->postProcess(val);
         
         // filling the values to compare the similarity
         for (int j = 0; j < subVSize; j++) {

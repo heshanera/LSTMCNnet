@@ -1248,11 +1248,11 @@ int lstmcnnfcPredAnom(){
     
     std::string expect = "datasets/univariate/predictions/LSTMCNNFC/expect_"+fileName;
     std::string predict = "datasets/univariate/predictions/LSTMCNNFC/predict_"+fileName;
-//    pm.predict(3300, expect, predict);
+    pm.predict(3300, expect, predict);
 //    pm.predict(3300, expect, predict, 5, 15,100);
     
 //    pm.predictNorm(3300, expect, predict);
-    pm.predictNorm(3300, expect, predict, 5, 15,360);
+//    pm.predictNorm(3300, expect, predict, 5, 15,150);
     
     return 0;
     
