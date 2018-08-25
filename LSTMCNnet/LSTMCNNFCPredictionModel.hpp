@@ -19,19 +19,22 @@ public:
     
     /**
      * Train the prediction model
-     * @return 
+     * 
+     * @return 0
      */
     int train();
     
     /**
      * Input Data for the predictions
+     * 
      * @param file: input data ( time series )
-     * @return 
+     * @return 0
      */
     int initPredData(std::string file);
     
     /**
      * Predict the given number of points and write the predicted values to given file
+     * 
      * @param points: points to be predicted
      * @param expect: file path to write the expected values
      * @param predict: file path to write the predicted value
@@ -43,6 +46,7 @@ public:
     
     /**
      * Predict the given number of points, Identify the anomalies using DTW and write the anomalous points to given file
+     * 
      * @param points: points to be predicted
      * @param expect: file path to write the expected values
      * @param predict: file path to write the predicted anomaly points
@@ -60,25 +64,38 @@ public:
     );
     
     /**
+     * Predict the given number of points and write the predicted values to given file
+     * keep track on the training data points to predict the normal behavior
      * 
-     * @param points
-     * @param expect
-     * @param predict
-     * @return 
+     * @param points: points to be predicted
+     * @param expect: file path to write the expected values
+     * @param predict: file path to write the predicted value
+     * @param lstmW: prediction weight for the lstm (default value = 0.5, lstmW + cnnW = 1)
+     * @param cnnW: prediction weight for the cnn (default value = 0.5, lstmW + cnnW = 1)
+     * @return 0
      */
-    int predictNorm(int points, std::string expect, std::string predict);
+    int predictNorm(int points, std::string expect, std::string predict, float lstmW = 0.5, float cnnW = 0.5);
     
     /**
+     * Predict the given number of points, Identify the anomalies using DTW and write the anomalous points to given file
+     * keep track on the training data points to predict the normal behavior
      * 
-     * @param points
-     * @param expect
-     * @param predict
-     * @param simVecSize
-     * @param marker
-     * @param simMargin
-     * @return 
+     * @param points: points to be predicted
+     * @param expect: file path to write the expected values
+     * @param predict: file path to write the predicted anomaly points
+     * @param simVecSize: DTW similarity vector size 
+     * @param marker: value to write for the anomalous point
+     * @param simMargin: DTW similarity margin to detect anomalous points
+     * @param lstmW: prediction weight for the lstm (default value = 0.5, lstmW + cnnW = 1)
+     * @param cnnW: prediction weight for the cnn (default value = 0.5, lstmW + cnnW = 1)
+     * @return 0
      */
-    int predictNorm(int points, std::string expect, std::string predict, int simVecSize, double marker, double simMargin = 0);
+    int predictNorm(
+        int points, std::string expect, std::string predict, 
+        int simVecSize, double marker, double simMargin = 0, 
+        float lstmW = 0.5, float cnnW = 0.5
+    );
+    
 private:
     LSTMNet * lstm;
     CNN * cnn;

@@ -483,7 +483,7 @@ int LSTMCNNFCPredictionModel::predict(
     return 0;
 }
 
-int LSTMCNNFCPredictionModel::predictNorm(int points, std::string expect, std::string predict) {
+int LSTMCNNFCPredictionModel::predictNorm(int points, std::string expect, std::string predict, float lstmW, float cnnW) {
     
     double errorSq = 0, MSE, expected, val;
     int predSize = points;
@@ -635,8 +635,8 @@ int LSTMCNNFCPredictionModel::predictNorm(int points, std::string expect, std::s
         val = (val - predictMin)*((trainMax - trainMin)/(predictMax - predictMin)) + trainMin;
         
         // combining the results LSTM and CNN
-        val = (result + val)/2;
-//        val = (result*0.6 + val*0.4);
+//        val = (result + val)/2;
+        val = (result*lstmW + val*cnnW);
          
         // calculating the Mean Squared Error
         expected = timeSeries.at(i+inputVecSize);
@@ -658,7 +658,10 @@ int LSTMCNNFCPredictionModel::predictNorm(int points, std::string expect, std::s
     return 0;
 }
 
-int LSTMCNNFCPredictionModel::predictNorm(int points, std::string expect, std::string predict, int simVecSize, double marker, double simMargin) {
+int LSTMCNNFCPredictionModel::predictNorm(
+    int points, std::string expect, std::string predict, 
+    int simVecSize, double marker, double simMargin, float lstmW, float cnnW
+) {
     
     Eigen::VectorXd expectedVec = Eigen::VectorXd::Zero(simVecSize);
     Eigen::VectorXd predictedVec = Eigen::VectorXd::Zero(simVecSize);
@@ -829,8 +832,8 @@ int LSTMCNNFCPredictionModel::predictNorm(int points, std::string expect, std::s
         val = (val - predictMin)*((trainMax - trainMin)/(predictMax - predictMin)) + trainMin;
         
         // combining the results LSTM and CNN
-        val = (result + val)/2;
-//        val = (result + val);
+//        val = (result + val)/2;
+        val = (result*lstmW + val*cnnW);
          
         // calculating the Mean Squared Error
         expected = timeSeries.at(i+inputVecSize);
