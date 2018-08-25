@@ -1194,28 +1194,30 @@ int lstmcnnfcPredAnom(){
         /* 7*/ "data.txt",
         /* 8*/ "monthlySunspotNumbers.txt",
         /* 9*/ "dailyMinimumTemperatures.txt",
-        /*10*/ "hr2.txt"
+        /*10*/ "hr2.txt",
+        /*11*/ "averageSpeed.txt",
+        /*12*/ "nycTaxi.txt"
     };
     
-    std::string fileName = datasets[9];
+    std::string fileName = datasets[12];
     
     ModelStruct modelStruct;
     modelStruct.trainDataSize = 600;
-    modelStruct.learningRate = 0.001;
+    modelStruct.learningRate = 0.02;
     modelStruct.trainingIterations = 10; 
     modelStruct.numPredPoints = 1;
     modelStruct.dataFile = "datasets/univariate/input/"+fileName;
     
     // LSTM parameters
-    modelStruct.memCells = 6;
+    modelStruct.memCells = 4;
     
     // CNN parameters
-    modelStruct.matWidth = 60;
+    modelStruct.matWidth = 30;
     modelStruct.matHeight = 2;
     modelStruct.targetC = 1;
     
     struct::ConvLayStruct CL1;
-    CL1.filterSize = 2; // filter size: N x N
+    CL1.filterSize = 1; // filter size: N x N
     CL1.filters = 1; // No of filters
     CL1.stride = 1;
 
@@ -1224,9 +1226,9 @@ int lstmcnnfcPredAnom(){
     PL1.poolW = 2;
 
     struct::FCLayStruct FCL1;
-    FCL1.outputs = 80; // neurons in fully connected layer
+    FCL1.outputs = 20; // neurons in fully connected layer
     struct::FCLayStruct FCL2;
-    FCL2.outputs = 40; // neurons in fully connected layer
+    FCL2.outputs = 10; // neurons in fully connected layer
     struct::FCLayStruct FCL3;
     FCL3.outputs = 1; // neurons in fully connected layer
 
@@ -1244,15 +1246,15 @@ int lstmcnnfcPredAnom(){
     LSTMCNNFCPredictionModel pm(&modelStruct);
     pm.train();
     
-    pm.initPredData("datasets/univariate/anomalyInputs/"+fileName);
+//    pm.initPredData("datasets/univariate/anomalyInputs/"+fileName);
     
     std::string expect = "datasets/univariate/predictions/LSTMCNNFC/expect_"+fileName;
     std::string predict = "datasets/univariate/predictions/LSTMCNNFC/predict_"+fileName;
-    pm.predict(3300, expect, predict);
-//    pm.predict(3300, expect, predict, 5, 15,100);
+//    pm.predict(10000, expect, predict);
+    pm.predict(10000, expect, predict, 3, 30000,39000);
     
-//    pm.predictNorm(3300, expect, predict);
-//    pm.predictNorm(3300, expect, predict, 5, 15,150);
+//    pm.predictNorm(1000, expect, predict);
+//    pm.predictNorm(3300, expect, predict, 5, 15,200);
     
     return 0;
     
