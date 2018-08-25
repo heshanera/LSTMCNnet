@@ -1199,17 +1199,17 @@ int lstmcnnfcPredAnom(){
         /*12*/ "nycTaxi.txt"
     };
     
-    std::string fileName = datasets[12];
+    std::string fileName = datasets[0];
     
     ModelStruct modelStruct;
-    modelStruct.trainDataSize = 600;
+    modelStruct.trainDataSize = 300;
     modelStruct.learningRate = 0.02;
     modelStruct.trainingIterations = 10; 
     modelStruct.numPredPoints = 1;
     modelStruct.dataFile = "datasets/univariate/input/"+fileName;
     
     // LSTM parameters
-    modelStruct.memCells = 4;
+    modelStruct.memCells = 5;
     
     // CNN parameters
     modelStruct.matWidth = 30;
@@ -1226,7 +1226,7 @@ int lstmcnnfcPredAnom(){
     PL1.poolW = 2;
 
     struct::FCLayStruct FCL1;
-    FCL1.outputs = 20; // neurons in fully connected layer
+    FCL1.outputs = 10; // neurons in fully connected layer
     struct::FCLayStruct FCL2;
     FCL2.outputs = 10; // neurons in fully connected layer
     struct::FCLayStruct FCL3;
@@ -1250,8 +1250,8 @@ int lstmcnnfcPredAnom(){
     
     std::string expect = "datasets/univariate/predictions/LSTMCNNFC/expect_"+fileName;
     std::string predict = "datasets/univariate/predictions/LSTMCNNFC/predict_"+fileName;
-//    pm.predict(10000, expect, predict);
-    pm.predict(10000, expect, predict, 3, 30000,39000);
+    pm.predict(1200, expect, predict, 0.7, 0.3);
+//    pm.predict(10000, expect, predict, 3, 30000,39000);
     
 //    pm.predictNorm(1000, expect, predict);
 //    pm.predictNorm(3300, expect, predict, 5, 15,200);

@@ -116,7 +116,7 @@ int LSTMCNNFCPredictionModel::initPredData(std::string file) {
     return 0;
 }
 
-int LSTMCNNFCPredictionModel::predict(int points, std::string expect, std::string predict, float lstmW, float cnnW) {
+int LSTMCNNFCPredictionModel::predict(int points, std::string expect, std::string predict, double lstmW, double cnnW) {
     
     double errorSq = 0, MSE, expected, val;
     int predSize = points;
@@ -284,7 +284,7 @@ int LSTMCNNFCPredictionModel::predict(int points, std::string expect, std::strin
 
 int LSTMCNNFCPredictionModel::predict(
     int points, std::string expect, std::string predict, 
-    int simVecSize, double marker, double simMargin, float lstmW, float cnnW
+    int simVecSize, double marker, double simMargin, double lstmW, double cnnW
 ) {
     
     Eigen::VectorXd expectedVec = Eigen::VectorXd::Zero(simVecSize);
@@ -483,7 +483,7 @@ int LSTMCNNFCPredictionModel::predict(
     return 0;
 }
 
-int LSTMCNNFCPredictionModel::predictNorm(int points, std::string expect, std::string predict, float lstmW, float cnnW) {
+int LSTMCNNFCPredictionModel::predictNorm(int points, std::string expect, std::string predict, double lstmW, double cnnW) {
     
     double errorSq = 0, MSE, expected, val;
     int predSize = points;
@@ -660,7 +660,7 @@ int LSTMCNNFCPredictionModel::predictNorm(int points, std::string expect, std::s
 
 int LSTMCNNFCPredictionModel::predictNorm(
     int points, std::string expect, std::string predict, 
-    int simVecSize, double marker, double simMargin, float lstmW, float cnnW
+    int simVecSize, double marker, double simMargin, double lstmW, double cnnW
 ) {
     
     Eigen::VectorXd expectedVec = Eigen::VectorXd::Zero(simVecSize);

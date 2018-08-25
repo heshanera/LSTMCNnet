@@ -42,7 +42,7 @@ public:
      * @param cnnW: prediction weight for the cnn (default value = 0.5, lstmW + cnnW = 1)
      * @return 0
      */
-    int predict(int points, std::string expect, std::string predict, float lstmW = 0.5, float cnnW = 0.5);
+    int predict(int points, std::string expect, std::string predict, double lstmW = 0.5, double cnnW = 0.5);
     
     /**
      * Predict the given number of points, Identify the anomalies using DTW and write the anomalous points to given file
@@ -60,7 +60,7 @@ public:
     int predict(
         int points, std::string expect, std::string predict, 
         int simVecSize, double marker, double simMargin = 0, 
-        float lstmW = 0.5, float cnnW = 0.5
+        double lstmW = 0.5, double cnnW = 0.5
     );
     
     /**
@@ -74,7 +74,7 @@ public:
      * @param cnnW: prediction weight for the cnn (default value = 0.5, lstmW + cnnW = 1)
      * @return 0
      */
-    int predictNorm(int points, std::string expect, std::string predict, float lstmW = 0.5, float cnnW = 0.5);
+    int predictNorm(int points, std::string expect, std::string predict, double lstmW = 0.5, double cnnW = 0.5);
     
     /**
      * Predict the given number of points, Identify the anomalies using DTW and write the anomalous points to given file
@@ -93,7 +93,7 @@ public:
     int predictNorm(
         int points, std::string expect, std::string predict, 
         int simVecSize, double marker, double simMargin = 0, 
-        float lstmW = 0.5, float cnnW = 0.5
+        double lstmW = 0.5, double cnnW = 0.5
     );
     
 private:
