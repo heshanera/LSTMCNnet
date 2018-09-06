@@ -15,5 +15,7 @@
 #include "CNNLSTMPredictionModel.hpp"
 #include "DTW.hpp"
 
+// TODO: threshold for point anomaly identification
+
 #endif /* LSTMCNNET_HPP */
 

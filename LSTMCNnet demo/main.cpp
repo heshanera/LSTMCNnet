@@ -1196,28 +1196,29 @@ int lstmcnnfcPredAnom(){
         /* 9*/ "dailyMinimumTemperatures.txt",
         /*10*/ "hr2.txt",
         /*11*/ "averageSpeed.txt",
-        /*12*/ "nycTaxi.txt"
+        /*12*/ "nycTaxi.txt",
+        /*13*/ "datasetX.txt"
     };
     
-    std::string fileName = datasets[0];
+    std::string fileName = datasets[13];
     
     ModelStruct modelStruct;
-    modelStruct.trainDataSize = 300;
-    modelStruct.learningRate = 0.02;
+    modelStruct.trainDataSize = 600;
+    modelStruct.learningRate = 0.003;
     modelStruct.trainingIterations = 10; 
     modelStruct.numPredPoints = 1;
     modelStruct.dataFile = "datasets/univariate/input/"+fileName;
     
     // LSTM parameters
-    modelStruct.memCells = 5;
+    modelStruct.memCells = 6;
     
     // CNN parameters
-    modelStruct.matWidth = 30;
+    modelStruct.matWidth = 60;
     modelStruct.matHeight = 2;
     modelStruct.targetC = 1;
     
     struct::ConvLayStruct CL1;
-    CL1.filterSize = 1; // filter size: N x N
+    CL1.filterSize = 2; // filter size: N x N
     CL1.filters = 1; // No of filters
     CL1.stride = 1;
 
@@ -1226,9 +1227,9 @@ int lstmcnnfcPredAnom(){
     PL1.poolW = 2;
 
     struct::FCLayStruct FCL1;
-    FCL1.outputs = 10; // neurons in fully connected layer
+    FCL1.outputs = 80; // neurons in fully connected layer
     struct::FCLayStruct FCL2;
-    FCL2.outputs = 10; // neurons in fully connected layer
+    FCL2.outputs = 40; // neurons in fully connected layer
     struct::FCLayStruct FCL3;
     FCL3.outputs = 1; // neurons in fully connected layer
 
@@ -1250,11 +1251,21 @@ int lstmcnnfcPredAnom(){
     
     std::string expect = "datasets/univariate/predictions/LSTMCNNFC/expect_"+fileName;
     std::string predict = "datasets/univariate/predictions/LSTMCNNFC/predict_"+fileName;
-    pm.predict(1200, expect, predict, 0.7, 0.3);
-//    pm.predict(10000, expect, predict, 3, 30000,39000);
+//    pm.predict(3500, expect, predict,0.8,0.2);
+//    pm.predict(3500, expect, predict, 20, 25, 35, 0.8, 0.2);
     
-//    pm.predictNorm(1000, expect, predict);
-//    pm.predictNorm(3300, expect, predict, 5, 15,200);
+//    pm.predictNorm(1000, expect, predict,0.5,0.5);
+//    pm.predictNorm(3300, expect, predict, 5, 25,280);
+    
+    pm.predictAdaptNorm(3500, 
+            expect, predict, 
+            1000/*time*/, 
+            20/*similarity vector size*/, 
+            25/*marker value*/, 
+            18000/*similarity margin*/, 
+            0.8/*LSTM weight*/, 
+            0.2/*CNN weight*/
+    );
     
     return 0;
     
@@ -1263,32 +1274,20 @@ int lstmcnnfcPredAnom(){
 int lstmcnnfcNAB(){
 
     std::string datasets[] = {
-        /* 0*/ "seaLevelPressure.txt",
-        /* 1*/ "InternetTraff.txt",
-        /* 2*/ "monthlyReturnsOfValueweighted.txt",
-        /* 3*/ "treeAlmagreMountainPiarLocat.txt",
-        /* 4*/ "dailyCyclistsAlongSudurlandsb.txt",
-        /* 5*/ "totalPopulation.txt",
-        /* 6*/ "numberOfUnemployed.txt",
-        /* 7*/ "data.txt",
-        /* 8*/ "monthlySunspotNumbers.txt",
-        /* 9*/ "dailyMinimumTemperatures.txt",
-        /*10*/ "hr2.txt",
-        /*11*/ "averageSpeed.txt",
-        /*12*/ "nycTaxi.txt"
+        /* 0*/ "art_daily_nojump.txt"
     };
     
     std::string fileName = datasets[0];
     
     ModelStruct modelStruct;
     modelStruct.trainDataSize = 300;
-    modelStruct.learningRate = 0.02;
+    modelStruct.learningRate = 0.001;
     modelStruct.trainingIterations = 10; 
     modelStruct.numPredPoints = 1;
-    modelStruct.dataFile = "datasets/univariate/input/"+fileName;
+    modelStruct.dataFile = "datasets/univariate/NAB/input/"+fileName;
     
     // LSTM parameters
-    modelStruct.memCells = 5;
+    modelStruct.memCells = 4;
     
     // CNN parameters
     modelStruct.matWidth = 30;
@@ -1296,16 +1295,16 @@ int lstmcnnfcNAB(){
     modelStruct.targetC = 1;
     
     struct::ConvLayStruct CL1;
-    CL1.filterSize = 1; // filter size: N x N
+    CL1.filterSize = 2; // filter size: N x N
     CL1.filters = 1; // No of filters
     CL1.stride = 1;
 
     struct::PoolLayStruct PL1;
     PL1.poolH = 1; // pool size: N x N
-    PL1.poolW = 2;
+    PL1.poolW = 5;
 
     struct::FCLayStruct FCL1;
-    FCL1.outputs = 10; // neurons in fully connected layer
+    FCL1.outputs = 20; // neurons in fully connected layer
     struct::FCLayStruct FCL2;
     FCL2.outputs = 10; // neurons in fully connected layer
     struct::FCLayStruct FCL3;
@@ -1325,11 +1324,9 @@ int lstmcnnfcNAB(){
     LSTMCNNFCPredictionModel pm(&modelStruct);
     pm.train();
     
-//    pm.initPredData("datasets/univariate/anomalyInputs/"+fileName);
-    
-    std::string expect = "datasets/univariate/predictions/LSTMCNNFC/expect_"+fileName;
-    std::string predict = "datasets/univariate/predictions/LSTMCNNFC/predict_"+fileName;
-    pm.predict(1200, expect, predict, 0.7, 0.3);
+    std::string expect = "datasets/univariate/NAB/predictions/LSTMCNNFC/expect_"+fileName;
+    std::string predict = "datasets/univariate/NAB/predictions/LSTMCNNFC/predict_"+fileName;
+    pm.predict(3800, expect, predict, 1.0, 0.0);
 //    pm.predict(10000, expect, predict, 3, 30000,39000);
     
 //    pm.predictNorm(1000, expect, predict);
@@ -1353,10 +1350,10 @@ int main(int argc, char** argv) {
     // multiple prediction with known anomalies ///////////////////////////////
     //lstmPredAnom();
     //cnnPredAnom();
-    //lstmcnnfcPredAnom();
+    lstmcnnfcPredAnom();
     
     // Numenta Anomaly Benchmark //////////////////////////////////////////////
-    lstmcnnfcNAB();
+    //lstmcnnfcNAB();
     
     return 0;
 }
