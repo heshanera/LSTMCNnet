@@ -1279,20 +1279,29 @@ int lstmcnnfcNAB(){
         /************ realAWSCloudwatch ************/
         /*1*/ "ec2_cpu_utilization_5f5533.txt", // 4032 data points
         /*2*/ "ec2_cpu_utilization_24ae8d.txt", // 4032 data points
-        /*3*/ "ec2_cpu_utilization_53ea38.txt" // 4032 data points        
+        /*3*/ "ec2_cpu_utilization_53ea38.txt", // 4032 data points  
+        /*4*/ "ec2_cpu_utilization_77c1ca.txt", // 4032 data points  
+        /*5*/ "ec2_cpu_utilization_825cc2.txt", // 4032 data points
+        /*6*/ "ec2_cpu_utilization_ac20cd.txt", // 4032 data points
+        /*7*/ "ec2_cpu_utilization_c6585a.txt", // 4032 data points
+        /*8*/ "ec2_cpu_utilization_fe7f93.txt", // 4032 data points
+        
+        /*9*/ "ec2_disk_write_bytes_1ef3de.txt" // 4730 data points
+        
+        
     };
     
-    std::string fileName = datasets[3];
+    std::string fileName = datasets[9];
     
     ModelStruct modelStruct;
-    modelStruct.trainDataSize = 300;
+    modelStruct.trainDataSize = 600;
     modelStruct.learningRate = 0.0001;
     modelStruct.trainingIterations = 10; 
     modelStruct.numPredPoints = 1;
     modelStruct.dataFile = "datasets/univariate/NAB/input/"+fileName;
     
     // LSTM parameters
-    modelStruct.memCells = 6;
+    modelStruct.memCells = 10;
     
     // CNN parameters
     modelStruct.matWidth = 20;
@@ -1311,7 +1320,7 @@ int lstmcnnfcNAB(){
     struct::FCLayStruct FCL1;
     FCL1.outputs = 20; // neurons in fully connected layer
     struct::FCLayStruct FCL2;
-    FCL2.outputs = 10; // neurons in fully connected layer
+    FCL2.outputs = 5; // neurons in fully connected layer
     struct::FCLayStruct FCL3;
     FCL3.outputs = 1; // neurons in fully connected layer
 
@@ -1331,12 +1340,12 @@ int lstmcnnfcNAB(){
     
     std::string expect = "datasets/univariate/NAB/predictions/LSTMCNNFC/expect_"+fileName;
     std::string predict = "datasets/univariate/NAB/predictions/LSTMCNNFC/predict_"+fileName;
-//    pm.predict(3950, expect, predict, 0.5, 0.5);
-    pm.predict(3950, expect, predict, 25, 2.25, 170, 0.5, 0.5);
-//    pm.dtwSimilarity(3950, expect, predict, 25, 0.5, 0.5);
+//    pm.predict(4500, expect, predict, 0.6, 0.4);
+    pm.predict(4500, expect, predict, 5, 400000000, 2200000000, 0.6, 0.4);
+//    pm.dtwSimilarity(4500, expect, predict, 5, 0.6, 0.4);
     
-//    pm.predictNorm(1000, expect, predict);
-//    pm.predictNorm(3300, expect, predict, 5, 15,200);
+//    pm.predictNorm(3950, expect, predict, 0.2, 0.8);
+//    pm.predictNorm(3950, expect, predict, 5, 50, 190, 0.2, 0.8);
     
     return 0;
     

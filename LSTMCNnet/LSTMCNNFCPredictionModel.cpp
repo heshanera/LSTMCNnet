@@ -574,7 +574,7 @@ int LSTMCNNFCPredictionModel::predictNorm(int points, std::string expect, std::s
             inVec2.at(j) = inVec2.at(j+1);
         }
         
-        if ( result*2 < timeSeries2.at(i+inputVecSize-1) ) {
+        if ( std::abs(timeSeries2.at(i+inputVecSize-1) - result) > (result/1.5) ) {
             inVec2.at(inputVecSize-1) = timeSeries2.at((i+inputVecSize-1)%inputSize);
         }
         else inVec2.at(inputVecSize-1) = timeSeries2.at(i+inputVecSize-1);
@@ -651,7 +651,6 @@ int LSTMCNNFCPredictionModel::predictNorm(
     Eigen::VectorXd predictedVec = Eigen::VectorXd::Zero(simVecSize);
     int subVSize = simVecSize-1;
     double similarity;
-    double maxSim = 0;
     
     double errorSq = 0, MSE, expected, val;
     int predSize = points;
@@ -718,17 +717,6 @@ int LSTMCNNFCPredictionModel::predictNorm(
         }
         lstmPredPoints[((i+inputVecSize)%numPredPoints)] = 0;
         
-        // filling the values to compare the similarity
-        for (int j = 0; j < subVSize; j++) {
-            expectedVec(j) = expectedVec(j+1);
-            predictedVec(j) = predictedVec(j+1);
-        }
-        predictedVec(subVSize) = dataproc->postProcess(result);
-        expectedVec(subVSize) = timeSeries2.at(i+inputVecSize);        
-        similarity = DTW::getSimilarity(expectedVec,predictedVec); 
-        if ( maxSim < similarity) maxSim = similarity;
-
-        
         // CNN predictions for the trained data set
         tstMatArr[0] = Eigen::MatrixXd::Zero(height,width);
         for (int a = 0; a < height; a++) {
@@ -756,8 +744,6 @@ int LSTMCNNFCPredictionModel::predictNorm(
         }
         predPoints[((i+inputVecSize)%numPredPoints)] = 0;
     }
-    
-    if ( simMargin != 0) maxSim = simMargin;
 
     std::vector<double> inVec2;
     for (int j = 0; j < inputVecSize; j++) {
@@ -770,7 +756,7 @@ int LSTMCNNFCPredictionModel::predictNorm(
             inVec2.at(j) = inVec2.at(j+1);
         }
         
-        if ( result*2 < timeSeries2.at(i+inputVecSize-1) ) {
+        if ( std::abs(timeSeries2.at(i+inputVecSize-1) - result) > (result/1.5) ) {
             inVec2.at(inputVecSize-1) = timeSeries2.at((i+inputVecSize-1)%inputSize);
         }
         else inVec2.at(inputVecSize-1) = timeSeries2.at(i+inputVecSize-1);
@@ -834,8 +820,8 @@ int LSTMCNNFCPredictionModel::predictNorm(
         
         // Extracting the similarity
         similarity = DTW::getSimilarity(expectedVec,predictedVec);
-        
-        if (similarity > maxSim) { 
+//        out_file<<similarity<<"\n";
+        if (similarity > simMargin) { 
             out_file<<marker<<"\n";
         } else {
             out_file<<"\n";
