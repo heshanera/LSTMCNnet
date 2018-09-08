@@ -291,7 +291,6 @@ int LSTMCNNFCPredictionModel::predict(
     Eigen::VectorXd predictedVec = Eigen::VectorXd::Zero(simVecSize);
     int subVSize = simVecSize-1;
     double similarity;
-    double maxSim = 0;
     
     double errorSq = 0, MSE, expected, val;
     int predSize = points;
@@ -358,17 +357,6 @@ int LSTMCNNFCPredictionModel::predict(
         }
         lstmPredPoints[((i+inputVecSize)%numPredPoints)] = 0;
         
-        // filling the values to compare the similarity
-        for (int j = 0; j < subVSize; j++) {
-            expectedVec(j) = expectedVec(j+1);
-            predictedVec(j) = predictedVec(j+1);
-        }
-        predictedVec(subVSize) = dataproc->postProcess(result);
-        expectedVec(subVSize) = timeSeries2.at(i+inputVecSize);        
-        similarity = DTW::getSimilarity(expectedVec,predictedVec); 
-        if ( maxSim < similarity) maxSim = similarity;
-
-        
         // CNN predictions for the trained data set
         tstMatArr[0] = Eigen::MatrixXd::Zero(height,width);
         for (int a = 0; a < height; a++) {
@@ -396,8 +384,6 @@ int LSTMCNNFCPredictionModel::predict(
         }
         predPoints[((i+inputVecSize)%numPredPoints)] = 0;
     }
-    
-    if ( simMargin != 0) maxSim = simMargin;
 
     for (int i = inputSize; i < predSize; i++) {
 
@@ -463,8 +449,8 @@ int LSTMCNNFCPredictionModel::predict(
         
         // Extracting the similarity
         similarity = DTW::getSimilarity(expectedVec,predictedVec);
-//        out_file<<similarity<<"\n";
-        if (similarity > maxSim) { 
+
+        if (similarity > simMargin) { 
             out_file<<marker<<"\n";
         } else {
             out_file<<"\n";

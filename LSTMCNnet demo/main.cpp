@@ -1292,7 +1292,7 @@ int lstmcnnfcNAB(){
     modelStruct.dataFile = "datasets/univariate/NAB/input/"+fileName;
     
     // LSTM parameters
-    modelStruct.memCells = 5;
+    modelStruct.memCells = 6;
     
     // CNN parameters
     modelStruct.matWidth = 20;
@@ -1309,9 +1309,9 @@ int lstmcnnfcNAB(){
     PL1.poolW = 2;
 
     struct::FCLayStruct FCL1;
-    FCL1.outputs = 10; // neurons in fully connected layer
+    FCL1.outputs = 20; // neurons in fully connected layer
     struct::FCLayStruct FCL2;
-    FCL2.outputs = 5; // neurons in fully connected layer
+    FCL2.outputs = 10; // neurons in fully connected layer
     struct::FCLayStruct FCL3;
     FCL3.outputs = 1; // neurons in fully connected layer
 
@@ -1331,9 +1331,9 @@ int lstmcnnfcNAB(){
     
     std::string expect = "datasets/univariate/NAB/predictions/LSTMCNNFC/expect_"+fileName;
     std::string predict = "datasets/univariate/NAB/predictions/LSTMCNNFC/predict_"+fileName;
-    pm.predict(3950, expect, predict, 0.4, 0.6);
-//    pm.predict(3950, expect, predict, 3, 60,35, 0.4, 0.6);
-    pm.dtwSimilarity(3950, expect, predict, 3, 0.4, 0.6);
+//    pm.predict(3950, expect, predict, 0.5, 0.5);
+    pm.predict(3950, expect, predict, 25, 2.25, 170, 0.5, 0.5);
+//    pm.dtwSimilarity(3950, expect, predict, 25, 0.5, 0.5);
     
 //    pm.predictNorm(1000, expect, predict);
 //    pm.predictNorm(3300, expect, predict, 5, 15,200);
