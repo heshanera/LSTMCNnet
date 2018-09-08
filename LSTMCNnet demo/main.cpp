@@ -1274,10 +1274,14 @@ int lstmcnnfcPredAnom(){
 int lstmcnnfcNAB(){
 
     std::string datasets[] = {
-        /* 0*/ "art_daily_nojump.txt"
+        /*0*/ "art_daily_nojump.txt",
+        
+        /************ realAWSCloudwatch ************/
+        /*1*/ "ec2_cpu_utilization_5f5533.txt", // 4032 data points
+        /*2*/ "ec2_cpu_utilization_24ae8d.txt" // 4032 data points
     };
     
-    std::string fileName = datasets[0];
+    std::string fileName = datasets[1];
     
     ModelStruct modelStruct;
     modelStruct.trainDataSize = 300;
@@ -1287,7 +1291,7 @@ int lstmcnnfcNAB(){
     modelStruct.dataFile = "datasets/univariate/NAB/input/"+fileName;
     
     // LSTM parameters
-    modelStruct.memCells = 4;
+    modelStruct.memCells = 5;
     
     // CNN parameters
     modelStruct.matWidth = 30;
@@ -1301,18 +1305,18 @@ int lstmcnnfcNAB(){
 
     struct::PoolLayStruct PL1;
     PL1.poolH = 1; // pool size: N x N
-    PL1.poolW = 5;
+    PL1.poolW = 2;
 
     struct::FCLayStruct FCL1;
-    FCL1.outputs = 20; // neurons in fully connected layer
+    FCL1.outputs = 40; // neurons in fully connected layer
     struct::FCLayStruct FCL2;
-    FCL2.outputs = 10; // neurons in fully connected layer
+    FCL2.outputs = 20; // neurons in fully connected layer
     struct::FCLayStruct FCL3;
     FCL3.outputs = 1; // neurons in fully connected layer
 
-    char layerOrder[] = {/*'C','P',*/'C','P','F','F','F'};
-    struct::ConvLayStruct CLs[] = {CL1/*,CL2*/};
-    struct::PoolLayStruct PLs[] = {PL1/*,PL2*/};
+    char layerOrder[] = {'C','P','F','F','F'};
+    struct::ConvLayStruct CLs[] = {CL1};
+    struct::PoolLayStruct PLs[] = {PL1};
     struct::FCLayStruct FCLs[] = {FCL1,FCL2,FCL3};
 
     modelStruct.netStruct.layers = 5;
@@ -1326,7 +1330,7 @@ int lstmcnnfcNAB(){
     
     std::string expect = "datasets/univariate/NAB/predictions/LSTMCNNFC/expect_"+fileName;
     std::string predict = "datasets/univariate/NAB/predictions/LSTMCNNFC/predict_"+fileName;
-    pm.predict(3800, expect, predict, 1.0, 0.0);
+    pm.predict(3850, expect, predict, 0.5, 0.5);
 //    pm.predict(10000, expect, predict, 3, 30000,39000);
     
 //    pm.predictNorm(1000, expect, predict);
@@ -1350,10 +1354,10 @@ int main(int argc, char** argv) {
     // multiple prediction with known anomalies ///////////////////////////////
     //lstmPredAnom();
     //cnnPredAnom();
-    lstmcnnfcPredAnom();
+    //lstmcnnfcPredAnom();
     
     // Numenta Anomaly Benchmark //////////////////////////////////////////////
-    //lstmcnnfcNAB();
+    lstmcnnfcNAB();
     
     return 0;
 }
