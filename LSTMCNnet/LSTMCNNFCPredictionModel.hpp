@@ -140,6 +140,21 @@ public:
         double simMargin = 0, double lstmW = 0.5, double cnnW = 0.5
     );
     
+    /**
+     * 
+     * @param points: points to be predicted
+     * @param expect: file path to write the expected values
+     * @param predict: file path to write the predicted anomaly points
+     * @param simVecSize: DTW similarity vector size 
+     * @param lstmW: prediction weight for the lstm (default value = 0.5, lstmW + cnnW = 1)
+     * @param cnnW: prediction weight for the cnn (default value = 0.5, lstmW + cnnW = 1)
+     * @return 0
+     */
+    int dtwSimilarity(
+        int points, std::string expect, std::string predict, 
+        int simVecSize, double lstmW = 0.5, double cnnW = 0.5
+    );
+    
 private:
     LSTMNet * lstm;
     CNN * cnn;

@@ -1278,14 +1278,15 @@ int lstmcnnfcNAB(){
         
         /************ realAWSCloudwatch ************/
         /*1*/ "ec2_cpu_utilization_5f5533.txt", // 4032 data points
-        /*2*/ "ec2_cpu_utilization_24ae8d.txt" // 4032 data points
+        /*2*/ "ec2_cpu_utilization_24ae8d.txt", // 4032 data points
+        /*3*/ "ec2_cpu_utilization_53ea38.txt" // 4032 data points        
     };
     
-    std::string fileName = datasets[1];
+    std::string fileName = datasets[3];
     
     ModelStruct modelStruct;
     modelStruct.trainDataSize = 300;
-    modelStruct.learningRate = 0.001;
+    modelStruct.learningRate = 0.0001;
     modelStruct.trainingIterations = 10; 
     modelStruct.numPredPoints = 1;
     modelStruct.dataFile = "datasets/univariate/NAB/input/"+fileName;
@@ -1294,7 +1295,7 @@ int lstmcnnfcNAB(){
     modelStruct.memCells = 5;
     
     // CNN parameters
-    modelStruct.matWidth = 30;
+    modelStruct.matWidth = 20;
     modelStruct.matHeight = 2;
     modelStruct.targetC = 1;
     
@@ -1308,9 +1309,9 @@ int lstmcnnfcNAB(){
     PL1.poolW = 2;
 
     struct::FCLayStruct FCL1;
-    FCL1.outputs = 40; // neurons in fully connected layer
+    FCL1.outputs = 10; // neurons in fully connected layer
     struct::FCLayStruct FCL2;
-    FCL2.outputs = 20; // neurons in fully connected layer
+    FCL2.outputs = 5; // neurons in fully connected layer
     struct::FCLayStruct FCL3;
     FCL3.outputs = 1; // neurons in fully connected layer
 
@@ -1330,8 +1331,9 @@ int lstmcnnfcNAB(){
     
     std::string expect = "datasets/univariate/NAB/predictions/LSTMCNNFC/expect_"+fileName;
     std::string predict = "datasets/univariate/NAB/predictions/LSTMCNNFC/predict_"+fileName;
-    pm.predict(3850, expect, predict, 0.5, 0.5);
-//    pm.predict(10000, expect, predict, 3, 30000,39000);
+    pm.predict(3950, expect, predict, 0.4, 0.6);
+//    pm.predict(3950, expect, predict, 3, 60,35, 0.4, 0.6);
+    pm.dtwSimilarity(3950, expect, predict, 3, 0.4, 0.6);
     
 //    pm.predictNorm(1000, expect, predict);
 //    pm.predictNorm(3300, expect, predict, 5, 15,200);
