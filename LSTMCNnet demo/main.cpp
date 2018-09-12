@@ -1286,12 +1286,14 @@ int lstmcnnfcNAB(){
         /*7*/ "ec2_cpu_utilization_c6585a.txt", // 4032 data points
         /*8*/ "ec2_cpu_utilization_fe7f93.txt", // 4032 data points
         
-        /*9*/ "ec2_disk_write_bytes_1ef3de.txt" // 4730 data points
+        /*9*/ "ec2_disk_write_bytes_1ef3de.txt", // 4730 data points
+        /*10*/"ec2_disk_write_bytes_c0d644.txt", // 4032 data points 
+        /*11*/"ec2_network_in_5abac7.txt",       // 4730 data points
         
         
     };
     
-    std::string fileName = datasets[9];
+    std::string fileName = datasets[11];
     
     ModelStruct modelStruct;
     modelStruct.trainDataSize = 600;
@@ -1301,7 +1303,7 @@ int lstmcnnfcNAB(){
     modelStruct.dataFile = "datasets/univariate/NAB/input/"+fileName;
     
     // LSTM parameters
-    modelStruct.memCells = 10;
+    modelStruct.memCells = 5;
     
     // CNN parameters
     modelStruct.matWidth = 20;
@@ -1340,9 +1342,9 @@ int lstmcnnfcNAB(){
     
     std::string expect = "datasets/univariate/NAB/predictions/LSTMCNNFC/expect_"+fileName;
     std::string predict = "datasets/univariate/NAB/predictions/LSTMCNNFC/predict_"+fileName;
-//    pm.predict(4500, expect, predict, 0.6, 0.4);
-    pm.predict(4500, expect, predict, 5, 400000000, 2200000000, 0.6, 0.4);
-//    pm.dtwSimilarity(4500, expect, predict, 5, 0.6, 0.4);
+//    pm.predict(3900, expect, predict, 0.8, 0.2);
+//    pm.predict(3900, expect, predict, 5, 500000000, 6000000000, 0.8, 0.2);
+    pm.dtwSimilarity(3900, expect, predict, 5, 0.8, 0.2);
     
 //    pm.predictNorm(3950, expect, predict, 0.2, 0.8);
 //    pm.predictNorm(3950, expect, predict, 5, 50, 190, 0.2, 0.8);
