@@ -1289,24 +1289,27 @@ int lstmcnnfcNAB(){
         /*9*/ "ec2_disk_write_bytes_1ef3de.txt", // 4730 data points
         /*10*/"ec2_disk_write_bytes_c0d644.txt", // 4032 data points 
         /*11*/"ec2_network_in_5abac7.txt",       // 4730 data points
+        /*12*/"ec2_network_in_257a54.txt",       // 4032 data points
+        /*13*/"elb_request_count_8c0756.txt"     // 4032 data points
+        /*14*/"grok_asg_anomaly.txt"             // 4621 data points
         
         
     };
     
-    std::string fileName = datasets[11];
+    std::string fileName = datasets[14];
     
     ModelStruct modelStruct;
-    modelStruct.trainDataSize = 600;
-    modelStruct.learningRate = 0.0001;
+    modelStruct.trainDataSize = 300;
+    modelStruct.learningRate = 0.001;
     modelStruct.trainingIterations = 10; 
     modelStruct.numPredPoints = 1;
     modelStruct.dataFile = "datasets/univariate/NAB/input/"+fileName;
     
     // LSTM parameters
-    modelStruct.memCells = 5;
+    modelStruct.memCells = 6;
     
     // CNN parameters
-    modelStruct.matWidth = 20;
+    modelStruct.matWidth = 80 ;
     modelStruct.matHeight = 2;
     modelStruct.targetC = 1;
     
@@ -1342,9 +1345,9 @@ int lstmcnnfcNAB(){
     
     std::string expect = "datasets/univariate/NAB/predictions/LSTMCNNFC/expect_"+fileName;
     std::string predict = "datasets/univariate/NAB/predictions/LSTMCNNFC/predict_"+fileName;
-//    pm.predict(3900, expect, predict, 0.8, 0.2);
-//    pm.predict(3900, expect, predict, 5, 500000000, 6000000000, 0.8, 0.2);
-    pm.dtwSimilarity(3900, expect, predict, 5, 0.8, 0.2);
+//    pm.predict(3850, expect, predict, 0.05, 0.5);
+    pm.predict(3850, expect, predict, 5, 375, 1880, 0.05, 0.5);
+//    pm.dtwSimilarity(3850, expect, predict, 5, 0.05, 0.5);
     
 //    pm.predictNorm(3950, expect, predict, 0.2, 0.8);
 //    pm.predictNorm(3950, expect, predict, 5, 50, 190, 0.2, 0.8);
