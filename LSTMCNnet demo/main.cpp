@@ -1305,13 +1305,14 @@ int lstmcnnfcNAB(){
         /*23*/"exchange-4_cpm_results.txt",      // 1643 data points
         
         /************ realKnownCause ************/ 
-        /*24*/"ambient_temperature_system_failure.txt"   // 7266 data points
-        /*25*/"cpu_utilization_asg_misconfiguration.txt" // 18050 data points
+        /*24*/"ambient_temperature_system_failure.txt",   // 7266 data points
+        /*25*/"cpu_utilization_asg_misconfiguration.txt", // 18050 data points
+        /*26*/"ec2_request_latency_system_failure.txt"    // 4032 data points
         
         
     };
     
-    std::string fileName = datasets[25];
+    std::string fileName = datasets[26];
     
     ModelStruct modelStruct;
     modelStruct.trainDataSize = 600;
@@ -1324,7 +1325,7 @@ int lstmcnnfcNAB(){
     modelStruct.memCells = 10;
     
     // CNN parameters
-    modelStruct.matWidth = 35 ;
+    modelStruct.matWidth = 30 ;
     modelStruct.matHeight = 2;
     modelStruct.targetC = 1;
     
@@ -1360,9 +1361,9 @@ int lstmcnnfcNAB(){
     
     std::string expect = "datasets/univariate/NAB/predictions/LSTMCNNFC/expect_"+fileName;
     std::string predict = "datasets/univariate/NAB/predictions/LSTMCNNFC/predict_"+fileName;
-//    pm.predict(7000, expect, predict, 0.2, 0.4);
-    pm.predict(7000, expect, predict, 3, 85, 45, 0.2, 0.4);
-//    pm.dtwSimilarity(7000, expect, predict, 3, 0.2, 0.4);
+//    pm.predict(3970, expect, predict, 0.2, 0.8);
+    pm.predict(3970, expect, predict, 3, 75, 25, 0.2, 0.8);
+//    pm.dtwSimilarity(3970, expect, predict, 3, 0.2, 0.8);
     
 //    pm.predictNorm(3950, expect, predict, 0.2, 0.8);
 //    pm.predictNorm(3950, expect, predict, 5, 50, 190, 0.2, 0.8);
