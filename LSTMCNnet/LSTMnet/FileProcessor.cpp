@@ -32,6 +32,7 @@ std::vector<double> FileProcessor::read(std::string fileName, int valuesPerLine)
                 } catch (std::exception& e) {
                     std::cout<<std::endl<<"Error in line "<<lineNo<<": "<<e.what()<<std::endl;
                 }    
+                if (lineNo == 10000) break;
             }
         }
         file.close();

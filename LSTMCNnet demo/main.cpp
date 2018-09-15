@@ -1304,14 +1304,18 @@ int lstmcnnfcNAB(){
         /*22*/"exchange-4_cpc_results.txt",      // 1643 data points
         /*23*/"exchange-4_cpm_results.txt",      // 1643 data points
         
+        /************ realKnownCause ************/ 
+        /*24*/"ambient_temperature_system_failure.txt"   // 7266 data points
+        /*25*/"cpu_utilization_asg_misconfiguration.txt" // 18050 data points
+        
         
     };
     
-    std::string fileName = datasets[23];
+    std::string fileName = datasets[25];
     
     ModelStruct modelStruct;
-    modelStruct.trainDataSize = 200;
-    modelStruct.learningRate = 0.01;
+    modelStruct.trainDataSize = 600;
+    modelStruct.learningRate = 0.004;
     modelStruct.trainingIterations = 10; 
     modelStruct.numPredPoints = 1;
     modelStruct.dataFile = "datasets/univariate/NAB/input/"+fileName;
@@ -1320,7 +1324,7 @@ int lstmcnnfcNAB(){
     modelStruct.memCells = 10;
     
     // CNN parameters
-    modelStruct.matWidth = 10 ;
+    modelStruct.matWidth = 35 ;
     modelStruct.matHeight = 2;
     modelStruct.targetC = 1;
     
@@ -1334,9 +1338,9 @@ int lstmcnnfcNAB(){
     PL1.poolW = 2;
 
     struct::FCLayStruct FCL1;
-    FCL1.outputs = 40; // neurons in fully connected layer
+    FCL1.outputs = 20; // neurons in fully connected layer
     struct::FCLayStruct FCL2;
-    FCL2.outputs = 20; // neurons in fully connected layer
+    FCL2.outputs = 10; // neurons in fully connected layer
     struct::FCLayStruct FCL3;
     FCL3.outputs = 1; // neurons in fully connected layer
 
@@ -1356,9 +1360,9 @@ int lstmcnnfcNAB(){
     
     std::string expect = "datasets/univariate/NAB/predictions/LSTMCNNFC/expect_"+fileName;
     std::string predict = "datasets/univariate/NAB/predictions/LSTMCNNFC/predict_"+fileName;
-//    pm.predict(1620, expect, predict, 0.5, 0.5);
-    pm.predict(1620, expect, predict, 3, 5, 10, 0.5, 0.5);
-//    pm.dtwSimilarity(1620, expect, predict, 3, 0.5, 0.5);
+//    pm.predict(7000, expect, predict, 0.2, 0.4);
+    pm.predict(7000, expect, predict, 3, 85, 45, 0.2, 0.4);
+//    pm.dtwSimilarity(7000, expect, predict, 3, 0.2, 0.4);
     
 //    pm.predictNorm(3950, expect, predict, 0.2, 0.8);
 //    pm.predictNorm(3950, expect, predict, 5, 50, 190, 0.2, 0.8);
