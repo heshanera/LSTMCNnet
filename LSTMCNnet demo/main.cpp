@@ -1307,17 +1307,24 @@ int lstmcnnfcNAB(){
         /************ realKnownCause ************/ 
         /*24*/"ambient_temperature_system_failure.txt",   // 7266 data points
         /*25*/"cpu_utilization_asg_misconfiguration.txt", // 18050 data points
-        /*26*/"ec2_request_latency_system_failure.txt"    // 4032 data points
+        /*26*/"ec2_request_latency_system_failure.txt",   // 4032 data points
+        /*27*/"machine_temperature_system_failure.txt",   // 22695 data points
+        /*28*/"nyc_taxi.txt",                             // 10320 data points
+        /*29*/"rogue_agent_key_hold.txt",                 // 1882 data points
+        /*30*/"rogue_agent_key_updown.txt",               // 5315 data points
+        
+        /************ realTraffic ***************/ 
+        /*31*/"occupancy_6005.txt",                       // 2380 data points
         
         
     };
     
-    std::string fileName = datasets[26];
+    std::string fileName = datasets[31];
     
     ModelStruct modelStruct;
     modelStruct.trainDataSize = 600;
-    modelStruct.learningRate = 0.004;
-    modelStruct.trainingIterations = 10; 
+    modelStruct.learningRate = 0.0001;
+    modelStruct.trainingIterations = 12; 
     modelStruct.numPredPoints = 1;
     modelStruct.dataFile = "datasets/univariate/NAB/input/"+fileName;
     
@@ -1361,9 +1368,9 @@ int lstmcnnfcNAB(){
     
     std::string expect = "datasets/univariate/NAB/predictions/LSTMCNNFC/expect_"+fileName;
     std::string predict = "datasets/univariate/NAB/predictions/LSTMCNNFC/predict_"+fileName;
-//    pm.predict(3970, expect, predict, 0.2, 0.8);
-    pm.predict(3970, expect, predict, 3, 75, 25, 0.2, 0.8);
-//    pm.dtwSimilarity(3970, expect, predict, 3, 0.2, 0.8);
+//    pm.predict(2300, expect, predict, 0.3, 0.1);
+//    pm.predict(2300, expect, predict, 20, 20, 2000, 0.3, 0.2);
+    pm.dtwSimilarity(2300, expect, predict, 30, 0.3, 0.1);
     
 //    pm.predictNorm(3950, expect, predict, 0.2, 0.8);
 //    pm.predictNorm(3950, expect, predict, 5, 50, 190, 0.2, 0.8);
