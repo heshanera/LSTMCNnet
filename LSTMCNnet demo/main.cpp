@@ -1315,15 +1315,18 @@ int lstmcnnfcNAB(){
         
         /************ realTraffic ***************/ 
         /*31*/"occupancy_6005.txt",                       // 2380 data points
+        /*32*/"occupancy_t4013.txt",                      // 2500 data points
+        /*33*/"speed_6005.txt",                           // 2500 data points 
+        /*34*/"speed_7578.txt",                           // 1127 data points
         
         
     };
     
-    std::string fileName = datasets[31];
+    std::string fileName = datasets[34];
     
     ModelStruct modelStruct;
-    modelStruct.trainDataSize = 600;
-    modelStruct.learningRate = 0.0001;
+    modelStruct.trainDataSize = 200;
+    modelStruct.learningRate = 0.00001;
     modelStruct.trainingIterations = 12; 
     modelStruct.numPredPoints = 1;
     modelStruct.dataFile = "datasets/univariate/NAB/input/"+fileName;
@@ -1368,9 +1371,9 @@ int lstmcnnfcNAB(){
     
     std::string expect = "datasets/univariate/NAB/predictions/LSTMCNNFC/expect_"+fileName;
     std::string predict = "datasets/univariate/NAB/predictions/LSTMCNNFC/predict_"+fileName;
-//    pm.predict(2300, expect, predict, 0.3, 0.1);
-//    pm.predict(2300, expect, predict, 20, 20, 2000, 0.3, 0.2);
-    pm.dtwSimilarity(2300, expect, predict, 30, 0.3, 0.1);
+//    pm.predict(1050, expect, predict, 0.3, 0.8);
+//    pm.predict(2440, expect, predict, 15, 100, 4000, 0.3, 0.8);
+    pm.dtwSimilarity(1050, expect, predict, 5, 0.3, 0.8);
     
 //    pm.predictNorm(3950, expect, predict, 0.2, 0.8);
 //    pm.predictNorm(3950, expect, predict, 5, 50, 190, 0.2, 0.8);
