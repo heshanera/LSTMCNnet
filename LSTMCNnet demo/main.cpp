@@ -1318,14 +1318,26 @@ int lstmcnnfcNAB(){
         /*32*/"occupancy_t4013.txt",                      // 2500 data points
         /*33*/"speed_6005.txt",                           // 2500 data points 
         /*34*/"speed_7578.txt",                           // 1127 data points
+        /*35*/"speed_t4013.txt",                          // 2495 data points
+        /*36*/"TravelTime_387.txt",                       // 2500 data points
+        /*37*/"TravelTime_451.txt",                       // 2162 data points
+        /*38*/"Twitter_volume_AAPL.txt",                  // 15902 data points
+        /*39*/"Twitter_volume_AMZN.txt",                  // 15831 data points
+        /*40*/"Twitter_volume_CRM.txt",                   // 15902 data points
+        /*41*/"Twitter_volume_CVS.txt",                   // 15853 data points
+        /*42*/"Twitter_volume_FB.txt",                    // 15833 data points
+        /*43*/"Twitter_volume_GOOG.txt",                  // 15842 data points
+        /*44*/"Twitter_volume_IBM.txt",                   // 15893 data points
+        /*45*/"Twitter_volume_KO.txt",                    // 15851 data points
+        /*46*/"Twitter_volume_PFE.txt",                   // 15858 data points
         
         
     };
     
-    std::string fileName = datasets[34];
+    std::string fileName = datasets[46];
     
     ModelStruct modelStruct;
-    modelStruct.trainDataSize = 200;
+    modelStruct.trainDataSize = 600;
     modelStruct.learningRate = 0.00001;
     modelStruct.trainingIterations = 12; 
     modelStruct.numPredPoints = 1;
@@ -1335,7 +1347,7 @@ int lstmcnnfcNAB(){
     modelStruct.memCells = 10;
     
     // CNN parameters
-    modelStruct.matWidth = 30 ;
+    modelStruct.matWidth = 10 ;
     modelStruct.matHeight = 2;
     modelStruct.targetC = 1;
     
@@ -1351,7 +1363,7 @@ int lstmcnnfcNAB(){
     struct::FCLayStruct FCL1;
     FCL1.outputs = 20; // neurons in fully connected layer
     struct::FCLayStruct FCL2;
-    FCL2.outputs = 10; // neurons in fully connected layer
+    FCL2.outputs = 5; // neurons in fully connected layer
     struct::FCLayStruct FCL3;
     FCL3.outputs = 1; // neurons in fully connected layer
 
@@ -1371,9 +1383,9 @@ int lstmcnnfcNAB(){
     
     std::string expect = "datasets/univariate/NAB/predictions/LSTMCNNFC/expect_"+fileName;
     std::string predict = "datasets/univariate/NAB/predictions/LSTMCNNFC/predict_"+fileName;
-//    pm.predict(1050, expect, predict, 0.3, 0.8);
-//    pm.predict(2440, expect, predict, 15, 100, 4000, 0.3, 0.8);
-    pm.dtwSimilarity(1050, expect, predict, 5, 0.3, 0.8);
+    pm.predict(15750, expect, predict, 0.2, 0.1);
+//    pm.predict(15750, expect, predict, 10, 500, 6000, 0.2, 0.1);
+//    pm.dtwSimilarity(15750, expect, predict, 10, 0.2, 0.1);
     
 //    pm.predictNorm(3950, expect, predict, 0.2, 0.8);
 //    pm.predictNorm(3950, expect, predict, 5, 50, 190, 0.2, 0.8);
