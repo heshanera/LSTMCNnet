@@ -1274,7 +1274,7 @@ int lstmcnnfcPredAnom(){
 int lstmcnnfcNAB(){
 
     std::string datasets[] = {
-        /*0*/ "art_daily_nojump.txt",
+        /*0*/ "",
         
         /************ realAWSCloudwatch ************/
         /*1*/ "ec2_cpu_utilization_5f5533.txt", // 4032 data points
@@ -1330,15 +1330,31 @@ int lstmcnnfcNAB(){
         /*44*/"Twitter_volume_IBM.txt",                   // 15893 data points
         /*45*/"Twitter_volume_KO.txt",                    // 15851 data points
         /*46*/"Twitter_volume_PFE.txt",                   // 15858 data points
+        /*47*/"Twitter_volume_UPS.txt",                   // 15866 data points
+        
+        /************ artificialWithAnomaly ***************/ 
+        /*48*/"art_daily_flatmiddle.txt",                 // 4032 data points
+        /*49*/"art_daily_jumpsdown.txt",                  // 4032 data points
+        /*50*/"art_daily_jumpsup.txt",                    // 4032 data points
+        /*51*/"art_daily_nojump.txt",                     // 4032 data points
+        /*52*/"art_increase_spike_density.txt",           // 4032 data points
+        /*53*/"art_load_balancer_spikes.txt",             // 4032 data points
+        
+        /************ artificialNoAnomaly ***************/ 
+        /*54*/"art_daily_no_noise.txt",                   // 4032 data points 
+        /*55*/"art_daily_perfect_square_wave.txt",        // 4032 data points
+        /*56*/"art_daily_small_noise.txt",                // 4032 data points
+        /*57*/"art_flatline.txt",                         // 4032 data points
+        /*58*/"art_noisy.txt",                            // 4032 data points
         
         
     };
     
-    std::string fileName = datasets[46];
+    std::string fileName = datasets[8];
     
     ModelStruct modelStruct;
     modelStruct.trainDataSize = 600;
-    modelStruct.learningRate = 0.00001;
+    modelStruct.learningRate = 0.0001;
     modelStruct.trainingIterations = 12; 
     modelStruct.numPredPoints = 1;
     modelStruct.dataFile = "datasets/univariate/NAB/input/"+fileName;
@@ -1347,7 +1363,7 @@ int lstmcnnfcNAB(){
     modelStruct.memCells = 10;
     
     // CNN parameters
-    modelStruct.matWidth = 10 ;
+    modelStruct.matWidth = 10;
     modelStruct.matHeight = 2;
     modelStruct.targetC = 1;
     
@@ -1358,7 +1374,7 @@ int lstmcnnfcNAB(){
 
     struct::PoolLayStruct PL1;
     PL1.poolH = 1; // pool size: N x N
-    PL1.poolW = 2;
+    PL1.poolW = 1;
 
     struct::FCLayStruct FCL1;
     FCL1.outputs = 20; // neurons in fully connected layer
@@ -1383,11 +1399,11 @@ int lstmcnnfcNAB(){
     
     std::string expect = "datasets/univariate/NAB/predictions/LSTMCNNFC/expect_"+fileName;
     std::string predict = "datasets/univariate/NAB/predictions/LSTMCNNFC/predict_"+fileName;
-    pm.predict(15750, expect, predict, 0.2, 0.1);
-//    pm.predict(15750, expect, predict, 10, 500, 6000, 0.2, 0.1);
-//    pm.dtwSimilarity(15750, expect, predict, 10, 0.2, 0.1);
+//    pm.predict(4000, expect, predict, 0.5, 0.1);
+    pm.predict(4000, expect, predict, 5, 50, 350, 0.5, 0.1);
+//    pm.dtwSimilarity(4000, expect, predict, 5, 0.5, 0.1);
     
-//    pm.predictNorm(3950, expect, predict, 0.2, 0.8);
+//    pm.predictNorm(3500, expect, predict, 0.5, 0.2);
 //    pm.predictNorm(3950, expect, predict, 5, 50, 190, 0.2, 0.8);
     
     return 0;

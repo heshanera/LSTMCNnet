@@ -116,7 +116,7 @@ int LSTMCNNFCPredictionModel::initPredData(std::string file) {
     return 0;
 }
 
-int LSTMCNNFCPredictionModel::predict(int points, std::string expect, std::string predict, double lstmW, double cnnW) {
+int LSTMCNNFCPredictionModel::predict(int points, std::string expect, std::string predict, double lstmW, double cnnW, int abs) {
     
     double errorSq = 0, MSE, expected, val;
     int predSize = points;
@@ -264,6 +264,8 @@ int LSTMCNNFCPredictionModel::predict(int points, std::string expect, std::strin
          
         // calculating the Mean Squared Error
         expected = timeSeries.at(i+inputVecSize);
+        // get the absolute value
+        if (abs) val = std::abs(val);
         errorSq += std::pow(expected-val,2);
         result = dataproc->postProcess(val);
         
@@ -284,7 +286,7 @@ int LSTMCNNFCPredictionModel::predict(int points, std::string expect, std::strin
 
 int LSTMCNNFCPredictionModel::predict(
     int points, std::string expect, std::string predict, 
-    int simVecSize, double marker, double simMargin, double lstmW, double cnnW
+    int simVecSize, double marker, double simMargin, double lstmW, double cnnW, int abs
 ) {
     
     Eigen::VectorXd expectedVec = Eigen::VectorXd::Zero(simVecSize);
@@ -433,6 +435,9 @@ int LSTMCNNFCPredictionModel::predict(
         
         // combining the results LSTM and CNN
         val = (result*lstmW + val*cnnW);
+        
+        // get the absolute value
+        if (abs) val = std::abs(val);
          
         // calculating the Mean Squared Error
         expected = timeSeries.at(i+inputVecSize);
@@ -449,7 +454,7 @@ int LSTMCNNFCPredictionModel::predict(
         
         // Extracting the similarity
         similarity = DTW::getSimilarity(expectedVec,predictedVec);
-
+        
         if (similarity > simMargin) { 
             out_file<<marker<<"\n";
         } else {
@@ -1083,7 +1088,7 @@ int LSTMCNNFCPredictionModel::predictAdaptNorm(
 
 int LSTMCNNFCPredictionModel::dtwSimilarity(
     int points, std::string expect, std::string predict, 
-    int simVecSize, double lstmW, double cnnW
+    int simVecSize, double lstmW, double cnnW, int abs
 ) {
     
     Eigen::VectorXd expectedVec = Eigen::VectorXd::Zero(simVecSize);
@@ -1232,6 +1237,9 @@ int LSTMCNNFCPredictionModel::dtwSimilarity(
         
         // combining the results LSTM and CNN
         val = (result*lstmW + val*cnnW);
+        
+        // get the absolute value
+        if (abs) val = std::abs(val);
          
         // calculating the Mean Squared Error
         expected = timeSeries.at(i+inputVecSize);
@@ -1247,9 +1255,9 @@ int LSTMCNNFCPredictionModel::dtwSimilarity(
         expectedVec(subVSize) = timeSeries2.at(i+inputVecSize);
         
         // Extracting the similarity
-        similarity = DTW::getSimilarity(expectedVec,predictedVec);
+        similarity = DTW::getSimilarity(expectedVec,predictedVec); 
         out_file<<similarity<<"\n";
-
+        out_file2<<timeSeries2.at(i+inputVecSize)<<"\n";
     }
     
     out_file.close();

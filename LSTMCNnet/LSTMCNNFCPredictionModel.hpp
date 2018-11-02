@@ -40,9 +40,10 @@ public:
      * @param predict: file path to write the predicted value
      * @param lstmW: prediction weight for the lstm (default value = 0.5, lstmW + cnnW = 1)
      * @param cnnW: prediction weight for the cnn (default value = 0.5, lstmW + cnnW = 1)
+     * @param abs: get the absolute value of the prediction ( default = 0 : original prediction )
      * @return 0
      */
-    int predict(int points, std::string expect, std::string predict, double lstmW = 0.5, double cnnW = 0.5);
+    int predict(int points, std::string expect, std::string predict, double lstmW = 0.5, double cnnW = 0.5, int abs = 0);
     
     /**
      * Predict the given number of points, Identify the anomalies using DTW and write the anomalous points to given file
@@ -55,14 +56,15 @@ public:
      * @param simMargin: DTW similarity margin to detect anomalous points
      * @param lstmW: prediction weight for the lstm (default value = 0.5, lstmW + cnnW = 1)
      * @param cnnW: prediction weight for the cnn (default value = 0.5, lstmW + cnnW = 1)
+     * @param abs: get the absolute value of the prediction ( default = 0 : original prediction )
      * @return 0
      */
     int predict(
         int points, std::string expect, std::string predict, 
         int simVecSize, double marker, double simMargin = 0, 
-        double lstmW = 0.5, double cnnW = 0.5
+        double lstmW = 0.5, double cnnW = 0.5, int abs = 0
     );
-    
+
     /**
      * Predict the given number of points and write the predicted values to given file
      * keep track on the training data points to predict the normal behavior
@@ -148,11 +150,12 @@ public:
      * @param simVecSize: DTW similarity vector size 
      * @param lstmW: prediction weight for the lstm (default value = 0.5, lstmW + cnnW = 1)
      * @param cnnW: prediction weight for the cnn (default value = 0.5, lstmW + cnnW = 1)
+     * @param abs: get the absolute value of the prediction ( default = 0 : original prediction )
      * @return 0
      */
     int dtwSimilarity(
         int points, std::string expect, std::string predict, 
-        int simVecSize, double lstmW = 0.5, double cnnW = 0.5
+        int simVecSize, double lstmW = 0.5, double cnnW = 0.5, int abs = 0
     );
     
 private:
