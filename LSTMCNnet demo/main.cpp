@@ -1399,12 +1399,20 @@ int lstmcnnfcNAB(){
     
     std::string expect = "datasets/univariate/NAB/predictions/LSTMCNNFC/expect_"+fileName;
     std::string predict = "datasets/univariate/NAB/predictions/LSTMCNNFC/predict_"+fileName;
-//    pm.predict(4000, expect, predict, 0.5, 0.1);
-    pm.predict(4000, expect, predict, 5, 50, 350, 0.5, 0.1);
-//    pm.dtwSimilarity(4000, expect, predict, 5, 0.5, 0.1);
     
-//    pm.predictNorm(3500, expect, predict, 0.5, 0.2);
-//    pm.predictNorm(3950, expect, predict, 5, 50, 190, 0.2, 0.8);
+    int predictions = 4000;
+    int simVecSize = 5;
+    int marker = 50;
+    int similarityMargin = 350;
+    double lstmW = 0.5;
+    double cnnW = 0.1;
+    
+//    pm.predict(predictions, expect, predict, lstmW, cnnW);
+    pm.predict(predictions, expect, predict, simVecSize, marker, similarityMargin, lstmW, cnnW);
+//    pm.dtwSimilarity(predictions, expect, predict, simVecSize, lstmW, cnnW);
+    
+//    pm.predictNorm(predictions, expect, predict, lstmW, cnnW);
+//    pm.predictNorm(predictions, expect, predict, simVecSize, marker, similarityMargin, lstmW, cnnW);
     
     return 0;
     
