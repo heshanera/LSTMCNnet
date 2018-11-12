@@ -18,11 +18,29 @@
 class LSTMCNNPredictionModel {
 public:
     LSTMCNNPredictionModel();
+    
+    /**
+     * Initialize the LSTMCNN model
+     * @param modelStruct: parameters for model
+     */
     LSTMCNNPredictionModel(ModelStruct * modelStruct);
     LSTMCNNPredictionModel(const LSTMCNNPredictionModel& orig);
     virtual ~LSTMCNNPredictionModel();
     
+    /**
+     * Initialize the LSTMCNNFC model
+     * @param modelStruct: parameters for model
+     */
     int train();
+    
+    /**
+     * Predict the given number of points and write the predicted values to given file
+     * 
+     * @param points: number of prediction points
+     * @param expect: file path to write the expected values
+     * @param predict: file path to write the predicted value
+     * @return 0
+     */
     int predict(int points, std::string expect, std::string predict);
 private:
     LSTMNet * lstm;

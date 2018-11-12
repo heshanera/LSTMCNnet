@@ -15,8 +15,6 @@
 #include "LSTMnet/FileProcessor.h"
 #include "DTW.hpp"
 
-//class ModelStruct;
-
 class PredictionModel {
 public:
     PredictionModel();

@@ -13,13 +13,17 @@
 class LSTMCNNFCPredictionModel {
 public:
     LSTMCNNFCPredictionModel();
+    
+    /**
+     * Initialize the LSTMCNNFC model
+     * @param modelStruct: parameters for model
+     */
     LSTMCNNFCPredictionModel(ModelStruct * modelStruct);
     LSTMCNNFCPredictionModel(const LSTMCNNFCPredictionModel& orig);
     virtual ~LSTMCNNFCPredictionModel();
     
     /**
      * Train the prediction model
-     * 
      * @return 0
      */
     int train();
