@@ -1350,21 +1350,21 @@ int lstmcnnfcNAB(){
         
     };
     
-    std::string fileName = datasets[8];
+    std::string fileName = datasets[10];
     
     // Initializing the structure
     ModelStruct modelStruct;
     modelStruct.trainDataSize = 600;
-    modelStruct.learningRate = 0.0001;
-    modelStruct.trainingIterations = 12; 
+    modelStruct.learningRate = 0.000001;
+    modelStruct.trainingIterations = 10; 
     modelStruct.numPredPoints = 1;
     modelStruct.dataFile = "datasets/univariate/NAB/input/"+fileName;
     
     // LSTM parameters
-    modelStruct.memCells = 10;
+    modelStruct.memCells = 15;
     
     // CNN parameters
-    modelStruct.matWidth = 10;
+    modelStruct.matWidth = 15;
     modelStruct.matHeight = 2;
     modelStruct.targetC = 1;
     
@@ -1410,20 +1410,21 @@ int lstmcnnfcNAB(){
     
     // parameters for model outputs
     int predictions = 4000;
-    int simVecSize = 5;
-    int marker = 50;
-    int similarityMargin = 350;
-    double lstmW = 0.5;
-    double cnnW = 0.1;
+    int simVecSize = 2;
+    int marker = 4000;
+    int similarityMargin = 4800;
+    double lstmW = 0.02;
+    double cnnW = 0.01;
+    int abs = 1;
     
     // getting predicted time series data points
-//    pm.predict(predictions, expect, predict, lstmW, cnnW);
+//    pm.predict(predictions, expect, predict, lstmW, cnnW, abs);
     
     // getting anomalies identified by the model 
-    pm.predict(predictions, expect, predict, simVecSize, marker, similarityMargin, lstmW, cnnW);
+//    pm.predict(predictions, expect, predict, simVecSize, marker, similarityMargin, lstmW, cnnW);
     
     // getting DTW similarity values
-//    pm.dtwSimilarity(predictions, expect, predict, simVecSize, lstmW, cnnW);
+    pm.dtwSimilarity(predictions, expect, predict, simVecSize, lstmW, cnnW);
     
     // getting predicted time series data points
     // using normal behavior to identify increase the accuracy of predictions
