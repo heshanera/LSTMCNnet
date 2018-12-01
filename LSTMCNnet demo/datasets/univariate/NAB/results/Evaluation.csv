@@ -1,55 +1,55 @@
-Dataset,,Anomalies,Detected,True Positive,False Positive,Results,Accuracy,False Discovery Rate
-Real Tweets,Twitter volume AAPL,4,5,3,2,view,75.00%,40.00%
-,Twitter volume AMZN,4,3,2,1,view,50.00%,33.33%
-,Twitter volume CRM,3,4,3,1,view,100.00%,25.00%
-,Twitter volume CVS,3,4,3,1,view,100.00%,25.00%
-,Twitter volume FB,2,2,2,0,view,100.00%,0.00%
-,Twitter volume GOOG,3,3,2,1,view,66.67%,33.33%
-,Twitter volume IBM,2,1,1,0,view,50.00%,0.00%
-,Twitter volume KO,3,5,3,2,view,100.00%,40.00%
-,Twitter volume PFE,3,2,2,0,view,66.67%,0.00%
-,Twitter volume UPS,4,7,4,3,view,100.00%,42.86%
-Real Traffic,occupancy 6005,1,1,1,0,view,100.00%,0.00%
-,occupancy t4013,2,2,2,0,view,100.00%,0.00%
-,speed 6005,1,1,1,0,view,100.00%,0.00%
-,speed 7578,4,6,4,2,view,100.00%,33.33%
-,speed t4013,2,2,2,0,view,100.00%,0.00%
-,Travel Time 387,3,1,1,0,view,33.33%,0.00%
-,Travel Time 451,1,2,1,1,view,100.00%,50.00%
-Real Known Cause,Ambient Temperature System Failure,2,3,2,1,view,100.00%,33.33%
-,CPU Utilization ASG Misconfiguration,1,1,1,0,view,100.00%,0.00%
-,EC2 Request Latency System Failure,3,3,3,0,view,100.00%,0.00%
-,Machine Temperature System Failure,4,4,2,2,view,50.00%,50.00%
-,NYC Taxi,5,5,4,1,view,80.00%,20.00%
-,Rogue agent key hold,2,0,0,0,view,0.00%,0.00%
-,rogue agent key updown,2,0,0,0,view,0.00%,0.00%
-Real AWS Cloud Watch,EC2 CPU utilization 5f5533,2,2,2,0,view,100.00%,0.00%
-,EC2 CPU utilization 24ae8d,2,1,1,0,view,50.00%,0.00%
-,EC2 CPU utilization 53ea38,2,2,2,0,view,100.00%,0.00%
-,EC2 CPU utilization 77c1ca,1,2,1,1,view,100.00%,50.00%
-,EC2 CPU utilization 825cc2,2,2,2,0,view,100.00%,0.00%
-,EC2 CPU utilization ac20cd,2,2,2,0,view,100.00%,0.00%
-,EC2 CPU utilization c6585a,0,0,0,0,view,0.00%,0.00%
-,EC2 CPU utilization fe7f93,3,2,2,0,view,66.67%,0.00%
-,EC2 disk write bytes 1ef3de,1,2,1,1,view,100.00%,50.00%
-,EC2 disk write bytes c0d644,2,1,1,0,view,50.00%,0.00%
-,EC2 network in 5abac7,2,4,2,2,view,100.00%,50.00%
-,EC2 network in 257a54,1,1,1,0,view,100.00%,0.00%
-,ELB request count 8c0756,2,4,2,2,view,100.00%,50.00%
-,grok ASG anomaly,3,3,3,0,view,100.00%,0.00%
-,iio us-east-1 i-a2eb1cd9 NetworkIn,2,2,2,0,view,100.00%,0.00%
-,RDS CPU utilization cc0c53,2,2,2,0,view,100.00%,0.00%
-,RDS CPU utilization e47b3b,2,2,2,0,view,100.00%,0.00%
-Real Add Exchange,Exchange-2 CPC results,1,0,0,0,view,0.00%,0.00%
-,Exchange-2 CPM results,2,1,1,0,view,50.00%,0.00%
-,Exchange-3 CPC results,3,4,3,1,view,100.00%,25.00%
-,Exchange-3 CPM results,1,1,1,0,view,100.00%,0.00%
-,Exchange-4 CPC results,3,4,2,2,view,66.67%,50.00%
-,Exchange-4 CPM results,4,4,3,1,view,75.00%,25.00%
-Artificial With Anomaly,Art daily flatmiddle,1,1,1,0,view,100.00%,0.00%
-,Art daily jumpsdown,1,0,0,0,view,0.00%,0.00%
-,Art daily jumpsup,1,1,1,0,view,100.00%,0.00%
-,Art daily nojump,1,0,0,0,view,0.00%,0.00%
-,Art increase spike density,1,1,1,0,view,100.00%,0.00%
-,Art load balancer spikes,1,1,1,0,view,100.00%,0.00%
-Total,,115,119,91,28,,79.13%,23.53%
+Dataset,,Anomalies,Detected,True Positive,False Positive,Accuracy,False Discovery Rate
+Real Tweets,Twitter volume AAPL,4,5,3,2,75.00%,40.00%
+,Twitter volume AMZN,4,3,2,1,50.00%,33.33%
+,Twitter volume CRM,3,4,3,1,100.00%,25.00%
+,Twitter volume CVS,3,4,3,1,100.00%,25.00%
+,Twitter volume FB,2,2,2,0,100.00%,0.00%
+,Twitter volume GOOG,3,3,2,1,66.67%,33.33%
+,Twitter volume IBM,2,1,1,0,50.00%,0.00%
+,Twitter volume KO,3,5,3,2,100.00%,40.00%
+,Twitter volume PFE,3,2,2,0,66.67%,0.00%
+,Twitter volume UPS,4,7,4,3,100.00%,42.86%
+Real Traffic,occupancy 6005,1,1,1,0,100.00%,0.00%
+,occupancy t4013,2,2,2,0,100.00%,0.00%
+,speed 6005,1,1,1,0,100.00%,0.00%
+,speed 7578,4,6,4,2,100.00%,33.33%
+,speed t4013,2,2,2,0,100.00%,0.00%
+,Travel Time 387,3,1,1,0,33.33%,0.00%
+,Travel Time 451,1,2,1,1,100.00%,50.00%
+Real Known Cause,Ambient Temperature System Failure,2,3,2,1,100.00%,33.33%
+,CPU Utilization ASG Misconfiguration,1,1,1,0,100.00%,0.00%
+,EC2 Request Latency System Failure,3,3,3,0,100.00%,0.00%
+,Machine Temperature System Failure,4,4,2,2,50.00%,50.00%
+,NYC Taxi,5,5,4,1,80.00%,20.00%
+,Rogue agent key hold,2,0,0,0,0.00%,0.00%
+,rogue agent key updown,2,0,0,0,0.00%,0.00%
+Real AWS Cloud Watch,EC2 CPU utilization 5f5533,2,2,2,0,100.00%,0.00%
+,EC2 CPU utilization 24ae8d,2,1,1,0,50.00%,0.00%
+,EC2 CPU utilization 53ea38,2,2,2,0,100.00%,0.00%
+,EC2 CPU utilization 77c1ca,1,2,1,1,100.00%,50.00%
+,EC2 CPU utilization 825cc2,2,2,2,0,100.00%,0.00%
+,EC2 CPU utilization ac20cd,2,2,2,0,100.00%,0.00%
+,EC2 CPU utilization c6585a,0,0,0,0,0.00%,0.00%
+,EC2 CPU utilization fe7f93,3,2,2,0,66.67%,0.00%
+,EC2 disk write bytes 1ef3de,1,2,1,1,100.00%,50.00%
+,EC2 disk write bytes c0d644,2,1,1,0,50.00%,0.00%
+,EC2 network in 5abac7,2,4,2,2,100.00%,50.00%
+,EC2 network in 257a54,1,1,1,0,100.00%,0.00%
+,ELB request count 8c0756,2,4,2,2,100.00%,50.00%
+,grok ASG anomaly,3,3,3,0,100.00%,0.00%
+,iio us-east-1 i-a2eb1cd9 NetworkIn,2,2,2,0,100.00%,0.00%
+,RDS CPU utilization cc0c53,2,2,2,0,100.00%,0.00%
+,RDS CPU utilization e47b3b,2,2,2,0,100.00%,0.00%
+Real Add Exchange,Exchange-2 CPC results,1,0,0,0,0.00%,0.00%
+,Exchange-2 CPM results,2,1,1,0,50.00%,0.00%
+,Exchange-3 CPC results,3,4,3,1,100.00%,25.00%
+,Exchange-3 CPM results,1,1,1,0,100.00%,0.00%
+,Exchange-4 CPC results,3,4,2,2,66.67%,50.00%
+,Exchange-4 CPM results,4,4,3,1,75.00%,25.00%
+Artificial With Anomaly,Art daily flatmiddle,1,1,1,0,100.00%,0.00%
+,Art daily jumpsdown,1,0,0,0,0.00%,0.00%
+,Art daily jumpsup,1,1,1,0,100.00%,0.00%
+,Art daily nojump,1,0,0,0,0.00%,0.00%
+,Art increase spike density,1,1,1,0,100.00%,0.00%
+,Art load balancer spikes,1,1,1,0,100.00%,0.00%
+Total,,115,119,91,28,79.13%,23.53%
