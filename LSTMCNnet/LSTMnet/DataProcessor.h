@@ -9,6 +9,7 @@
 #define DATAPROCESSOR_H
 
 #include <vector>
+#include <float.h>
 
 class DataProcessor {
 public:
@@ -20,6 +21,7 @@ public:
      * normalize the given vector
      * @param vec vector
      * @param vecType vector type input or output
+     * type 1: train data vector
      * @return normalized vector
      */
     std::vector<double> process(std::vector<double> vec, int vecType); 

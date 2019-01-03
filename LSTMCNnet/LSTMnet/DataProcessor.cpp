@@ -21,21 +21,21 @@ DataProcessor::~DataProcessor() { }
 std::vector<double> DataProcessor::process(std::vector<double> vec, int vecType) {
 
     //std::cout<<"processing...\n";
-    
+    double min_train = DBL_MAX;
     double magnitude = 0.0;
     for(std::vector<double>::iterator it = vec.begin(); it != vec.end(); ++it) {
         magnitude += std::pow(*it,2);
     }
     magnitude = std::pow(magnitude,0.5);
     
+    // if target vector
+    if (vecType == 1) out_magnitude = magnitude;
+    
     if (magnitude != 0) {
         for(std::vector<double>::iterator it = vec.begin(); it != vec.end(); ++it) {
             *it /= magnitude;
         }
     }
-    
-    // if target vector
-    if (vecType == 1) out_magnitude = magnitude;
     
     return vec;
 }

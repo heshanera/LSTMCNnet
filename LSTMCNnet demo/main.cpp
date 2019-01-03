@@ -1350,7 +1350,7 @@ int lstmcnnfcNAB(){
         
     };
     
-    std::string fileName = datasets[10];
+    std::string fileName = datasets[49];
     
     // Initializing the structure
     ModelStruct modelStruct;
@@ -1413,18 +1413,18 @@ int lstmcnnfcNAB(){
     int simVecSize = 2;
     int marker = 4000;
     int similarityMargin = 4800;
-    double lstmW = 0.02;
-    double cnnW = 0.01;
+    double lstmW = 0.8;
+    double cnnW = 0.1;
     int abs = 1;
     
     // getting predicted time series data points
-//    pm.predict(predictions, expect, predict, lstmW, cnnW, abs);
+    pm.predict(predictions, expect, predict, lstmW, cnnW, abs);
     
     // getting anomalies identified by the model 
 //    pm.predict(predictions, expect, predict, simVecSize, marker, similarityMargin, lstmW, cnnW);
     
     // getting DTW similarity values
-    pm.dtwSimilarity(predictions, expect, predict, simVecSize, lstmW, cnnW);
+//    pm.dtwSimilarity(predictions, expect, predict, simVecSize, lstmW, cnnW);
     
     // getting predicted time series data points
     // using normal behavior to identify increase the accuracy of predictions
