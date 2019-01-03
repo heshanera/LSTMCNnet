@@ -27,7 +27,7 @@ class ModelStruct {
 public:
     virtual ~ModelStruct();
 public:
-    int trainingIterations; // training iterations with training data
+    int trainingIterations; // training iterations
     int trainDataSize; // train data size
     double learningRate; // learning rate
     // LSTM
