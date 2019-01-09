@@ -5,6 +5,17 @@
  * Created on August 7, 2018, 10:10 PM
  */
 
+/*
+ * 
+ * prediction methods: [predict:2, predictNorm:2, predictAdaptNorm:2]
+ * 
+ * 
+ * predictNorm: Input is updated according to the normal pattern (training pattern)
+ * predictAdaptNorm: stored normal pattern is updated
+ * 
+ * 
+ */
+
 #ifndef LSTMCNNFCPREDICTIONMODEL_HPP
 #define LSTMCNNFCPREDICTIONMODEL_HPP
 
@@ -47,7 +58,10 @@ public:
      * @param abs: get the absolute value of the prediction ( default = 0 : original prediction )
      * @return 0
      */
-    int predict(int points, std::string expect, std::string predict, double lstmW = 0.5, double cnnW = 0.5, int abs = 0);
+    int predict(
+        int points, std::string expect, std::string predict, 
+        double lstmW = 0.5, double cnnW = 0.5, int abs = 0
+    );
     
     /**
      * Predict the given number of points, Identify the anomalies using DTW and write the anomalous points to given file
@@ -144,6 +158,27 @@ public:
         int points, std::string expect, std::string predict, 
         int timeLimit, int simVecSize, double marker, 
         double simMargin = 0, double lstmW = 0.5, double cnnW = 0.5
+    );
+    
+    /**
+     * Input file is processed chunk by chunk
+     * chunk size: records
+     * Predict the given number of points using the data in the given file
+     * and write the predicted values to given file
+     * 
+     * @param infile: datafile
+     * @param records: data records read at single instance
+     * @param points: points to be predicted
+     * @param expect: file path to write the expected values
+     * @param predict: file path to write the predicted value
+     * @param lstmW: prediction weight for the lstm (default value = 0.5, lstmW + cnnW = 1)
+     * @param cnnW: prediction weight for the cnn (default value = 0.5, lstmW + cnnW = 1)
+     * @param abs: get the absolute value of the prediction ( default = 0 : original prediction )
+     * @return 0
+     */
+    int predictCbyC(
+        std::string infile, int records, int points, std::string expect, 
+        std::string predict, double lstmW = 0.5, double cnnW = 0.5, int abs = 0
     );
     
     /**

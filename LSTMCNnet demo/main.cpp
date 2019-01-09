@@ -1438,6 +1438,105 @@ int lstmcnnfcNAB(){
     
 }
 
+int VibrationAnalysis(){
+
+    std::string datasets[] = {
+        /*0*/ "",
+        
+        /************ realAWSCloudwatch ************/
+        /*1*/ "sensor-20130307T015746Z.csv"
+        
+    };
+    
+    std::string fileName = datasets[1];
+    
+    // Initializing the structure
+    ModelStruct modelStruct;
+    modelStruct.trainDataSize = 600;
+    modelStruct.learningRate = 0.00005;
+    modelStruct.trainingIterations = 10; 
+    modelStruct.numPredPoints = 1;
+    modelStruct.dataFile = "datasets/univariate/VibrationAnalysis/data/"+fileName;
+    
+    // LSTM parameters
+    modelStruct.memCells = 25;
+    
+    // CNN parameters
+    modelStruct.matWidth = 30;
+    modelStruct.matHeight = 2;
+    modelStruct.targetC = 1;
+    
+    // Convolutional layer
+    struct::ConvLayStruct CL1;
+    CL1.filterSize = 2; // filter size: N x N
+    CL1.filters = 1; // No of filters
+    CL1.stride = 1;
+
+    // Pooling layer
+    struct::PoolLayStruct PL1;
+    PL1.poolH = 1; // pool size: N x N
+    PL1.poolW = 1;
+
+    // Fully connected layers
+    struct::FCLayStruct FCL1;
+    FCL1.outputs = 20; // neurons in fully connected layer
+    struct::FCLayStruct FCL2;
+    FCL2.outputs = 5; // neurons in fully connected layer
+    struct::FCLayStruct FCL3;
+    FCL3.outputs = 1; // neurons in fully connected layer
+
+    char layerOrder[] = {'C','P','F','F','F'};
+    struct::ConvLayStruct CLs[] = {CL1};
+    struct::PoolLayStruct PLs[] = {PL1};
+    struct::FCLayStruct FCLs[] = {FCL1,FCL2,FCL3};
+
+    modelStruct.netStruct.layers = 5;
+    modelStruct.netStruct.layerOrder = layerOrder;
+    modelStruct.netStruct.CL = CLs;
+    modelStruct.netStruct.PL = PLs;
+    modelStruct.netStruct.FCL = FCLs;
+    
+    // Initializing the Detection model
+    LSTMCNNFCPredictionModel pm(&modelStruct);
+    // Training the networks in the model 
+    pm.train();
+    
+    // path for the target data file 
+    std::string expect = "datasets/univariate/VibrationAnalysis/predictions/expect_"+fileName;
+    // path for the predicted data file
+    std::string predict = "datasets/univariate/VibrationAnalysis/predictions/predict_"+fileName;
+    
+    // parameters for model outputs
+    int predictions = 4800;
+    int simVecSize = 2;
+    int marker = 4000;
+    int similarityMargin = 4800;
+    double lstmW = 0.25;
+    double cnnW = 0.05;
+    int abs = 0;
+    
+    // getting predicted time series data points
+    pm.predict(predictions, expect, predict, lstmW, cnnW, abs);
+    
+    // getting anomalies identified by the model 
+//    pm.predict(predictions, expect, predict, simVecSize, marker, similarityMargin, lstmW, cnnW);
+    
+    // getting DTW similarity values
+//    pm.dtwSimilarity(predictions, expect, predict, simVecSize, lstmW, cnnW);
+    
+    // getting predicted time series data points
+    // using normal behavior to identify increase the accuracy of predictions
+//    pm.predictNorm(predictions, expect, predict, lstmW, cnnW);
+    
+    // getting anomalies identified by the model 
+    // using normal behavior to identify increase the accuracy of predictions
+//    pm.predictNorm(predictions, expect, predict, simVecSize, marker, similarityMargin, lstmW, cnnW);
+    
+    return 0;
+    
+}
+
+
 /*
  * 
  */
@@ -1455,7 +1554,10 @@ int main(int argc, char** argv) {
     //lstmcnnfcPredAnom();
     
     // Numenta Anomaly Benchmark //////////////////////////////////////////////
-    lstmcnnfcNAB();
+    //lstmcnnfcNAB();
+    
+    // Vibration Analysis /////////////////////////////////////////////////////
+    VibrationAnalysis();
     
     return 0;
 }
