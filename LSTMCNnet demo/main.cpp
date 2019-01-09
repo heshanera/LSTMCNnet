@@ -1514,9 +1514,13 @@ int VibrationAnalysis(){
     double lstmW = 0.25;
     double cnnW = 0.05;
     int abs = 0;
+    std::string datafilePath = "datasets/univariate/VibrationAnalysis/data/";
+    std::string datafileName = "sensor-20130307T015746Z_v.csv";
     
     // getting predicted time series data points
-    pm.predict(predictions, expect, predict, lstmW, cnnW, abs);
+//    pm.predict(predictions, expect, predict, lstmW, cnnW, abs);
+    pm.predictFromFile((datafilePath+datafileName),predictions, expect, predict, lstmW, cnnW, abs);
+    
     
     // getting anomalies identified by the model 
 //    pm.predict(predictions, expect, predict, simVecSize, marker, similarityMargin, lstmW, cnnW);

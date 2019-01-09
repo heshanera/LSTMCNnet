@@ -1086,8 +1086,8 @@ int LSTMCNNFCPredictionModel::predictAdaptNorm(
     return 0;
 }
 
-int LSTMCNNFCPredictionModel::predictCbyC(
-    std::string infile, int records, int points, std::string expect, 
+int LSTMCNNFCPredictionModel::predictFromFile(
+    std::string infile, int points, std::string expect, 
     std::string predict, double lstmW, double cnnW, int abs
 ) {
     
@@ -1185,74 +1185,183 @@ int LSTMCNNFCPredictionModel::predictCbyC(
         predPoints[((i+inputVecSize)%numPredPoints)] = 0;
     }
 
-    for (int i = inputSize; i < predSize; i++) {
+    // open file
+    std::ifstream inFile (infile);
+    int readLines = 0;
+    std::string line;
+    std::vector<double> tmpInVec;
+    int i = 0;
+    
 
-        inVec.clear();
-        for (int j = 0; j < inputVecSize; j++) {
-            inVec.push_back(timeSeries2.at(i+j));
-        }
-        inVec = dataproc->process(inVec,0);
-        
-        // Filling the matrix for the CNN input
-        tstMatArr[0] = Eigen::MatrixXd::Zero(height,width);
-        for (int a = 0; a < height; a++) {
-            for (int b = 0; b < width; b++) {
-                tstMatArr[0](a,b) = inVec.at(( a * width ) + b);
+//  timeSeries2.clear();
+    if (inFile.is_open()) {
+
+        // read the data for initial input vector
+        tmpInVec.clear();
+        while ( getline (inFile,line) ) {
+            readLines++;
+            try{
+                tmpInVec.push_back(std::stod(line));
+            } catch (std::exception& e) {
+                std::cout<<std::endl
+                        <<"Error in line "
+                        <<(readLines)
+                        <<": "<<e.what()<<std::endl;
             }
+            if (readLines == inputVecSize) break;
         }
-        
-        // LSTM predictions
-        input[0] = inVec;
-        for (int j = 0; j < numPredPoints; j++) {          
-            result = lstm->predict(input); 
-            input[0] = std::vector<double>(inVec.begin()+1, inVec.begin()+inputVecSize);
-            input[0].push_back(result);
-            lstmPredPoints[((i+inputVecSize+j)%numPredPoints)] += result;     
-        }
-        result = lstmPredPoints[((i+inputVecSize)%numPredPoints)]/(double)numPredPoints;
-        lstmPredPoints[((i+inputVecSize)%numPredPoints)] = 0;
 
-        // CNN predictions
-        for (int j = 0; j < numPredPoints; j++) {      
-            prediction = cnn->predict(tstMatArr);
-            inVec = std::vector<double>(inVec.begin()+1, inVec.begin()+inputVecSize);
-            inVec.push_back(prediction(0,0));
+        // Predictions using the model
+        int readLines = 0;
+        while ( getline (inFile,line) ) {
+            readLines++;
+            try{
+                tmpInVec.push_back(std::stod(line));
+            } catch (std::exception& e) {
+                std::cout<<std::endl
+                        <<"Error in line "
+                        <<(readLines)
+                        <<": "<<e.what()<<std::endl;
+            }
+
+            inVec.clear();
+            for (int j = 0; j < inputVecSize; j++) {
+                inVec.push_back(tmpInVec.at(j));
+            }
+            inVec = dataproc->process(inVec,0);
+
+            // Filling the matrix for the CNN input
+            tstMatArr[0] = Eigen::MatrixXd::Zero(height,width);
             for (int a = 0; a < height; a++) {
                 for (int b = 0; b < width; b++) {
                     tstMatArr[0](a,b) = inVec.at(( a * width ) + b);
                 }
             }
-            predPoints[((i+inputVecSize+j)%numPredPoints)] += prediction(0,0);     
-        }
-        prediction(0,0) = predPoints[((i+inputVecSize)%numPredPoints)]/(double)numPredPoints;
-        predPoints[((i+inputVecSize)%numPredPoints)] = 0;
-        
-        // post process CNN prediction
-        val = prediction(0,0);
-        val = (val - predictMin)*((trainMax - trainMin)/(predictMax - predictMin)) + trainMin;
-        
-        // combining the results LSTM and CNN
-//        val = (result + val)/2;
-        val = (result*lstmW + val*cnnW);
-         
-        // calculating the Mean Squared Error
-        expected = timeSeries.at(i+inputVecSize);
-        // get the absolute value
-        if (abs) val = std::abs(val);
-        errorSq += std::pow(expected-val,2);
-        result = dataproc->postProcess(val);
-        
-        // writing the predictions
-        out_file<<result<<"\n";
-        out_file2<<timeSeries2.at(i+inputVecSize)<<"\n";
 
+            // LSTM predictions
+            input[0] = inVec;
+            for (int j = 0; j < numPredPoints; j++) {          
+                result = lstm->predict(input); 
+                input[0] = std::vector<double>(inVec.begin()+1, inVec.begin()+inputVecSize);
+                input[0].push_back(result);
+                lstmPredPoints[((i+inputVecSize+j)%numPredPoints)] += result;     
+            }
+            result = lstmPredPoints[((i+inputVecSize)%numPredPoints)]/(double)numPredPoints;
+            lstmPredPoints[((i+inputVecSize)%numPredPoints)] = 0;
+
+            // CNN predictions
+            for (int j = 0; j < numPredPoints; j++) {      
+                prediction = cnn->predict(tstMatArr);
+                inVec = std::vector<double>(inVec.begin()+1, inVec.begin()+inputVecSize);
+                inVec.push_back(prediction(0,0));
+                for (int a = 0; a < height; a++) {
+                    for (int b = 0; b < width; b++) {
+                        tstMatArr[0](a,b) = inVec.at(( a * width ) + b);
+                    }
+                }
+                predPoints[((i+inputVecSize+j)%numPredPoints)] += prediction(0,0);     
+            }
+            prediction(0,0) = predPoints[((i+inputVecSize)%numPredPoints)]/(double)numPredPoints;
+            predPoints[((i+inputVecSize)%numPredPoints)] = 0;
+
+            // post process CNN prediction
+            val = prediction(0,0);
+            val = (val - predictMin)*((trainMax - trainMin)/(predictMax - predictMin)) + trainMin;
+
+            // combining the results LSTM and CNN
+            val = (result*lstmW + val*cnnW);
+
+            // calculating the Mean Squared Error
+//                expected = timeSeries.at(inputVecSize);
+            // get the absolute value
+            if (abs) val = std::abs(val);
+//                errorSq += std::pow(expected-val,2);
+            result = dataproc->postProcess(val);
+
+            // writing the predictions
+            out_file<<result<<"\n";
+            out_file2<<tmpInVec.at(inputVecSize)<<"\n";
+
+            i++;
+            tmpInVec.erase (tmpInVec.begin());
+            if (readLines == points) break;
+        }
+        inFile.close();
     }
+    else std::cout << "Unable to open file '"<<infile<<"'"; 
+        
+        
+    
+    
+//    for (int i = inputSize; i < predSize; i++) {
+//
+//        inVec.clear();
+//        for (int j = 0; j < inputVecSize; j++) {
+//            inVec.push_back(timeSeries2.at(i+j));
+//        }
+//        inVec = dataproc->process(inVec,0);
+//        
+//        // Filling the matrix for the CNN input
+//        tstMatArr[0] = Eigen::MatrixXd::Zero(height,width);
+//        for (int a = 0; a < height; a++) {
+//            for (int b = 0; b < width; b++) {
+//                tstMatArr[0](a,b) = inVec.at(( a * width ) + b);
+//            }
+//        }
+//        
+//        // LSTM predictions
+//        input[0] = inVec;
+//        for (int j = 0; j < numPredPoints; j++) {          
+//            result = lstm->predict(input); 
+//            input[0] = std::vector<double>(inVec.begin()+1, inVec.begin()+inputVecSize);
+//            input[0].push_back(result);
+//            lstmPredPoints[((i+inputVecSize+j)%numPredPoints)] += result;     
+//        }
+//        result = lstmPredPoints[((i+inputVecSize)%numPredPoints)]/(double)numPredPoints;
+//        lstmPredPoints[((i+inputVecSize)%numPredPoints)] = 0;
+//
+//        // CNN predictions
+//        for (int j = 0; j < numPredPoints; j++) {      
+//            prediction = cnn->predict(tstMatArr);
+//            inVec = std::vector<double>(inVec.begin()+1, inVec.begin()+inputVecSize);
+//            inVec.push_back(prediction(0,0));
+//            for (int a = 0; a < height; a++) {
+//                for (int b = 0; b < width; b++) {
+//                    tstMatArr[0](a,b) = inVec.at(( a * width ) + b);
+//                }
+//            }
+//            predPoints[((i+inputVecSize+j)%numPredPoints)] += prediction(0,0);     
+//        }
+//        prediction(0,0) = predPoints[((i+inputVecSize)%numPredPoints)]/(double)numPredPoints;
+//        predPoints[((i+inputVecSize)%numPredPoints)] = 0;
+//        
+//        // post process CNN prediction
+//        val = prediction(0,0);
+//        val = (val - predictMin)*((trainMax - trainMin)/(predictMax - predictMin)) + trainMin;
+//        
+//        // combining the results LSTM and CNN
+////        val = (result + val)/2;
+//        val = (result*lstmW + val*cnnW);
+//         
+//        // calculating the Mean Squared Error
+//        expected = timeSeries.at(i+inputVecSize);
+//        // get the absolute value
+//        if (abs) val = std::abs(val);
+//        errorSq += std::pow(expected-val,2);
+//        result = dataproc->postProcess(val);
+//        
+//        // writing the predictions
+//        out_file<<result<<"\n";
+//        out_file2<<timeSeries2.at(i+inputVecSize)<<"\n";
+//
+//    }
+    
     
     out_file.close();
     out_file2.close();
     
-    MSE = errorSq/(predSize-inputSize);
-    std::cout<<"\nMean Squared Error: "<<MSE<<"\n\n"; 
+//    MSE = errorSq/(predSize-inputSize);
+//    std::cout<<"\nMean Squared Error: "<<MSE<<"\n\n"; 
     
     return 0;
 }

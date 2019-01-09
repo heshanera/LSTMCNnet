@@ -161,13 +161,11 @@ public:
     );
     
     /**
-     * Input file is processed chunk by chunk
-     * chunk size: records
+     * Process a large input file: read the inputs while predicting
      * Predict the given number of points using the data in the given file
      * and write the predicted values to given file
      * 
      * @param infile: datafile
-     * @param records: data records read at single instance
      * @param points: points to be predicted
      * @param expect: file path to write the expected values
      * @param predict: file path to write the predicted value
@@ -176,8 +174,8 @@ public:
      * @param abs: get the absolute value of the prediction ( default = 0 : original prediction )
      * @return 0
      */
-    int predictCbyC(
-        std::string infile, int records, int points, std::string expect, 
+    int predictFromFile(
+        std::string infile, int points, std::string expect, 
         std::string predict, double lstmW = 0.5, double cnnW = 0.5, int abs = 0
     );
     
