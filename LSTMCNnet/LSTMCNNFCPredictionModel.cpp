@@ -1279,12 +1279,19 @@ int LSTMCNNFCPredictionModel::predictFromFile(
             result = dataproc->postProcess(val);
 
             // writing the predictions
-            out_file<<result<<"\n";
-            out_file2<<tmpInVec.at(inputVecSize)<<"\n";
+//            out_file<<result<<"\n";
+//            out_file2<<tmpInVec.at(inputVecSize)<<"\n";
+            out_file<<tmpInVec.at(inputVecSize)<<","<<result<<"\n";
 
             i++;
             tmpInVec.erase (tmpInVec.begin());
-            if (readLines == points) break;
+            
+            std::cout<<"Processing data: ";
+            if (readLines == points) {
+                std::cout<<"complete";
+                break;
+            } else std::cout<<"line "<<i<<'\r';
+            
         }
         inFile.close();
     }

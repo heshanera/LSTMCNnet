@@ -1507,7 +1507,7 @@ int VibrationAnalysis(){
     std::string predict = "datasets/univariate/VibrationAnalysis/predictions/predict_"+fileName;
     
     // parameters for model outputs
-    int predictions = 4800;
+    int predictions = 500000;
     int simVecSize = 2;
     int marker = 4000;
     int similarityMargin = 4800;
