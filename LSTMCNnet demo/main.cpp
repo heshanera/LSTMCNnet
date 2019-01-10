@@ -1443,12 +1443,15 @@ int VibrationAnalysis(){
     std::string datasets[] = {
         /*0*/ "",
         
-        /************ realAWSCloudwatch ************/
-        /*1*/ "sensor-20130307T015746Z.csv"
+        /****************** sensor ******************/
+        /*1*/ "sensor-20130307T015746Z.csv",
+                
+       /******************* tach ********************/
+       /*2*/ "tach-20130307T015746Z.csv"         
         
     };
     
-    std::string fileName = datasets[1];
+    std::string fileName = datasets[2];
     
     // Initializing the structure
     ModelStruct modelStruct;
@@ -1499,7 +1502,8 @@ int VibrationAnalysis(){
     // Initializing the Detection model
     LSTMCNNFCPredictionModel pm(&modelStruct);
     // Training the networks in the model 
-    pm.train();
+    pm.trainFromFile();
+//    pm.train();
     
     // path for the target data file 
     std::string expect = "datasets/univariate/VibrationAnalysis/predictions/expect_"+fileName;
@@ -1507,19 +1511,18 @@ int VibrationAnalysis(){
     std::string predict = "datasets/univariate/VibrationAnalysis/predictions/predict_"+fileName;
     
     // parameters for model outputs
-    int predictions = 500000;
+    int predictions = 2000;
     int simVecSize = 2;
     int marker = 4000;
     int similarityMargin = 4800;
     double lstmW = 0.25;
     double cnnW = 0.05;
     int abs = 0;
-    std::string datafilePath = "datasets/univariate/VibrationAnalysis/data/";
-    std::string datafileName = "sensor-20130307T015746Z_v.csv";
+//    std::string datafilePath = "datasets/univariate/VibrationAnalysis/data/";
+//    std::string datafileName = "sensor-20130307T015746Z_v.csv";
     
     // getting predicted time series data points
-//    pm.predict(predictions, expect, predict, lstmW, cnnW, abs);
-    pm.predictFromFile((datafilePath+datafileName),predictions, expect, predict, lstmW, cnnW, abs);
+    pm.predictFromFile(modelStruct.dataFile,predictions, expect, predict, lstmW, cnnW, abs);
     
     
     // getting anomalies identified by the model 

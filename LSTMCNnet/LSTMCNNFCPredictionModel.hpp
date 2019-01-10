@@ -40,6 +40,14 @@ public:
     int train();
     
     /**
+     * Train the prediction model using given no of lines
+     * @param filePath: path to data file
+     * @param points: training data points
+     * @return 
+     */
+    int trainFromFile();
+    
+    /**
      * Input Data for the predictions
      * 
      * @param file: input data ( time series )
@@ -167,16 +175,15 @@ public:
      * 
      * @param infile: datafile
      * @param points: points to be predicted
-     * @param expect: file path to write the expected values
-     * @param predict: file path to write the predicted value
+     * @param predict: file path to write the predicted values
      * @param lstmW: prediction weight for the lstm (default value = 0.5, lstmW + cnnW = 1)
      * @param cnnW: prediction weight for the cnn (default value = 0.5, lstmW + cnnW = 1)
      * @param abs: get the absolute value of the prediction ( default = 0 : original prediction )
      * @return 0
      */
     int predictFromFile(
-        std::string infile, int points, std::string expect, 
-        std::string predict, double lstmW = 0.5, double cnnW = 0.5, int abs = 0
+        std::string infile, int points, std::string predict, 
+        double lstmW = 0.5, double cnnW = 0.5, int abs = 0
     );
     
     /**

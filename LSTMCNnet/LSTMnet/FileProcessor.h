@@ -20,11 +20,21 @@ public:
     
     /**
      * 
-     * @param fileName name of the input file
-     * @param valuesPerLine number of values in line
-     * @return vector of values
+     * @param fileName: name of the input file
+     * @param valuesPerLine: number of values in line
+     * @return vector: of values
      */
     std::vector<double> read(std::string fileName, int valuesPerLine);
+    
+    /**
+     * 
+     * @param fileName: name of the input file
+     * @param valuesPerLine: number of values in line
+     * @param lines: no of lines to read
+     * @return vector of values
+     */
+    std::vector<double> read(std::string fileName, int valuesPerLine, int lines);
+    
     /**
      * Read a text file containing comma separated values.
      * 
