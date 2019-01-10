@@ -1,0 +1,13 @@
+### sensor-20130307T015746Z
+trainDataSize = 600
+learningRate = 0.00005
+trainingIterations = 10
+memCells = 25
+matWidth = 30
+matHeight = 2
+CNN = [20 5 1]
+layerOrder = {'C','P','F','F','F'}
+
+### tach-20130307T015746Z
+
+
